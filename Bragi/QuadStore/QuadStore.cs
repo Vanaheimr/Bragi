@@ -18,8 +18,6 @@
 #region Usings
 
 using System;
-using System.Linq;
-using System.Text;
 using System.Collections.Generic;
 
 using de.ahzf.Illias;
@@ -34,6 +32,8 @@ namespace de.ahzf.Bragi
     /// </summary>
     public class QuadStoreDemo : ITutorial
     {
+
+        #region ITutorial members
 
         #region Name
 
@@ -84,16 +84,28 @@ namespace de.ahzf.Bragi
 
         #endregion
 
+        #endregion
+
         #region Constructor(s)
 
+        /// <summary>
+        /// A quadstore demo
+        /// </summary>
         public QuadStoreDemo()
-        {
-        }
+        { }
 
         #endregion
 
 
         #region Run()
+
+        /// <summary>
+        /// Run the tutorial.
+        /// </summary>
+        public static void Start()
+        {
+            new QuadStoreDemo().Run();
+        }
 
         /// <summary>
         /// Run the tutorial.

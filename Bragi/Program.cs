@@ -39,7 +39,7 @@ namespace de.ahzf.Bragi
         public static void Main(String[] Args)
         {
 
-            var _Tutorial1 = new TagExample();
+            TagExample.Start();
             //var _Tutorial2 = new SmallBenchmark();
 
         }

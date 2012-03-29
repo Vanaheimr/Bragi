@@ -21,6 +21,7 @@ using System;
 using System.Linq;
 using System.Collections.Generic;
 
+using de.ahzf.Illias.Commons;
 using de.ahzf.Balder;
 using de.ahzf.Blueprints.PropertyGraphs;
 using de.ahzf.Blueprints.PropertyGraphs.InMemory.Mutable;
@@ -36,6 +37,8 @@ namespace de.ahzf.Bragi
     /// </summary>
     public class TagExample : ITutorial
     {
+
+        #region ITutorial members
 
         #region Name
 
@@ -84,12 +87,15 @@ namespace de.ahzf.Bragi
 
         #endregion
 
+        #endregion
 
-        #region TagExample()
+        #region Constructor(s)
 
+        /// <summary>
+        /// The TagExample
+        /// </summary>
         public TagExample()
-        {
-        }
+        { }
 
         #endregion
 
@@ -138,6 +144,17 @@ namespace de.ahzf.Bragi
 
         #region Run()
 
+        /// <summary>
+        /// Run the tutorial.
+        /// </summary>
+        public static void Start()
+        {
+            new TagExample().Run();
+        }
+
+        /// <summary>
+        /// Run the tutorial.
+        /// </summary>
         public void Run()
         {
 
@@ -179,17 +196,24 @@ namespace de.ahzf.Bragi
 
 
 
-            // List tagged sites
+            // List tagged sites using LINQ
             var _WebList = from   Website
-                           in     _graph.V(v => { return VertexType.Website == (VertexType) v.GetProperty<String, Object>(_Type); })
+                           in     _graph.Vertices(v => v.Contains(_Type, VertexType.Website))
                            select new
                            {
                                Name  = Website.GetProperty(_Name),
-                               Count = Website.OutEdges(_TagLabel).Count()
+                               Count = Website.OutDegree(_TagLabel)
                            };
 
             foreach (var _Site in _WebList)
-                Console.WriteLine("{0} => {1}", _Site.Name, _Site.Count);
+                Console.WriteLine("{0}\t=> {1}", _Site.Name, _Site.Count);
+
+
+            // List tagged sites 
+            _graph.Vertices(v => v.Contains(_Type, VertexType.Website)).
+                   ForEach (v => Console.WriteLine("{0}\t=> {1}",
+                                                   v.GetProperty(_Name),
+                                                   v.OutDegree  (_TagLabel)));
 
         }
 
