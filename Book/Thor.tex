@@ -1,0 +1,64 @@
+\documentclass{book}
+
+\usepackage {ulem}				% Unter-/Durchstreichungen
+\usepackage{romannum}			% Roemische Zahlen
+\usepackage{dsfont}				% Mengenbuchstaben
+\usepackage [final] {pdfpages}	% PDF output
+\usepackage						% Hyperlinks
+[	hyperref,
+	colorlinks,
+	pdfstartview	= FitV,
+	pdftex,
+	linkcolor		= blue,
+	citecolor		= cyan,
+	urlcolor		= MidnightBlue,
+	pdfpagelabels,
+]	{hyperref}
+
+\usepackage{listings}
+\lstset{% general command to set parameter(s)
+basicstyle=\small, % print whole listing small
+keywordstyle=\color{black}\bfseries\underbar,% underlined bold black keywords
+identifierstyle=, % nothing happens
+commentstyle=\color{white}, % white comments
+stringstyle=\ttfamily, % typewriter type for strings
+showstringspaces=false} % no special string spaces
+
+\newcommand{\myFig} [4] [\columnwidth] {
+ \begin{figure}
+	 \begin{center}
+ 		\includegraphics[width=#1]{graphics/#2}
+		\vspace{-10pt}
+		\caption{#3}
+		\vspace{-20pt}
+		\label{#4}
+ 	\end{center}
+ \end{figure}
+}
+
+\newcommand{\myFigT} [5] [\columnwidth] {
+ \begin{figure}[t]
+	 \begin{center}
+ 		\includegraphics[width=#1]{graphics/#2}
+		\vspace{-10pt}
+		\caption{#3}
+		\vspace{-20pt}
+		\label{#4}
+%		\vspace{#5}
+ 	\end{center}
+ \end{figure}
+% \FloatBarrier
+}
+
+\begin{document}
+
+\section{Introduction}
+
+Graphs...
+
+
+% References
+\bibliographystyle{splncs}
+\bibliography{IWGD2010-GraphDS}
+
+\end{document}

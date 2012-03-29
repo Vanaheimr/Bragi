@@ -1,0 +1,9 @@
+*.pidb
+*.VisualState.xml
+*.suo
+*.csproj.user
+*.vsp
+/SocialGraphDemo/bin
+/SocialGraphDemo/obj
+/Bragi/obj
+/Bragi/bin
