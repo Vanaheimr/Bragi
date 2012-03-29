@@ -1,6 +1,6 @@
 ﻿/*
- * Copyright (c) 2010-2011, Achim 'ahzf' Friedland <code@ahzf.de>
- * This file is part of Balder <http://www.github.com/ahzf/Balder>
+ * Copyright (c) 2010-2012, Achim 'ahzf' Friedland <code@ahzf.de>
+ * This file is part of Bragi <http://www.github.com/Vanaheimr/Bragi>
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -28,15 +28,75 @@ using de.ahzf.Blueprints.PropertyGraphs;
 
 #endregion
 
-namespace de.ahzf.Tutorials
+namespace de.ahzf.Bragi
 {
 
     /// <summary>
     /// A SmallBenchmark
     /// Do not trust any benchmark you did not manipulate yourself ;)!
     /// </summary>
-    public class SmallBenchmark
+    public class SmallBenchmark : ITutorial
     {
+
+        #region Name
+
+        /// <summary>
+        /// The name of the tutorial.
+        /// </summary>
+        public String Name
+        {
+            get
+            {
+                return "SmallBenchmark";
+            }
+        }
+
+        #endregion
+
+        #region Keywords
+
+        /// <summary>
+        /// The keywords of the tutorial.
+        /// </summary>
+        public IEnumerable<Keyword> Keywords
+        {
+            get
+            {
+                return new List<Keyword>() {
+                    Keyword.Benchmarks
+                };
+            }
+        }
+
+        #endregion
+
+        #region Description
+
+        /// <summary>
+        /// A short description of the tutorial.
+        /// </summary>
+        public String Description
+        {
+            get
+            {
+                return "A small graph processing benchmark.";
+            }
+        }
+
+        #endregion
+
+        #region Constructor(s)
+
+        /// <summary>
+        /// A SmallBenchmark
+        /// Do not trust any benchmark you did not manipulate yourself ;)!
+        /// </summary>
+        public SmallBenchmark()
+        {
+        }
+
+        #endregion
+
 
         #region VertexTypes
 
@@ -80,20 +140,16 @@ namespace de.ahzf.Tutorials
         #endregion
 
 
-        #region SmallBenchmark()
+        #region Run()
 
-        /// <summary>
-        /// A SmallBenchmark
-        /// Do not trust any benchmark you did not manipulate yourself ;)!
-        /// </summary>
-        public SmallBenchmark()
+        public void Run()
         {
 
             var Stopwatch = new Stopwatch();
             var PRNG      = new Random();
 
             // Create a new simple property graph
-            var _Graph    = new PropertyGraph();
+            var _Graph    = GraphFactory.CreateGenericPropertyGraph(1);
 
             var NumberOfUsers           = 20000UL;
             var NumberOfIterations      = 30;
@@ -123,15 +179,15 @@ namespace de.ahzf.Tutorials
             Console.WriteLine(Stopwatch.Elapsed.TotalMilliseconds + "ms");
 
 
-            IPropertyVertex<UInt64, Int64, String, String, Object,
-                            UInt64, Int64, String, String, Object,
-                            UInt64, Int64, String, String, Object,
-                            UInt64, Int64, String, String, Object> ActualVertex = null;
+            IGenericPropertyVertex<UInt64, Int64, String, String, Object,
+                                   UInt64, Int64, String, String, Object,
+                                   UInt64, Int64, String, String, Object,
+                                   UInt64, Int64, String, String, Object> ActualVertex = null;
 
-            var Vertices = new IPropertyVertex<UInt64, Int64, String, String, Object,
-                                               UInt64, Int64, String, String, Object,
-                                               UInt64, Int64, String, String, Object,
-                                               UInt64, Int64, String, String, Object>[NumberOfUsers + 1];
+            var Vertices = new IGenericPropertyVertex<UInt64, Int64, String, String, Object,
+                                                      UInt64, Int64, String, String, Object,
+                                                      UInt64, Int64, String, String, Object,
+                                                      UInt64, Int64, String, String, Object>[NumberOfUsers + 1];
 
             var Measurements = new Double[NumberOfIterations];
             
@@ -186,9 +242,9 @@ namespace de.ahzf.Tutorials
 
             }
 
-            var AverageAndStdDev = Measurements.AverageAndStdDev();
-            Console.WriteLine("Mean: " + AverageAndStdDev.Item1 + ", stddev: " + AverageAndStdDev.Item2);
-            Console.ReadLine();
+            //var AverageAndStdDev = Measurements.AverageAndStdDev();
+            //Console.WriteLine("Mean: " + AverageAndStdDev.Item1 + ", stddev: " + AverageAndStdDev.Item2);
+            //Console.ReadLine();
 
         }
 

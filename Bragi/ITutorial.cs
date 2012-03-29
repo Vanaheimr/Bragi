@@ -18,31 +18,39 @@
 #region Usings
 
 using System;
-using System.Linq;
 using System.Collections.Generic;
-
-using de.ahzf.Balder;
-using de.ahzf.Blueprints;
-using de.ahzf.Blueprints.Indices;
 
 #endregion
 
 namespace de.ahzf.Bragi
 {
-
+    
     /// <summary>
-    /// The Bragi tutorials
+    /// The interface for all bragi tutorials.
     /// </summary>
-    public class Bragi
+    public interface ITutorial
     {
 
-        public static void Main(String[] Args)
-        {
+        /// <summary>
+        /// The name of the tutorial.
+        /// </summary>
+        String               Name          { get; }
 
-            var _Tutorial1 = new TagExample();
-            //var _Tutorial2 = new SmallBenchmark();
+        /// <summary>
+        /// The keywords of the tutorial.
+        /// </summary>
+        IEnumerable<Keyword> Keywords      { get; }
 
-        }
+        /// <summary>
+        /// A short description of the tutorial.
+        /// </summary>
+        String               Description   { get; }
+
+
+        /// <summary>
+        /// Run the tutorial.
+        /// </summary>
+        void Run();
 
     }
 

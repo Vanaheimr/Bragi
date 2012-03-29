@@ -1,6 +1,6 @@
 ﻿/*
- * Copyright (c) 2010-2011, Achim 'ahzf' Friedland <code@ahzf.de>
- * This file is part of Balder <http://www.github.com/ahzf/Balder>
+ * Copyright (c) 2010-2012, Achim 'ahzf' Friedland <code@ahzf.de>
+ * This file is part of Bragi <http://www.github.com/Vanaheimr/Bragi>
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -24,17 +24,75 @@ using System.Collections.Generic;
 using de.ahzf.Balder;
 using de.ahzf.Blueprints.PropertyGraphs;
 using de.ahzf.Blueprints.PropertyGraphs.InMemory.Mutable;
+using de.ahzf.Blueprints;
 
 #endregion
 
-namespace de.ahzf.Tutorials
+namespace de.ahzf.Bragi
 {
 
     /// <summary>
     /// The TagExample
     /// </summary>
-    public class TagExample
+    public class TagExample : ITutorial
     {
+
+        #region Name
+
+        /// <summary>
+        /// The name of the tutorial.
+        /// </summary>
+        public String Name
+        {
+            get
+            {
+                return "TagExample";
+            }
+        }
+
+        #endregion
+
+        #region Keywords
+
+        /// <summary>
+        /// The keywords of the tutorial.
+        /// </summary>
+        public IEnumerable<Keyword> Keywords
+        {
+            get
+            {
+                return new List<Keyword>() {
+                    Keyword.Tagging
+                };
+            }
+        }
+
+        #endregion
+
+        #region Description
+
+        /// <summary>
+        /// A short description of the tutorial.
+        /// </summary>
+        public String Description
+        {
+            get
+            {
+                return "A small tagging example.";
+            }
+        }
+
+        #endregion
+
+
+        #region TagExample()
+
+        public TagExample()
+        {
+        }
+
+        #endregion
+
 
         #region VertexTypes
 
@@ -78,13 +136,13 @@ namespace de.ahzf.Tutorials
         #endregion
 
 
-        #region TagExample()
+        #region Run()
 
-        public TagExample()
+        public void Run()
         {
 
             // Create a new simple property graph
-            var _graph = new PropertyGraph();
+            var _graph = GraphFactory.CreateGenericPropertyGraph(1);
 
 
             // Add tags
@@ -123,7 +181,7 @@ namespace de.ahzf.Tutorials
 
             // List tagged sites
             var _WebList = from   Website
-                           in     _graph.V(v => { return VertexType.Website == v.GetPropertyCasted<String, Object, VertexType>(_Type); })
+                           in     _graph.V(v => { return VertexType.Website == (VertexType) v.GetProperty<String, Object>(_Type); })
                            select new
                            {
                                Name  = Website.GetProperty(_Name),
