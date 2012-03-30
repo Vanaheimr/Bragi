@@ -105,6 +105,21 @@ namespace de.ahzf.Bragi
         /// </summary>
         public static readonly Keyword Benchmarks           = new Keyword("Benchmarks");
 
+        /// <summary>
+        /// Concurrency
+        /// </summary>
+        public static readonly Keyword Concurrency          = new Keyword("Concurrency");
+
+        /// <summary>
+        /// Parallel
+        /// </summary>
+        public static readonly Keyword Parallel             = new Keyword("Parallel");
+
+        /// <summary>
+        /// MultiCores
+        /// </summary>
+        public static readonly Keyword MultiCores           = new Keyword("MultiCores");
+
         #endregion
 
     }

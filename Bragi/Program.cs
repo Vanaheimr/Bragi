@@ -39,7 +39,8 @@ namespace de.ahzf.Bragi
         public static void Main(String[] Args)
         {
 
-            TagExample.Start();
+            //TagExample.Start();
+            ConcurrencyDemo.Start();
             //var _Tutorial2 = new SmallBenchmark();
 
         }

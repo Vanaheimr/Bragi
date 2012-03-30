@@ -76,6 +76,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ConcurrencyDemo\ConcurrencyDemo.cs" />
     <Compile Include="Keywords.cs" />
     <Compile Include="ITutorial.cs" />
     <Compile Include="Program.cs" />
