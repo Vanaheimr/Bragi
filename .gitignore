@@ -3,5 +3,8 @@
 *.suo
 *.csproj.user
 *.vsp
+*.app.ctl
+*.krn.ctl
+*.psess
 /Bragi/obj
 /Bragi/bin

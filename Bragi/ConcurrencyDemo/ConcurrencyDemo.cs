@@ -19,14 +19,16 @@
 
 using System;
 using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
 using System.Collections.Generic;
 
-using de.ahzf.Illias.Commons;
+using de.ahzf.Styx;
 using de.ahzf.Balder;
 using de.ahzf.Blueprints;
+using de.ahzf.Illias.Commons;
 using de.ahzf.Blueprints.PropertyGraphs;
-using System.Threading.Tasks;
-using System.Threading;
+using System.Diagnostics;
 
 #endregion
 
@@ -119,32 +121,47 @@ namespace de.ahzf.Bragi
         public void Run()
         {
 
+            var _NumberOfVertices        = 100000;
+            var _NumberOfConcurrentTasks = 8;
+
+
             // Create a new simple property graph
             var _graph = GraphFactory.CreateGenericPropertyGraph(1);
 
-
-            // Add tags
-            var _good  = _graph.AddVertex(v => v.SetProperty("type", "tag").
-                                                 SetProperty("name", "good"));
-
-
-            var _NumberOfConcurrentTasks = 2;
             var _Task = new Task[_NumberOfConcurrentTasks];
+            
+            var Stopwatch = new Stopwatch();
+            Stopwatch.Restart();
 
             for (var i = 0; i < _NumberOfConcurrentTasks; i++)
             {
 
-                _Task[i] = Task.Factory.StartNew(() => { for (var j = 0; j < 1000; j++) { _graph.AddVertex(v => v.SetProperty("Task", i).SetProperty("Number", j)); } })
+                _Task[i] = Task.Factory.StartNew((iCopy) => { for (var j = 0; j < _NumberOfVertices/_NumberOfConcurrentTasks; j++) { _graph.AddVertex(v => v.SetProperty("Task", iCopy).SetProperty("Number", j)); } }, i, new CancellationToken())
                                        .ContinueWith(task => Console.WriteLine("Task: {0} Completed.", task.GetHashCode()));
 
             }
 
             Task.WaitAll(_Task);
 
+            Stopwatch.Stop();
             Console.WriteLine("All tasks completed.");
+            Console.WriteLine("Added " + _NumberOfVertices + " in " + Stopwatch.Elapsed.TotalSeconds + "s using " + _NumberOfConcurrentTasks + " tasks (" + Math.Round(_NumberOfVertices / Stopwatch.Elapsed.TotalSeconds) + " vertices/s).");
 
-            Console.WriteLine("Number of vertices within the graph: " + _graph.NumberOfVertices());
-            Console.WriteLine("Number of vertices within the graph: " + _graph.NumberOfVertices(v => v.Contains("Task", 1)));
+            Console.WriteLine("Number of total vertices within the graph: " + _graph.NumberOfVertices());
+            
+            Console.WriteLine("TaskIds / NumberOfVertices: ");
+            _graph.Vertices().
+                   Prop("Task").
+                   DuplicateFilter().
+                   ForEach(TaskId => {
+                       if (TaskId != null)
+                       Console.WriteLine("Task '" + TaskId + "' added " +
+                                         _graph.NumberOfVertices(v => v.Contains("Task", TaskId)) +
+                                         " vertices."
+                                        );
+                                     }
+                          );
+            Console.WriteLine("");
 
 
             while (true)
