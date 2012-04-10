@@ -193,13 +193,13 @@ namespace de.ahzf.Bragi
             
             Stopwatch.Start();
 
-            Vertices[0] = _Graph.AddVertex(1-1);
+            Vertices[0] = _Graph.AddVertex(1-1, "default");
 
             for (var VertexId = 2UL - 1; VertexId < NumberOfUsers; VertexId++)
             {
 
-                ActualVertex = _Graph.AddVertex(VertexId, v => v.SetProperty("Name", "User" + VertexId)
-                                                                .SetProperty("Age",  PRNG.Next(0, 150)));
+                ActualVertex = _Graph.AddVertex(VertexId, "default", v => v.SetProperty("Name", "User" + VertexId)
+                                                                           .SetProperty("Age",  PRNG.Next(0, 150)));
                 Vertices[VertexId-1] = ActualVertex;
                 _Graph.AddEdge(ActualVertex, Vertices[PRNG.Next(0, (Int32) VertexId-1)]);
 

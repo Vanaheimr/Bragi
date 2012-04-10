@@ -1,0 +1,9 @@
+﻿<Window xmlns:aegir="clr-namespace:de.Vanaheimr.Aegir.Controls;assembly=AegirMapControl"  
+        x:Class="MappingApplication.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Mapping Demo" Height="550" Width="900">
+    <Grid>
+        <aegir:MapControl Name="MapCanvas1" Background="Bisque" ClipToBounds="True" Grid.Column="0" SnapsToDevicePixels="True" />
+    </Grid>
+</Window>
