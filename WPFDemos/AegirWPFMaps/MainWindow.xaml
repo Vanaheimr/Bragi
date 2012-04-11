@@ -1,19 +1,42 @@
-﻿<Window xmlns:aegir = "clr-namespace:de.Vanaheimr.Aegir.Controls;assembly=AegirMapControl"  
+﻿<Window xmlns:Aegir = "clr-namespace:de.Vanaheimr.Aegir.Controls;assembly=AegirMapControl"  
         x:Class     = "MappingApplication.MainWindow"
         xmlns       = "http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x     = "http://schemas.microsoft.com/winfx/2006/xaml"
         Title       = "Aegir WPF Maps"
         Height      = "550"
         Width       = "900">
-    
-    <Grid>
+
+    <TabControl Name="TabControl" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+        <TabItem Name="MapTab" Header="Aegir Map">
+            
+            <Grid>
+                
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30" />
+                    <RowDefinition Height="*"  />
+                    <RowDefinition Height="15" />
+                </Grid.RowDefinitions>
+                
+                <TextBox          Grid.Row="0" Name="MapSearchBox"         Margin=" 4,3, 0,0" Height="23" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="350" Text="search" />
+                
+                <Aegir:MapControl Name                = "MapControl1"
+                                  Margin              = " 4,0, 4,0"
+                                  Grid.Row            = "1"
+                                  Background          = "White"
+                                  ClipToBounds        = "True"
+                                  SnapsToDevicePixels = "True" />
+
+                <Canvas Grid.Row="1" Name="HeatMapCanvas" ClipToBounds="True" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
+                
+                <TextBlock        Grid.Row="2" Name="GeoPositionTextBlock" Margin=" 0,1,10,0" Height="23" HorizontalAlignment="Right" VerticalAlignment="Top" TextAlignment="Right" Text="Pos: X, Y" />
+                
+            </Grid>
+            
+        </TabItem>
         
-        <aegir:MapControl Name                = "MapControl1"
-                          Background          = "White"
-                          ClipToBounds        = "True"
-                          Grid.Column         = "0"
-                          SnapsToDevicePixels = "True" />
+        <TabItem Name="GraphTab" Header="Semantics">
+        </TabItem>
         
-    </Grid>
+    </TabControl>
     
 </Window>

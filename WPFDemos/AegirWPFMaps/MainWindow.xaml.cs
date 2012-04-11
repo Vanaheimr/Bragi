@@ -17,7 +17,10 @@
 
 #region Usings
 
+using System;
 using System.Windows;
+
+using de.ahzf.Vanaheimr.Aegir;
 
 #endregion
 
@@ -30,9 +33,18 @@ namespace MappingApplication
     public partial class MainWindow : Window
     {
 
+        /// <summary>
+        /// MainWindow
+        /// </summary>
         public MainWindow()
         {
+
             InitializeComponent();
+
+            // Subscribe to mouse position change events and
+            // show the current geo position below the map
+            MapControl1.GeoPositionChanged += (o, GeoPos) => GeoPositionTextBlock.Text = GeoPos.ToGeoString();
+
         }
 
     }
