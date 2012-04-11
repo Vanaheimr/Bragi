@@ -6,7 +6,8 @@
 *.app.ctl
 *.krn.ctl
 *.psess
-/Bragi/obj
-/Bragi/bin
-/WPFDemos/GeoMaps/obj
-/WPFDemos/GeoMaps/bin
+*/TestResult.xml
+*/obj
+*/bin
+*/*/obj
+*/*/bin

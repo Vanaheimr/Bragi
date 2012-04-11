@@ -1,0 +1,21 @@
+﻿<Window x:Class="de.ahzf.Bragi.WPFDemos.LokiWPFGraphs.MainWindow"
+        xmlns      = "http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x    = "http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:Loki = "clr-namespace:de.ahzf.Loki;assembly=GraphCanvas"
+        Title      = "Loki WPF Graph Visualization"
+        Height     = "550"
+        Width      = "900">
+
+    <Grid>
+
+        <Loki:GraphCanvas Name                = "GraphCanvas"
+                          ToolTip             = "Loki WPF Graph Visualization"
+                          Grid.Column         = "0"
+                          HorizontalAlignment = "Stretch"
+			   	          VerticalAlignment   = "Stretch"
+			   	          ClipToBounds        = "True"
+			   	          SnapsToDevicePixels = "True" />
+        
+    </Grid>
+
+</Window>
