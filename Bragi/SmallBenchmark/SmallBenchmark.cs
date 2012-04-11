@@ -142,6 +142,17 @@ namespace de.ahzf.Bragi
 
         #region Run()
 
+        /// <summary>
+        /// Run the tutorial.
+        /// </summary>
+        public static void Start()
+        {
+            new SmallBenchmark().Run();
+        }
+
+        /// <summary>
+        /// Run the tutorial.
+        /// </summary>
         public void Run()
         {
 

@@ -63,62 +63,72 @@ namespace de.ahzf.Bragi
         /// <summary>
         /// Quad
         /// </summary>
-        public static readonly Keyword Quad                 = new Keyword("Quad");
+        public static readonly Keyword Quad                     = new Keyword("Quad");
 
         /// <summary>
         /// QuadStore
         /// </summary>
-        public static readonly Keyword QuadStore            = new Keyword("QuadStore");
+        public static readonly Keyword QuadStore                = new Keyword("QuadStore");
 
         /// <summary>
         /// RDF
         /// </summary>
-        public static readonly Keyword RDF                  = new Keyword("RDF");
+        public static readonly Keyword RDF                      = new Keyword("RDF");
         
         /// <summary>
         /// Semantic Web
         /// </summary>
-        public static readonly Keyword SemanticWeb          = new Keyword("Semantic Web");
+        public static readonly Keyword SemanticWeb              = new Keyword("Semantic Web");
         
         /// <summary>
         /// Social Networks
         /// </summary>
-        public static readonly Keyword SocialNetworks       = new Keyword("Social Networks");
+        public static readonly Keyword SocialNetworks           = new Keyword("Social Networks");
 
         /// <summary>
         /// Tagging
         /// </summary>
-        public static readonly Keyword Tagging              = new Keyword("Tagging");
+        public static readonly Keyword Tagging                  = new Keyword("Tagging");
 
         /// <summary>
         /// Dataflows
         /// </summary>
-        public static readonly Keyword Dataflows            = new Keyword("Dataflows");
+        public static readonly Keyword Dataflows                = new Keyword("Dataflows");
 
         /// <summary>
         /// Dataflow Processing
         /// </summary>
-        public static readonly Keyword DataflowProcessing   = new Keyword("Dataflow Processing");
+        public static readonly Keyword DataflowProcessing       = new Keyword("Dataflow Processing");
 
         /// <summary>
         /// Benchmarks
         /// </summary>
-        public static readonly Keyword Benchmarks           = new Keyword("Benchmarks");
+        public static readonly Keyword Benchmarks               = new Keyword("Benchmarks");
 
         /// <summary>
         /// Concurrency
         /// </summary>
-        public static readonly Keyword Concurrency          = new Keyword("Concurrency");
+        public static readonly Keyword Concurrency              = new Keyword("Concurrency");
 
         /// <summary>
         /// Parallel
         /// </summary>
-        public static readonly Keyword Parallel             = new Keyword("Parallel");
+        public static readonly Keyword Parallel                 = new Keyword("Parallel");
 
         /// <summary>
         /// MultiCores
         /// </summary>
-        public static readonly Keyword MultiCores           = new Keyword("MultiCores");
+        public static readonly Keyword MultiCores               = new Keyword("MultiCores");
+
+        /// <summary>
+        /// Networking
+        /// </summary>
+        public static readonly Keyword Networking               = new Keyword("Networking");
+
+        /// <summary>
+        /// DistributedProcessing
+        /// </summary>
+        public static readonly Keyword DistributedProcessing    = new Keyword("Distributed Processing");
 
         #endregion
 
