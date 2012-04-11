@@ -28,6 +28,7 @@ using de.ahzf.Blueprints.HTTP.Client;
 using de.ahzf.Blueprints.HTTP.Server;
 using de.ahzf.Blueprints.PropertyGraphs;
 using de.ahzf.Blueprints.PropertyGraphs.InMemory.Mutable;
+using de.ahzf.Blueprints.JurassicGraph;
 
 using de.ahzf.Hermod.Datastructures;
 
