@@ -21,6 +21,7 @@ using System;
 using System.Windows;
 
 using de.ahzf.Vanaheimr.Aegir;
+using System.Windows.Media;
 
 #endregion
 
@@ -44,6 +45,10 @@ namespace MappingApplication
             // Subscribe to mouse position change events and
             // show the current geo position below the map
             MapControl1.GeoPositionChanged += (o, GeoPos) => GeoPositionTextBlock.Text = GeoPos.ToGeoString();
+
+            var feature1 = MapControl1.AddFeature("ahzf",   50.932253, 11.625075, 15, 5, Colors.Red);
+            var feature2 = MapControl1.AddFeature("c-base", 52.513191, 13.420057,  5, 5, Colors.Green);
+            var feature3 = MapControl1.AddFeature("malmö",  55.618691, 12.999573,  5, 5, Colors.LightCoral);
 
         }
 
