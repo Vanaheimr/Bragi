@@ -19,9 +19,9 @@
 
 using System;
 using System.Windows;
+using System.Windows.Media;
 
 using de.ahzf.Vanaheimr.Aegir;
-using System.Windows.Media;
 
 #endregion
 
@@ -46,9 +46,20 @@ namespace MappingApplication
             // show the current geo position below the map
             MapControl1.GeoPositionChanged += (o, GeoPos) => GeoPositionTextBlock.Text = GeoPos.ToGeoString();
 
-            var feature1 = MapControl1.AddFeature("ahzf",   50.932253, 11.625075, 15, 5, Colors.Red);
-            var feature2 = MapControl1.AddFeature("c-base", 52.513191, 13.420057,  5, 5, Colors.Green);
-            var feature3 = MapControl1.AddFeature("malmö",  55.618691, 12.999573,  5, 5, Colors.LightCoral);
+            var _HeatmapLayer = MapControl1.AddFeatureLayer<HeatmapLayer>("HeatmapLayer", 10);
+            var _FeatureLayer = MapControl1.AddFeatureLayer("FeatureLayer", 20);
+
+            var feature1a = MapControl1.AddFeature("FeatureLayer", "ahzf",     50.932253, 11.625075,   5,   5, Colors.Red);
+            var feature1b = MapControl1.AddFeature("HeatmapLayer", "ahzf",     50.932253, 11.625075, 150, 150, Colors.Red);
+
+            var feature2a = MapControl1.AddFeature("FeatureLayer", "Hannover", 52.373922,  9.743500,   5,   5, Colors.Red);
+            var feature2b = MapControl1.AddFeature("HeatmapLayer", "Hannover", 52.373922,  9.743500, 100, 100, Colors.Blue);
+
+            var feature3a = _FeatureLayer.AddFeature("c-base", 52.513191, 13.420057,   5,   5, Colors.Red);
+            var feature3b = _HeatmapLayer.AddFeature("c-base", 52.513191, 13.420057, 150, 150, Colors.Yellow);
+
+            var feature4a = _FeatureLayer.AddFeature("malmö", 55.618691, 12.999573,   5,   5, Colors.Red);
+            var feature4b = _HeatmapLayer.AddFeature("malmö", 55.618691, 12.999573,  50,  50, Colors.Brown);
 
         }
 
