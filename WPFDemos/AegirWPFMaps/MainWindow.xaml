@@ -30,11 +30,18 @@
                 
                 <TextBlock        Grid.Row="2" Name="GeoPositionTextBlock" Margin=" 0,1,10,0" Height="23" HorizontalAlignment="Right" VerticalAlignment="Top" TextAlignment="Right" Text="Pos: X, Y" />
                 
+                
             </Grid>
             
         </TabItem>
         
         <TabItem Name="GraphTab" Header="Semantics">
+            <Canvas xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+                <Path Data="M106,13c-21,9-31,4-40-2l-10,35c9,6,20,11,40,2l10-35z"              Fill="#7B4"/>
+                <Path Data="M39,83c-9-6-18-10-39-2l10-35c21-9,31-4,39,2l-10,35z "              Fill="#49c"/>
+                <Path Data="M51,42c-5-4-11-7-19-7c-6,0-12,1-20,5l10-35c20-8,30-4,39,2l-10,35z" Fill="#E63"/>
+                <Path Data="M55,52c9,6,18,10,39,2l-10,35c-21,8-30,3-39-3l10-34z"               Fill="#FD5"/>
+            </Canvas>
         </TabItem>
         
     </TabControl>

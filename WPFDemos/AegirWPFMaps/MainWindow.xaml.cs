@@ -47,7 +47,8 @@ namespace MappingApplication
             MapControl1.GeoPositionChanged += (o, GeoPos) => GeoPositionTextBlock.Text = GeoPos.ToGeoString();
 
             var _HeatmapLayer = MapControl1.AddFeatureLayer<HeatmapLayer>("HeatmapLayer", 10);
-            var _FeatureLayer = MapControl1.AddFeatureLayer("FeatureLayer", 20);
+            var _FeatureLayer = MapControl1.AddFeatureLayer("FeatureLayer", 20) as FeatureLayer;
+            var _ShapeLayer   = MapControl1.AddFeatureLayer<ShapeLayer>("ShapeLayer", 30);
 
             var feature1a = MapControl1.AddFeature("FeatureLayer", "ahzf",     50.932253, 11.625075,   5,   5, Colors.Red);
             var feature1b = MapControl1.AddFeature("HeatmapLayer", "ahzf",     50.932253, 11.625075, 150, 150, Colors.Red);
@@ -60,6 +61,16 @@ namespace MappingApplication
 
             var feature4a = _FeatureLayer.AddFeature("malmö", 55.618691, 12.999573,   5,   5, Colors.Red);
             var feature4b = _HeatmapLayer.AddFeature("malmö", 55.618691, 12.999573,  50,  50, Colors.Brown);
+
+            //var f5 = _FeatureLayer.AddPathFeature ("aa", 52.013191, 13.020057, 106, 93, Colors.Orange);
+        //    var f6 = _FeatureLayer.AddPathFeature(FeatureLayer.Thueringen, "aa", 55.058315, 5.866399, 106, 93, Color.FromArgb(0xFF, 0xE0, 0xC0, 0x60), 1, Color.FromArgb(0x77, 0xE0, 0x60, 0x30));
+
+
+            var feature5a = _ShapeLayer.AddShape(new Germany(Color.FromArgb(0xFF, 0xE0, 0xC0, 0x60), 1, Color.FromArgb(0x77, 0xE0, 0x60, 0x30)));
+
+            // Deutschland: 55.058315, 5.866399 => 47.270203, 15.041656
+            // Width: 7.788112 Height: 9.175257
+
 
         }
 
