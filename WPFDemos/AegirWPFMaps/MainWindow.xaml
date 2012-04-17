@@ -16,8 +16,8 @@
                     <RowDefinition Height="*"  />
                     <RowDefinition Height="15" />
                 </Grid.RowDefinitions>
-                
-                <TextBox          Grid.Row="0" Name="MapSearchBox"         Margin=" 4,3, 0,0" Height="23" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="350" Text="search" />
+
+                <TextBox          Grid.Row="0" Name="MapSearchBox"         Margin=" 4,3, 0,0" Height="23" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="350" Text="search: latitude longitude zoomlevel" TextChanged="MapSearchBox_TextChanged" />
                 
                 <Aegir:MapControl Name                = "MapControl1"
                                   Margin              = " 4,0, 4,0"
@@ -27,8 +27,9 @@
                                   SnapsToDevicePixels = "True" />
 
                 <Canvas Grid.Row="1" Name="HeatMapCanvas" ClipToBounds="True" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
-                
-                <TextBlock        Grid.Row="2" Name="GeoPositionTextBlock" Margin=" 0,1,10,0" Height="23" HorizontalAlignment="Right" VerticalAlignment="Top" TextAlignment="Right" Text="Pos: X, Y" />
+
+                <TextBlock Grid.Row="2" Name="DisplayOffsetTextBlock" Margin="30,0, 0,0" Height="23" HorizontalAlignment="Left"  Text="Offset:"    TextAlignment="Left" VerticalAlignment="Top" />
+                <TextBlock Grid.Row="2" Name="GeoPositionTextBlock"   Margin=" 0,1,10,0" Height="23" HorizontalAlignment="Right" VerticalAlignment="Top" TextAlignment="Right" Text="Pos: X, Y" />
                 
                 
             </Grid>

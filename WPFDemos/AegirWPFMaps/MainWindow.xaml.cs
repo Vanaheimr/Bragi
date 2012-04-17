@@ -44,33 +44,62 @@ namespace MappingApplication
 
             // Subscribe to mouse position change events and
             // show the current geo position below the map
-            MapControl1.GeoPositionChanged += (o, GeoPos) => GeoPositionTextBlock.Text = GeoPos.ToGeoString();
+            MapControl1.GeoPositionChanged   += (o, GeoPos) => GeoPositionTextBlock.Text = GeoPos.ToGeoString();
 
-            var _HeatmapLayer = MapControl1.AddFeatureLayer<HeatmapLayer>("HeatmapLayer", 10);
-            var _FeatureLayer = MapControl1.AddFeatureLayer("FeatureLayer", 20) as FeatureLayer;
-            var _ShapeLayer   = MapControl1.AddFeatureLayer<ShapeLayer>("ShapeLayer", 30);
+            MapControl1.DisplayOffsetChanged += (o, x, y)   => DisplayOffsetTextBlock.Text = "Offset: " + x + " / " + y;
 
-            var feature1a = MapControl1.AddFeature("FeatureLayer", "ahzf",     50.932253, 11.625075,   5,   5, Colors.Red);
-            var feature1b = MapControl1.AddFeature("HeatmapLayer", "ahzf",     50.932253, 11.625075, 150, 150, Colors.Red);
+            var _TilesLayer   = MapControl1.AddLayer<TilesLayer>  ("TilesLayer",    0);
+            var _ShapeLayer   = MapControl1.AddLayer<ShapeLayer>  ("ShapeLayer",   10);
+            var _HeatmapLayer = MapControl1.AddLayer<HeatmapLayer>("HeatmapLayer", 20);
+            var _FeatureLayer = MapControl1.AddLayer<FeatureLayer>("FeatureLayer", 30);
 
-            var feature2a = MapControl1.AddFeature("FeatureLayer", "Hannover", 52.373922,  9.743500,   5,   5, Colors.Red);
-            var feature2b = MapControl1.AddFeature("HeatmapLayer", "Hannover", 52.373922,  9.743500, 100, 100, Colors.Blue);
+            var feature1a = _FeatureLayer.AddFeature("ahzf",     50.932253, 11.625075,   5,   5, Colors.Red);
+            var feature1b = _HeatmapLayer.AddFeature("ahzf",     50.932253, 11.625075, 150, 150, Colors.Red);
 
-            var feature3a = _FeatureLayer.AddFeature("c-base", 52.513191, 13.420057,   5,   5, Colors.Red);
-            var feature3b = _HeatmapLayer.AddFeature("c-base", 52.513191, 13.420057, 150, 150, Colors.Yellow);
+            var feature2a = _FeatureLayer.AddFeature("Hannover", 52.373922,  9.743500,   5,   5, Colors.Red);
+            var feature2b = _HeatmapLayer.AddFeature("Hannover", 52.373922,  9.743500, 100, 100, Colors.Blue);
 
-            var feature4a = _FeatureLayer.AddFeature("malmö", 55.618691, 12.999573,   5,   5, Colors.Red);
-            var feature4b = _HeatmapLayer.AddFeature("malmö", 55.618691, 12.999573,  50,  50, Colors.Brown);
+            var feature3a = _FeatureLayer.AddFeature("c-base",   52.513191, 13.420057,   5,   5, Colors.Red);
+            var feature3b = _HeatmapLayer.AddFeature("c-base",   52.513191, 13.420057, 150, 150, Colors.Yellow);
 
-            //var f5 = _FeatureLayer.AddPathFeature ("aa", 52.013191, 13.020057, 106, 93, Colors.Orange);
-        //    var f6 = _FeatureLayer.AddPathFeature(FeatureLayer.Thueringen, "aa", 55.058315, 5.866399, 106, 93, Color.FromArgb(0xFF, 0xE0, 0xC0, 0x60), 1, Color.FromArgb(0x77, 0xE0, 0x60, 0x30));
-
+            var feature4a = _FeatureLayer.AddFeature("malmö",    55.618691, 12.999573,   5,   5, Colors.Red);
+            var feature4b = _HeatmapLayer.AddFeature("malmö",    55.618691, 12.999573,  50,  50, Colors.Brown);
 
             var feature5a = _ShapeLayer.AddShape(new Germany(Color.FromArgb(0xFF, 0xE0, 0xC0, 0x60), 1, Color.FromArgb(0x77, 0xE0, 0x60, 0x30)));
 
             // Deutschland: 55.058315, 5.866399 => 47.270203, 15.041656
             // Width: 7.788112 Height: 9.175257
 
+        }
+
+        private void MapSearchBox_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
+        {
+
+            var TextArray = MapSearchBox.Text.Split(new String[3] { " ", ",", "." }, StringSplitOptions.RemoveEmptyEntries);
+
+            Double latitude, longitude;
+            UInt32 zoomlevel;
+
+            if (TextArray.Length == 4)
+            {
+                if (Double.TryParse(TextArray[0] + "," + TextArray[1], out latitude))
+                    if (Double.TryParse(TextArray[2] + "," + TextArray[3], out longitude))
+                    {
+                        MapControl1.ZoomTo(latitude, longitude, 10);
+                        return;
+                    }
+            }
+
+            if (TextArray.Length == 5)
+                if (Double.TryParse(TextArray[0] + "," + TextArray[1], out latitude))
+                    if (Double.TryParse(TextArray[2] + "," + TextArray[3], out longitude))
+                        if (UInt32.TryParse(TextArray[4], out zoomlevel))
+                        {
+                            MapControl1.ZoomTo(latitude, longitude, zoomlevel);
+                            return;
+                        }
+
+            // Search for a town name...
 
         }
 
