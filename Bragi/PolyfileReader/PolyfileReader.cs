@@ -120,52 +120,200 @@ namespace de.ahzf.Bragi
         public void Run()
         {
 
-            var Filename = "rheinland-pfalz";
 
-            var _StopwordFile = new StreamReader("PolyfileReader/" + Filename + ".poly");
+            //var _PolyMetaPipe = new PolyReaderMetaPipe(SearchPattern: "PolyfileReader/*.poly",
+            //                                           SearchOption:  SearchOption.TopDirectoryOnly);
 
-            var Coordinates = (from   _GeoCoordinate
-                               in     _StopwordFile.GetLines().Skip(2)
-                               where  _GeoCoordinate != "END"
-                               let tmp = GeoCoordinate.ParseString(_GeoCoordinate)
-                               select new GeoCoordinate(tmp.Longitude, tmp.Latitude)).ToList();
+            //_PolyMetaPipe.SetSource(Directory.GetCurrentDirectory());
+
+            //_PolyMetaPipe.ForEach(s => Console.WriteLine(s));
+
+            foreach (var Filename in new DirectoryInfo(Directory.GetCurrentDirectory()).
+                                     EnumerateFiles("PolyfileReader/*.poly",
+                                                    SearchOption.TopDirectoryOnly))
+            {
+
+                Console.WriteLine("Processing... " + Filename);
+
+                var Shapes = new Dictionary<UInt32, Tuple<List<GeoCoordinate>, Dictionary<UInt32, Tuple<List<Tuple<UInt64, UInt64>>, StringBuilder>>>>();
+
+                UInt32 Integer = 1;
+                UInt32 ShapeNumber = 1;
+                GeoCoordinate GeoCoordinate = null;
+
+                var min_lat = Double.MaxValue;
+                var min_lng = Double.MaxValue;
+                var max_lat = Double.MinValue;
+                var max_lng = Double.MinValue;
+
+                foreach (var line in new StreamReader("PolyfileReader/" + Filename).GetLines().Skip(1))
+                {
+
+                    if (UInt32.TryParse(line, out Integer))
+                    {
+                        ShapeNumber = Integer;
+                        Shapes.Add(ShapeNumber, new Tuple<List<GeoCoordinate>, Dictionary<UInt32, Tuple<List<Tuple<UInt64, UInt64>>, StringBuilder>>>(
+                                                    new List<GeoCoordinate>(),
+                                                    new Dictionary<UInt32, Tuple<List<Tuple<UInt64, UInt64>>, StringBuilder>>()));
+                    }
+
+                    else if (line == "END")
+                        continue;
+
+                    else if (GeoCoordinate.TryParseString(line, out GeoCoordinate))
+                    {
+
+                        // Polyfiles store lng lat!!!
+                        Shapes[ShapeNumber].Item1.Add(new GeoCoordinate(GeoCoordinate.Longitude, GeoCoordinate.Latitude));
+
+                        if (min_lat > GeoCoordinate.Longitude)
+                            min_lat = GeoCoordinate.Longitude;
+
+                        if (min_lng > GeoCoordinate.Latitude)
+                            min_lng = GeoCoordinate.Latitude;
+
+                        if (max_lat < GeoCoordinate.Longitude)
+                            max_lat = GeoCoordinate.Longitude;
+
+                        if (max_lng < GeoCoordinate.Latitude)
+                            max_lng = GeoCoordinate.Latitude;
+
+                    }
+
+                }
 
 
+                var Output1 = new StreamWriter("PolyfileReader/" + Filename.Name.Replace(".poly", ".data"));
+                var Array = new StringBuilder();
 
-            var Output1 = new StreamWriter("PolyfileReader/" + Filename + ".data");
-            var Array = new StringBuilder();
-            Coordinates.ForEach(c => Array.AppendLine("\t\t\t{ " + c.Latitude.ToString("00.000000").Replace(",", ".") + ", " + c.Longitude.ToString("00.000000").Replace(",", ".") + " },"));
-            Output1.WriteLine(Array.ToString());
-            Output1.Flush();
-            Output1.Close();
+                var Output2 = new StreamWriter("PolyfileReader/" + Filename.Name.Replace(".poly", ".geo"));
+                var Language = new StringBuilder();
 
-            var min_lat = (from c in Coordinates select c.Latitude ).Min();
-            var min_lng = (from c in Coordinates select c.Longitude).Min();
-            var max_lat = (from c in Coordinates select c.Latitude ).Max();
-            var max_lng = (from c in Coordinates select c.Longitude).Max();
+                Shapes.ForEach((shape) =>
+                {
+                    Array.AppendLine(shape.Key.ToString());
+                    shape.Value.Item1.ForEach(c =>
+                    {
+                        Array.AppendLine("\t\t\t{ " + c.Latitude.ToString("00.000000").Replace(",", ".") + ", " + c.Longitude.ToString("00.000000").Replace(",", ".") + " },");
+                    });
+                });
 
-            var diff_lat = Math.Abs(min_lat - max_lat);
-            var diff_lng = Math.Abs(min_lng - max_lng);
+                Output1.WriteLine(Array.ToString());
+                Output1.Flush();
+                Output1.Close();
 
-            var Points = (from coor
-                          in Coordinates.Skip(1)
-                          select GeoCalculations.WorldCoordinates_2_Screen(coor, 7)).ToList();
 
-            var min_x = (from p in Points select p.Item1).Min();
-            var min_y = (from p in Points select p.Item2).Min();
+                var diff_lat = Math.Abs(min_lat - max_lat);
+                var diff_lng = Math.Abs(min_lng - max_lng);
 
-            var Language   = new StringBuilder();
-            var Output2    = new StreamWriter("PolyfileReader/" + Filename + ".geo");
-            Language.AppendLine("From: " +  max_lat.ToString("00.000000").Replace(",", ".") + ", " +  min_lng.ToString("00.000000").Replace(",", "."));
-            Language.AppendLine("To:   " +  min_lat.ToString("00.000000").Replace(",", ".") + ", " +  max_lng.ToString("00.000000").Replace(",", "."));
-            Language.AppendLine("Diff: " + diff_lat.ToString("00.000000").Replace(",", ".") + ", " + diff_lng.ToString("00.000000").Replace(",", "."));
-            var FirstPoint = new Tuple<uint, uint>((Points.First().Item1 - min_x), (Points.First().Item2 - min_y));
-            Language.Append("M " + FirstPoint.Item1 + " " + FirstPoint.Item2 + " L ");
-            Points.Skip(1).ForEach(p => { Language.Append((p.Item1 - min_x) + " " + (p.Item2 - min_y) + " "); });
-            Language.AppendLine("z");
-            Output2.WriteLine(Language.ToString());
-            Output2.Flush();
-            Output2.Close();
+                var min_resolution = 2U;
+                var max_resolution = 23U;
+
+                Output2.WriteLine("From:       " + max_lat.ToString("00.000000").Replace(",", ".") + ", " + min_lng.ToString("00.000000").Replace(",", "."));
+                Output2.WriteLine("To:         " + min_lat.ToString("00.000000").Replace(",", ".") + ", " + max_lng.ToString("00.000000").Replace(",", "."));
+                Output2.WriteLine("Diff:       " + diff_lat.ToString("00.000000").Replace(",", ".") + ", " + diff_lng.ToString("00.000000").Replace(",", "."));
+                Output2.WriteLine("Resolution: " + min_resolution + " -> " + max_resolution);
+
+                Shapes.ForEach((shape) =>
+                {
+
+                    for (var resolution = min_resolution; resolution <= max_resolution; resolution++)
+                    {
+
+                        shape.Value.Item2.Add(resolution, new Tuple<List<Tuple<UInt64, UInt64>>, StringBuilder>(new List<Tuple<UInt64, UInt64>>(), new StringBuilder()));
+
+                        shape.Value.Item1.ForEach(coor =>
+                        {
+
+                            var XY = GeoCalculations.WorldCoordinates_2_Screen(coor, resolution);
+
+                            //if (XY.Item1 < min_x) min_x = XY.Item1;
+                            //if (XY.Item2 < min_y) min_y = XY.Item2;
+
+                            shape.Value.Item2[resolution].Item1.Add(XY);
+
+                        });
+
+                        //var Char = "M ";
+
+                        //shape.Value.Item2[resolution].Item1.ForEach(XY =>
+                        //{
+                        //    shape.Value.Item2[resolution].Item2.Append(Char + (XY.Item1 - min_x) + " " + (XY.Item2 - min_y) + " ");
+                        //    if (Char == "L ") Char = "";
+                        //    if (Char == "M ") Char = "L ";
+                        //});
+
+                        //shape.Value.Item2[resolution].Item2.Append(" Z ");
+
+                    }
+
+                });
+
+                var min_x = 0UL;
+                var min_y = 0UL;
+
+                for (var resolution = min_resolution; resolution <= max_resolution; resolution++)
+                {
+
+                    min_x = UInt64.MaxValue;
+                    min_y = UInt64.MaxValue;
+
+                    Shapes.ForEach((shape) =>
+                    {
+                        shape.Value.Item2[resolution].Item1.ForEach(XY =>
+                        {
+                            if (XY.Item1 < min_x) min_x = XY.Item1;
+                            if (XY.Item2 < min_y) min_y = XY.Item2;
+                        });
+                    });
+
+                    Shapes.ForEach((shape) =>
+                    {
+
+                        var Char = "M ";
+
+                        shape.Value.Item2[resolution].Item1.ForEach(XY =>
+                        {
+                            shape.Value.Item2[resolution].Item2.Append(Char + (XY.Item1 - min_x) + " " + (XY.Item2 - min_y) + " ");
+                            if (Char == "L ") Char = "";
+                            if (Char == "M ") Char = "L ";
+                        });
+
+                        shape.Value.Item2[resolution].Item2.Append("Z ");
+
+                    });
+
+                }
+
+
+                var ShapeLanguage = String.Empty;
+
+                for (var resolution = min_resolution; resolution <= max_resolution; resolution++)
+                {
+                    ShapeLanguage = "\"";
+                    Shapes.ForEach((shape) => ShapeLanguage += shape.Value.Item2[resolution].Item2.ToString().Trim() + " ");
+                    Output2.WriteLine(ShapeLanguage.TrimEnd() + "\",");
+                }
+
+
+                //var Points = (from coor
+                //              in Coordinates.Skip(1)
+                //              select GeoCalculations.WorldCoordinates_2_Screen(coor, 7)).ToList();
+
+                //var min_x = (from p in Points select p.Item1).Min();
+                //var min_y = (from p in Points select p.Item2).Min();
+
+
+                //var FirstPoint = new Tuple<uint, uint>((Points.First().Item1 - min_x), (Points.First().Item2 - min_y));
+                //Language.Append("M " + FirstPoint.Item1 + " " + FirstPoint.Item2 + " L ");
+                //Points.Skip(1).ForEach(p => { Language.Append((p.Item1 - min_x) + " " + (p.Item2 - min_y) + " "); });
+                //Language.AppendLine("z");
+
+                //Output2.WriteLine(Language.ToString());
+                Output2.Flush();
+                Output2.Close();
+
+            }
 
         }
 

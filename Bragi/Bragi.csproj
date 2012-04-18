@@ -107,6 +107,9 @@
     <None Include="PolyfileReader\bremen.poly">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="PolyfileReader\germany.poly">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="PolyfileReader\hamburg.poly">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

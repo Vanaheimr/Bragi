@@ -65,16 +65,22 @@ namespace MappingApplication
             var feature4a = _FeatureLayer.AddFeature("malmö",    55.618691, 12.999573,   5,   5, Colors.Red);
             var feature4b = _HeatmapLayer.AddFeature("malmö",    55.618691, 12.999573,  50,  50, Colors.Brown);
 
-            var feature5a = _ShapeLayer.AddShape(new Thueringen         (Color.FromArgb(0xFF, 0xE0, 0xC0, 0x60), 1, Color.FromArgb(0x77, 0xE0, 0x60, 0x30)));
-            var feature5b = _ShapeLayer.AddShape(new Bayern             (Color.FromArgb(0xFF, 0xE0, 0xC0, 0x60), 1, Color.FromArgb(0x77, 0xE0, 0x60, 0x30)));
-            var feature5c = _ShapeLayer.AddShape(new BadenWuerttemberg  (Color.FromArgb(0xFF, 0xE0, 0xC0, 0x60), 1, Color.FromArgb(0x77, 0xE0, 0x60, 0x30)));
-            var feature5d = _ShapeLayer.AddShape(new Hessen             (Color.FromArgb(0xFF, 0xE0, 0xC0, 0x60), 1, Color.FromArgb(0x77, 0xE0, 0x60, 0x30)));
-            var feature5e = _ShapeLayer.AddShape(new Saarland           (Color.FromArgb(0xFF, 0xE0, 0xC0, 0x60), 1, Color.FromArgb(0x77, 0xE0, 0x60, 0x30)));
-            var feature5f = _ShapeLayer.AddShape(new Sachsen            (Color.FromArgb(0xFF, 0xE0, 0xC0, 0x60), 1, Color.FromArgb(0x77, 0xE0, 0x60, 0x30)));
-            var feature5g = _ShapeLayer.AddShape(new SachsenAnhalt      (Color.FromArgb(0xFF, 0xE0, 0xC0, 0x60), 1, Color.FromArgb(0x77, 0xE0, 0x60, 0x30)));
-            var feature5h = _ShapeLayer.AddShape(new Berlin             (Color.FromArgb(0xFF, 0xE0, 0xC0, 0x60), 1, Color.FromArgb(0x77, 0xE0, 0x60, 0x30)));
-            var feature5i = _ShapeLayer.AddShape(new NordrheinWestfalen (Color.FromArgb(0xFF, 0xE0, 0xC0, 0x60), 1, Color.FromArgb(0x77, 0xE0, 0x60, 0x30)));
-            var feature5j = _ShapeLayer.AddShape(new RheinlandPfalz     (Color.FromArgb(0xFF, 0xE0, 0xC0, 0x60), 1, Color.FromArgb(0x77, 0xE0, 0x60, 0x30)));
+            var feature5a = _ShapeLayer.AddShape(new Thueringen            (Color.FromArgb(0xFF, 0xE0, 0xC0, 0x60), 1, Color.FromArgb(0x77, 0xE0, 0x60, 0x30)));
+            var feature5b = _ShapeLayer.AddShape(new Bayern                (Color.FromArgb(0xFF, 0xE0, 0xC0, 0x60), 1, Color.FromArgb(0x77, 0xE0, 0x60, 0x30)));
+            var feature5c = _ShapeLayer.AddShape(new BadenWuerttemberg     (Color.FromArgb(0xFF, 0xE0, 0xC0, 0x60), 1, Color.FromArgb(0x77, 0xE0, 0x60, 0x30)));
+            var feature5d = _ShapeLayer.AddShape(new Hessen                (Color.FromArgb(0xFF, 0xE0, 0xC0, 0x60), 1, Color.FromArgb(0x77, 0xE0, 0x60, 0x30)));
+            var feature5e = _ShapeLayer.AddShape(new Saarland              (Color.FromArgb(0xFF, 0xE0, 0xC0, 0x60), 1, Color.FromArgb(0x77, 0xE0, 0x60, 0x30)));
+            var feature5f = _ShapeLayer.AddShape(new Sachsen               (Color.FromArgb(0xFF, 0xE0, 0xC0, 0x60), 1, Color.FromArgb(0x77, 0xE0, 0x60, 0x30)));
+            var feature5g = _ShapeLayer.AddShape(new SachsenAnhalt         (Color.FromArgb(0xFF, 0xE0, 0xC0, 0x60), 1, Color.FromArgb(0x77, 0xE0, 0x60, 0x30)));
+            //var feature5h = _ShapeLayer.AddShape(new Berlin             (Color.FromArgb(0xFF, 0xE0, 0xC0, 0x60), 1, Color.FromArgb(0x77, 0xE0, 0x60, 0x30)));
+            var feature5i = _ShapeLayer.AddShape(new NordrheinWestfalen    (Color.FromArgb(0xFF, 0xE0, 0xC0, 0x60), 1, Color.FromArgb(0x77, 0xE0, 0x60, 0x30)));
+            var feature5j = _ShapeLayer.AddShape(new RheinlandPfalz        (Color.FromArgb(0xFF, 0xE0, 0xC0, 0x60), 1, Color.FromArgb(0x77, 0xE0, 0x60, 0x30)));
+            var feature5k = _ShapeLayer.AddShape(new Hamburg               (Color.FromArgb(0xFF, 0xE0, 0xC0, 0x60), 1, Color.FromArgb(0x77, 0xE0, 0x60, 0x30)));
+            var feature5l = _ShapeLayer.AddShape(new Bremen                (Color.FromArgb(0xFF, 0xE0, 0xC0, 0x60), 1, Color.FromArgb(0x77, 0xE0, 0x60, 0x30)));
+            var feature5m = _ShapeLayer.AddShape(new Brandenburg           (Color.FromArgb(0xFF, 0xE0, 0xC0, 0x60), 1, Color.FromArgb(0x77, 0xE0, 0x60, 0x30)));
+            var feature5n = _ShapeLayer.AddShape(new SchleswigHolstein     (Color.FromArgb(0xFF, 0xE0, 0xC0, 0x60), 1, Color.FromArgb(0x77, 0xE0, 0x60, 0x30)));
+            var feature5o = _ShapeLayer.AddShape(new MecklenburgVorpommern (Color.FromArgb(0xFF, 0xE0, 0xC0, 0x60), 1, Color.FromArgb(0x77, 0xE0, 0x60, 0x30)));
+            var feature5p = _ShapeLayer.AddShape(new Niedersachsen         (Color.FromArgb(0xFF, 0xE0, 0xC0, 0x60), 1, Color.FromArgb(0x77, 0xE0, 0x60, 0x30)));
 
             // Deutschland: 55.058315, 5.866399 => 47.270203, 15.041656
             // Width: 7.788112 Height: 9.175257
