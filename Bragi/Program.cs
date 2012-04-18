@@ -111,6 +111,8 @@ namespace de.ahzf.Bragi
         /// <param name="Args">Arguments...</param>
         public static void Main(String[] Args)
         {
+            
+            PolyfileReader.Start();
 
             StartMonoCSharpREPLShell();
 
