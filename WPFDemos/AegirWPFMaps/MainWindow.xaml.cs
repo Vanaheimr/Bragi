@@ -19,6 +19,7 @@
 
 using System;
 using System.Windows;
+using System.Windows.Input;
 using System.Windows.Media;
 
 using de.ahzf.Vanaheimr.Aegir;
@@ -42,16 +43,27 @@ namespace MappingApplication
 
             InitializeComponent();
 
+            #region Subscribe to map events
+
             // Subscribe to mouse position change events and
             // show the current geo position below the map
             MapControl1.GeoPositionChanged   += (o, GeoPos) => GeoPositionTextBlock.Text = GeoPos.ToGeoString();
 
             MapControl1.DisplayOffsetChanged += (o, x, y)   => DisplayOffsetTextBlock.Text = "Offset: " + x + " / " + y;
 
+            #endregion
+
+            #region Add map layers
+
             var _TilesLayer   = MapControl1.AddLayer<TilesLayer>  ("TilesLayer",    0);
-            var _ShapeLayer   = MapControl1.AddLayer<ShapeLayer>  ("ShapeLayer",   10);
+            var _ShapeLayerWG = MapControl1.AddLayer<ShapeLayer>  ("ShapeLayerWG", 10);
+            var _ShapeLayerEG = MapControl1.AddLayer<ShapeLayer>  ("ShapeLayerEG", 11);
             var _HeatmapLayer = MapControl1.AddLayer<HeatmapLayer>("HeatmapLayer", 20);
             var _FeatureLayer = MapControl1.AddLayer<FeatureLayer>("FeatureLayer", 30);
+
+            #endregion
+
+            #region Add some features
 
             var feature1a = _FeatureLayer.AddFeature("ahzf",     50.932253, 11.625075,   5,   5, Colors.Red);
             var feature1b = _HeatmapLayer.AddFeature("ahzf",     50.932253, 11.625075, 150, 150, Colors.Red);
@@ -65,58 +77,86 @@ namespace MappingApplication
             var feature4a = _FeatureLayer.AddFeature("malmö",    55.618691, 12.999573,   5,   5, Colors.Red);
             var feature4b = _HeatmapLayer.AddFeature("malmö",    55.618691, 12.999573,  50,  50, Colors.Brown);
 
-            var feature5a = _ShapeLayer.AddShape(new Thueringen            (Color.FromArgb(0xFF, 0xE0, 0xC0, 0x60), 1, Color.FromArgb(0x77, 0xE0, 0x60, 0x30)));
-            var feature5b = _ShapeLayer.AddShape(new Bayern                (Color.FromArgb(0xFF, 0xE0, 0xC0, 0x60), 1, Color.FromArgb(0x77, 0xE0, 0x60, 0x30)));
-            var feature5c = _ShapeLayer.AddShape(new BadenWuerttemberg     (Color.FromArgb(0xFF, 0xE0, 0xC0, 0x60), 1, Color.FromArgb(0x77, 0xE0, 0x60, 0x30)));
-            var feature5d = _ShapeLayer.AddShape(new Hessen                (Color.FromArgb(0xFF, 0xE0, 0xC0, 0x60), 1, Color.FromArgb(0x77, 0xE0, 0x60, 0x30)));
-            var feature5e = _ShapeLayer.AddShape(new Saarland              (Color.FromArgb(0xFF, 0xE0, 0xC0, 0x60), 1, Color.FromArgb(0x77, 0xE0, 0x60, 0x30)));
-            var feature5f = _ShapeLayer.AddShape(new Sachsen               (Color.FromArgb(0xFF, 0xE0, 0xC0, 0x60), 1, Color.FromArgb(0x77, 0xE0, 0x60, 0x30)));
-            var feature5g = _ShapeLayer.AddShape(new SachsenAnhalt         (Color.FromArgb(0xFF, 0xE0, 0xC0, 0x60), 1, Color.FromArgb(0x77, 0xE0, 0x60, 0x30)));
-            var feature5h = _ShapeLayer.AddShape(new Berlin                (Color.FromArgb(0xFF, 0xE0, 0xC0, 0x60), 1, Color.FromArgb(0x77, 0xE0, 0x60, 0x30)));
-            var feature5i = _ShapeLayer.AddShape(new NordrheinWestfalen    (Color.FromArgb(0xFF, 0xE0, 0xC0, 0x60), 1, Color.FromArgb(0x77, 0xE0, 0x60, 0x30)));
-            var feature5j = _ShapeLayer.AddShape(new RheinlandPfalz        (Color.FromArgb(0xFF, 0xE0, 0xC0, 0x60), 1, Color.FromArgb(0x77, 0xE0, 0x60, 0x30)));
-            var feature5k = _ShapeLayer.AddShape(new Hamburg               (Color.FromArgb(0xFF, 0xE0, 0xC0, 0x60), 1, Color.FromArgb(0x77, 0xE0, 0x60, 0x30)));
-            var feature5l = _ShapeLayer.AddShape(new Bremen                (Color.FromArgb(0xFF, 0xE0, 0xC0, 0x60), 1, Color.FromArgb(0x77, 0xE0, 0x60, 0x30)));
-            var feature5m = _ShapeLayer.AddShape(new Brandenburg           (Color.FromArgb(0xFF, 0xE0, 0xC0, 0x60), 1, Color.FromArgb(0x77, 0xE0, 0x60, 0x30)));
-            var feature5n = _ShapeLayer.AddShape(new SchleswigHolstein     (Color.FromArgb(0xFF, 0xE0, 0xC0, 0x60), 1, Color.FromArgb(0x77, 0xE0, 0x60, 0x30)));
-            var feature5o = _ShapeLayer.AddShape(new MecklenburgVorpommern (Color.FromArgb(0xFF, 0xE0, 0xC0, 0x60), 1, Color.FromArgb(0x77, 0xE0, 0x60, 0x30)));
-            var feature5p = _ShapeLayer.AddShape(new Niedersachsen         (Color.FromArgb(0xFF, 0xE0, 0xC0, 0x60), 1, Color.FromArgb(0x77, 0xE0, 0x60, 0x30)));
+            #endregion
 
-            // Deutschland: 55.058315, 5.866399 => 47.270203, 15.041656
-            // Width: 7.788112 Height: 9.175257
+            #region Add some shapes
+
+            var feature5a = _ShapeLayerEG.AddShape(new Thueringen            (Color.FromArgb(0xFF, 0xE0, 0xC0, 0x60), 1, Color.FromArgb(0x77, 0xE0, 0x60, 0x30)));
+            var feature5b = _ShapeLayerWG.AddShape(new Bayern                (Color.FromArgb(0xFF, 0xE0, 0xC0, 0x60), 1, Color.FromArgb(0x77, 0xE0, 0x60, 0x30)));
+            var feature5c = _ShapeLayerWG.AddShape(new BadenWuerttemberg     (Color.FromArgb(0xFF, 0xE0, 0xC0, 0x60), 1, Color.FromArgb(0x77, 0xE0, 0x60, 0x30)));
+            var feature5d = _ShapeLayerWG.AddShape(new Hessen                (Color.FromArgb(0xFF, 0xE0, 0xC0, 0x60), 1, Color.FromArgb(0x77, 0xE0, 0x60, 0x30)));
+            var feature5e = _ShapeLayerWG.AddShape(new Saarland              (Color.FromArgb(0xFF, 0xE0, 0xC0, 0x60), 1, Color.FromArgb(0x77, 0xE0, 0x60, 0x30)));
+            var feature5f = _ShapeLayerEG.AddShape(new Sachsen               (Color.FromArgb(0xFF, 0xE0, 0xC0, 0x60), 1, Color.FromArgb(0x77, 0xE0, 0x60, 0x30)));
+            var feature5g = _ShapeLayerEG.AddShape(new SachsenAnhalt         (Color.FromArgb(0xFF, 0xE0, 0xC0, 0x60), 1, Color.FromArgb(0x77, 0xE0, 0x60, 0x30)));
+            var feature5h = _ShapeLayerEG.AddShape(new Berlin                (Color.FromArgb(0xFF, 0xE0, 0xC0, 0x60), 1, Color.FromArgb(0x77, 0xE0, 0x60, 0x30)));
+            var feature5i = _ShapeLayerWG.AddShape(new NordrheinWestfalen    (Color.FromArgb(0xFF, 0xE0, 0xC0, 0x60), 1, Color.FromArgb(0x77, 0xE0, 0x60, 0x30)));
+            var feature5j = _ShapeLayerWG.AddShape(new RheinlandPfalz        (Color.FromArgb(0xFF, 0xE0, 0xC0, 0x60), 1, Color.FromArgb(0x77, 0xE0, 0x60, 0x30)));
+            var feature5k = _ShapeLayerWG.AddShape(new Hamburg               (Color.FromArgb(0xFF, 0xE0, 0xC0, 0x60), 1, Color.FromArgb(0x77, 0xE0, 0x60, 0x30)));
+            var feature5l = _ShapeLayerWG.AddShape(new Bremen                (Color.FromArgb(0xFF, 0xE0, 0xC0, 0x60), 1, Color.FromArgb(0x77, 0xE0, 0x60, 0x30)));
+            var feature5m = _ShapeLayerEG.AddShape(new Brandenburg           (Color.FromArgb(0xFF, 0xE0, 0xC0, 0x60), 1, Color.FromArgb(0x77, 0xE0, 0x60, 0x30)));
+            var feature5n = _ShapeLayerWG.AddShape(new SchleswigHolstein     (Color.FromArgb(0xFF, 0xE0, 0xC0, 0x60), 1, Color.FromArgb(0x77, 0xE0, 0x60, 0x30)));
+            var feature5o = _ShapeLayerEG.AddShape(new MecklenburgVorpommern (Color.FromArgb(0xFF, 0xE0, 0xC0, 0x60), 1, Color.FromArgb(0x77, 0xE0, 0x60, 0x30)));
+            var feature5p = _ShapeLayerWG.AddShape(new Niedersachsen         (Color.FromArgb(0xFF, 0xE0, 0xC0, 0x60), 1, Color.FromArgb(0x77, 0xE0, 0x60, 0x30)));
+
+            #endregion
 
         }
 
-        private void MapSearchBox_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
+
+        #region (private) MapSearchBox_ProcessInput(Sender, KeyEventArgs)
+
+        /// <summary>
+        /// Process any text entered into the MapSearchBox
+        /// </summary>
+        /// <param name="Sender">The sender of the event.</param>
+        /// <param name="KeyEventArgs">The event parameters.</param>
+        private void MapSearchBox_ProcessInput(Object Sender, KeyEventArgs KeyEventArgs)
         {
 
-            var TextArray = MapSearchBox.Text.Split(new String[3] { " ", ",", "." }, StringSplitOptions.RemoveEmptyEntries);
-
-            Double latitude, longitude;
-            UInt32 zoomlevel;
-
-            if (TextArray.Length == 4)
+            if (KeyEventArgs.Key == Key.Enter)
             {
-                if (Double.TryParse(TextArray[0] + "," + TextArray[1], out latitude))
-                    if (Double.TryParse(TextArray[2] + "," + TextArray[3], out longitude))
-                    {
-                        MapControl1.ZoomTo(latitude, longitude, 10);
-                        return;
-                    }
-            }
 
-            if (TextArray.Length == 5)
-                if (Double.TryParse(TextArray[0] + "," + TextArray[1], out latitude))
-                    if (Double.TryParse(TextArray[2] + "," + TextArray[3], out longitude))
-                        if (UInt32.TryParse(TextArray[4], out zoomlevel))
+                #region Process a "latitude, longitude" input
+
+                var TextArray = MapSearchBox.Text.Split(new String[3] { " ", ",", "." }, StringSplitOptions.RemoveEmptyEntries);
+
+                Double latitude, longitude;
+                UInt32 zoomlevel;
+
+                if (TextArray.Length == 4)
+                {
+                    if (Double.TryParse(TextArray[0] + "," + TextArray[1], out latitude))
+                        if (Double.TryParse(TextArray[2] + "," + TextArray[3], out longitude))
                         {
-                            MapControl1.ZoomTo(latitude, longitude, zoomlevel);
+                            MapControl1.MoveTo(latitude, longitude);
                             return;
                         }
+                }
 
-            // Search for a town name...
+                #endregion
+
+                #region Process a "latitude, longitude, zoomlevel" input
+
+                if (TextArray.Length == 5)
+                    if (Double.TryParse(TextArray[0] + "," + TextArray[1], out latitude))
+                        if (Double.TryParse(TextArray[2] + "," + TextArray[3], out longitude))
+                            if (UInt32.TryParse(TextArray[4], out zoomlevel))
+                            {
+                                MapControl1.ZoomTo(latitude, longitude, zoomlevel);
+                                return;
+                            }
+
+                #endregion
+
+                // Search for a town name...
+
+                KeyEventArgs.Handled = true;
+
+            }
 
         }
+
+        #endregion
 
     }
 
