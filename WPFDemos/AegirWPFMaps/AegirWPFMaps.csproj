@@ -141,6 +141,10 @@
       <Project>{4D8FFCCD-738D-41AA-A527-8CFDFE0A681D}</Project>
       <Name>Aegir</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\..\Aegir\InfoBox\InfoBox.csproj">
+      <Project>{0503A69E-CA6F-49EC-8FA4-F6D95DC52C68}</Project>
+      <Name>InfoBox</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\..\Hermod\Hermod\Hermod.csproj">
       <Project>{477EFD16-3627-4473-957D-44CA9A9DFB79}</Project>
       <Name>Hermod</Name>
