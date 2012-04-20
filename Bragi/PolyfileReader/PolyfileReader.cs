@@ -120,6 +120,21 @@ namespace de.ahzf.Bragi
         public void Run()
         {
 
+            foreach (var Filename in new DirectoryInfo(Directory.GetCurrentDirectory()).
+                                     EnumerateFiles("PolyfileReader/*.poly", SearchOption.TopDirectoryOnly))
+            {
+
+                var a = Polyfiles.Polyfile2ShapeInfo(new StreamReader("PolyfileReader/" + Filename).GetLines().Skip(1), 2, 23);
+
+                var lat_start = a.Latitude_Start;
+                var lng_start = a.Longitude_Start;
+                var lat_end   = a.Longitude_Start;
+                var lng_end   = a.Longitude_End;
+                var zoom5     = a.PathAtZoomLevel[5];
+            
+            }
+
+
 
             //var _PolyMetaPipe = new PolyReaderMetaPipe(SearchPattern: "PolyfileReader/*.poly",
             //                                           SearchOption:  SearchOption.TopDirectoryOnly);

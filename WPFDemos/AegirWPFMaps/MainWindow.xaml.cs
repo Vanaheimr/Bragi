@@ -68,11 +68,12 @@ namespace de.ahzf.Bragi.WPFDemos.AegirWPFMaps
 
             #region Add map layers
 
-            var _TilesLayer   = MapControl.AddLayer<TilesLayer>  ("TilesLayer",    0);
-            var _ShapeLayerWG = MapControl.AddLayer<ShapeLayer>  ("ShapeLayerWG", 10);
-            var _ShapeLayerEG = MapControl.AddLayer<ShapeLayer>  ("ShapeLayerEG", 11);
-            var _HeatmapLayer = MapControl.AddLayer<HeatmapLayer>("HeatmapLayer", 20);
-            var _FeatureLayer = MapControl.AddLayer<FeatureLayer>("FeatureLayer", 30);
+            var _TilesLayer         = MapControl.AddLayer<TilesLayer>       ("TilesLayer",        0);
+            var _ShapeLayerWG       = MapControl.AddLayer<ShapeLayer>       ("ShapeLayerWG",     10);
+            var _ShapeLayerEG       = MapControl.AddLayer<ShapeLayer>       ("ShapeLayerEG",     11);
+            var _HeatmapLayer       = MapControl.AddLayer<HeatmapLayer>     ("HeatmapLayer",     20);
+            var _EditFeatureLayer   = MapControl.AddLayer<EditFeatureLayer> ("EditFeatureLayer", 30, Visibility.Hidden);
+            var _FeatureLayer       = MapControl.AddLayer<FeatureLayer>     ("FeatureLayer",     40);
 
             #endregion
 
@@ -91,6 +92,8 @@ namespace de.ahzf.Bragi.WPFDemos.AegirWPFMaps
             var feature4b = _HeatmapLayer.AddFeature("malmö",    55.618691, 12.999573,  50,  50, Colors.Brown);
 
             #endregion
+
+            var efeature1a = _EditFeatureLayer.AddFeature("dfh", 40.032253, 7.025075, 5, 5, Colors.Green);
 
             #region Add some shapes
 
