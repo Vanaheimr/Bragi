@@ -23,10 +23,11 @@ using System.Windows.Input;
 using System.Windows.Media;
 
 using de.ahzf.Vanaheimr.Aegir;
+using de.ahzf.Vanaheimr.Aegir.Controls;
 
 #endregion
 
-namespace MappingApplication
+namespace de.ahzf.Bragi.WPFDemos.AegirWPFMaps
 {
 
     /// <summary>
@@ -34,6 +35,18 @@ namespace MappingApplication
     /// </summary>
     public partial class MainWindow : Window
     {
+
+        #region Data
+
+        /// <summary>
+        /// The text of the map search box whenever we don't
+        /// have something more useful to show.
+        /// </summary>
+        private const String MapSearchBoxText = "search: latitude longitude zoomlevel";
+
+        #endregion
+
+        #region MainWindow()
 
         /// <summary>
         /// MainWindow
@@ -47,19 +60,19 @@ namespace MappingApplication
 
             // Subscribe to mouse position change events and
             // show the current geo position below the map
-            MapControl1.GeoPositionChanged += (o, GeoPos)  => GeoPositionTextBlock.Text = GeoPos.ToGeoString();
+            MapControl.GeoPositionChanged += (o, GeoPos)  => GeoPositionTextBlock.Text = GeoPos.ToGeoString();
 
-            MapControl1.MapViewChanged           += (o, x, y, m) => DisplayOffsetTextBlock.Text = "Offset: " + x + " / " + y;
+            MapControl.MapViewChanged     += (o, x, y, m) => DisplayOffsetTextBlock.Text = "Offset: " + x + " / " + y;
 
             #endregion
 
             #region Add map layers
 
-            var _TilesLayer   = MapControl1.AddLayer<TilesLayer>  ("TilesLayer",    0);
-            var _ShapeLayerWG = MapControl1.AddLayer<ShapeLayer>  ("ShapeLayerWG", 10);
-            var _ShapeLayerEG = MapControl1.AddLayer<ShapeLayer>  ("ShapeLayerEG", 11);
-            var _HeatmapLayer = MapControl1.AddLayer<HeatmapLayer>("HeatmapLayer", 20);
-            var _FeatureLayer = MapControl1.AddLayer<FeatureLayer>("FeatureLayer", 30);
+            var _TilesLayer   = MapControl.AddLayer<TilesLayer>  ("TilesLayer",    0);
+            var _ShapeLayerWG = MapControl.AddLayer<ShapeLayer>  ("ShapeLayerWG", 10);
+            var _ShapeLayerEG = MapControl.AddLayer<ShapeLayer>  ("ShapeLayerEG", 11);
+            var _HeatmapLayer = MapControl.AddLayer<HeatmapLayer>("HeatmapLayer", 20);
+            var _FeatureLayer = MapControl.AddLayer<FeatureLayer>("FeatureLayer", 30);
 
             #endregion
 
@@ -100,10 +113,15 @@ namespace MappingApplication
 
             #endregion
 
+            // Set the deactivated style of the map search box
+            MapSearchBox_LostFocus(this, null);
+
             // Set the initial focus on the map
-            MapControl1.Focus();
+            MapControl.Focus();
 
         }
+
+        #endregion
 
 
         #region (private) MapSearchBox_ProcessInput(Sender, KeyEventArgs)
@@ -116,46 +134,128 @@ namespace MappingApplication
         private void MapSearchBox_ProcessInput(Object Sender, KeyEventArgs KeyEventArgs)
         {
 
-            if (KeyEventArgs.Key == Key.Enter)
+            switch (KeyEventArgs.Key)
             {
 
-                #region Process a "latitude, longitude" input
+                #region Esc pressed => clear map search box
 
-                var TextArray = MapSearchBox.Text.Split(new String[3] { " ", ",", "." }, StringSplitOptions.RemoveEmptyEntries);
-
-                Double latitude, longitude;
-                UInt32 zoomlevel;
-
-                if (TextArray.Length == 4)
-                {
-                    if (Double.TryParse(TextArray[0] + "," + TextArray[1], out latitude))
-                        if (Double.TryParse(TextArray[2] + "," + TextArray[3], out longitude))
-                        {
-                            MapControl1.MoveTo(latitude, longitude);
-                            return;
-                        }
-                }
+                case Key.Escape:
+                    MapSearchBox.Clear();
+                    MapSearchBorder.Background = new SolidColorBrush(Colors.White);
+                    break;
 
                 #endregion
 
-                #region Process a "latitude, longitude, zoomlevel" input
+                #region Enter pressed => zoom map
 
-                if (TextArray.Length == 5)
-                    if (Double.TryParse(TextArray[0] + "," + TextArray[1], out latitude))
-                        if (Double.TryParse(TextArray[2] + "," + TextArray[3], out longitude))
-                            if (UInt32.TryParse(TextArray[4], out zoomlevel))
-                            {
-                                MapControl1.ZoomTo(latitude, longitude, zoomlevel);
-                                return;
-                            }
+                case Key.Enter:
+
+                    #region Process a "latitude, longitude" input
+
+                    var TextArray = MapSearchBox.Text.Split(new String[3] { " ", ",", "." }, StringSplitOptions.RemoveEmptyEntries);
+
+                    Double latitude, longitude;
+                    UInt32 zoomlevel;
+
+                    if (TextArray.Length == 4)
+                    {
+
+                        if (Double.TryParse(TextArray[0] + "," + TextArray[1], out latitude))
+                            if (latitude >= -90 && latitude <= 90)
+
+                                if (Double.TryParse(TextArray[2] + "," + TextArray[3], out longitude))
+                                    if (longitude >= -90 && longitude <= 90)
+                                    {
+                                        MapControl.MoveTo(latitude, longitude);
+                                        MapSearchBox_LostFocus(this, null);
+                                        MapControl.Focus();
+                                        return;
+                                    }
+
+                        MapSearchBorder.Background = new SolidColorBrush(Color.FromArgb(0x77, 0xFF, 0x00, 0x00));
+
+                    }
+
+                    #endregion
+
+                    #region Process a "latitude, longitude, zoomlevel" input
+
+                    if (TextArray.Length == 5)
+                    {
+
+                        if (Double.TryParse(TextArray[0] + "," + TextArray[1], out latitude))
+                            if (latitude >= -90 && latitude <= 90)
+
+                                if (Double.TryParse(TextArray[2] + "," + TextArray[3], out longitude))
+                                    if (longitude >= -90 && longitude <= 90)
+
+                                        if (UInt32.TryParse(TextArray[4], out zoomlevel))
+                                            if (zoomlevel >= de.ahzf.Vanaheimr.Aegir.Controls.MapControl.MinZoomLevel &&
+                                                zoomlevel <= de.ahzf.Vanaheimr.Aegir.Controls.MapControl.MaxZoomLevel)
+                                            {
+                                                MapControl.ZoomTo(latitude, longitude, zoomlevel);
+                                                MapSearchBox_LostFocus(this, null);
+                                                MapControl.Focus();
+                                                return;
+                                            }
+
+                        MapSearchBorder.Background = new SolidColorBrush(Color.FromArgb(0x77, 0xFF, 0x00, 0x00));
+
+                    }
+
+                    #endregion
+
+                    // Search for a town name...
+                    MapSearchBorder.Background = new SolidColorBrush(Color.FromArgb(0x77, 0xFF, 0x00, 0x00));
+
+                    KeyEventArgs.Handled = true;
+                    break;
 
                 #endregion
-
-                // Search for a town name...
-
-                KeyEventArgs.Handled = true;
 
             }
+
+        }
+
+        #endregion
+
+        #region (private) MapSearchBox_GotFocus(Sender, RoutedEventArgs)
+
+        /// <summary>
+        /// The map search box got the mouse focus.
+        /// </summary>
+        /// <param name="Sender">The sender of the event.</param>
+        /// <param name="RoutedEventArgs">The event parameters.</param>
+        private void MapSearchBox_GotFocus(Object Sender, RoutedEventArgs RoutedEventArgs)
+        {
+
+            MapSearchBorder.Background  = new SolidColorBrush(Colors.White);
+            MapSearchBorder.BorderBrush = new SolidColorBrush(Color.FromArgb(0xFF, 0x77, 0x77, 0x77));
+            MapSearchBox.Foreground     = new SolidColorBrush(Colors.Black);
+
+            if (MapSearchBox.Text == MapSearchBoxText)
+                MapSearchBox.Clear();
+
+        }
+
+        #endregion
+
+        #region (private) MapSearchBox_LostFocus(Sender, RoutedEventArgs)
+
+        /// <summary>
+        /// The map search box lost the mouse focus.
+        /// </summary>
+        /// <param name="Sender">The sender of the event.</param>
+        /// <param name="RoutedEventArgs">The event parameters.</param>
+        private void MapSearchBox_LostFocus(Object Sender, RoutedEventArgs RoutedEventArgs)
+        {
+
+            MapSearchBorder.Background  = new SolidColorBrush(Colors.Transparent);
+            MapSearchBorder.BorderBrush = new SolidColorBrush(Color.FromArgb(0xFF, 0xA0, 0xA0, 0xA0));
+            MapSearchBox.Foreground     = new SolidColorBrush(Color.FromArgb(0xFF, 0xC0, 0xC0, 0xC0));
+
+            if (MapSearchBox.Text == "")
+                MapSearchBox.Text = MapSearchBoxText;
 
         }
 

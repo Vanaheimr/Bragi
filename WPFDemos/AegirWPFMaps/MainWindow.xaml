@@ -1,5 +1,5 @@
 ﻿<Window xmlns:Aegir = "clr-namespace:de.ahzf.Vanaheimr.Aegir.Controls;assembly=AegirMapControl"
-        x:Class     = "MappingApplication.MainWindow"
+        x:Class     = "de.ahzf.Bragi.WPFDemos.AegirWPFMaps.MainWindow"
         xmlns       = "http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x     = "http://schemas.microsoft.com/winfx/2006/xaml"
         Title       = "Aegir WPF Maps"
@@ -17,16 +17,38 @@
                     <RowDefinition Height="15" />
                 </Grid.RowDefinitions>
 
-                <TextBox          Grid.Row="0" Name="MapSearchBox" Margin="4,3,0,0" Height="23" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="350" Text="search: latitude longitude zoomlevel" KeyUp="MapSearchBox_ProcessInput" />
+                <Border Name                = "MapSearchBorder"
+                        Grid.Row            = "0"
+                        CornerRadius        = "2"
+                        Margin              = "4,3,0,0"
+                        Width               = "350"
+                        Height              = "23"
+                        Padding             = "3,0,0,0"
+                        HorizontalAlignment = "Left"
+                        BorderThickness     = "1" >
 
-                <Aegir:MapControl Name                = "MapControl1"
+                    <TextBox Name                = "MapSearchBox"
+                             Padding             = "0"
+                             BorderThickness     = "0"
+                             HorizontalAlignment = "Stretch"
+                             VerticalAlignment   = "Center"
+                             Background          = "Transparent"
+                             Text                = "search: latitude longitude zoomlevel"
+                             KeyUp               = "MapSearchBox_ProcessInput"
+                             GotFocus            = "MapSearchBox_GotFocus"
+                             LostFocus           = "MapSearchBox_LostFocus" />
+
+                </Border>
+
+                <Aegir:MapControl Name                = "MapControl"
                                   Margin              = "4,0,4,0"
                                   Grid.Row            = "1"
                                   Background          = "White"
                                   ClipToBounds        = "True"
                                   SnapsToDevicePixels = "True" />
 
-                <TextBlock Grid.Row="2" Name="DisplayOffsetTextBlock" Margin="30,0, 0,0" Height="23" HorizontalAlignment="Left"  Text="Offset:"    TextAlignment="Left" VerticalAlignment="Top" />
+
+                <TextBlock Grid.Row="2" Name="DisplayOffsetTextBlock" Margin="10,0, 0,0" Height="23" HorizontalAlignment="Left"  Text="Offset:"    TextAlignment="Left" VerticalAlignment="Top" />
                 <TextBlock Grid.Row="2" Name="GeoPositionTextBlock"   Margin=" 0,1,10,0" Height="23" HorizontalAlignment="Right" VerticalAlignment="Top" TextAlignment="Right" Text="Pos: X, Y" />
 
             </Grid>
