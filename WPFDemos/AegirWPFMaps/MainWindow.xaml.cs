@@ -47,9 +47,9 @@ namespace MappingApplication
 
             // Subscribe to mouse position change events and
             // show the current geo position below the map
-            MapControl1.GeoPositionChanged   += (o, GeoPos) => GeoPositionTextBlock.Text = GeoPos.ToGeoString();
+            MapControl1.GeoPositionChanged += (o, GeoPos)  => GeoPositionTextBlock.Text = GeoPos.ToGeoString();
 
-            MapControl1.DisplayOffsetChanged += (o, x, y)   => DisplayOffsetTextBlock.Text = "Offset: " + x + " / " + y;
+            MapControl1.MapViewChanged           += (o, x, y, m) => DisplayOffsetTextBlock.Text = "Offset: " + x + " / " + y;
 
             #endregion
 
@@ -99,6 +99,9 @@ namespace MappingApplication
             var feature5p = _ShapeLayerWG.AddShape(new Niedersachsen         (Color.FromArgb(0xFF, 0xE0, 0xC0, 0x60), 1, Color.FromArgb(0x77, 0xE0, 0x60, 0x30)));
 
             #endregion
+
+            // Set the initial focus on the map
+            MapControl1.Focus();
 
         }
 

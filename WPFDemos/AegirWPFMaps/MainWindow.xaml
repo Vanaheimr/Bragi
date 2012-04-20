@@ -8,34 +8,31 @@
 
     <TabControl Name="TabControl" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
         <TabItem Name="MapTab" Header="Aegir Map">
-            
+
             <Grid>
-                
+
                 <Grid.RowDefinitions>
                     <RowDefinition Height="30" />
                     <RowDefinition Height="*"  />
                     <RowDefinition Height="15" />
                 </Grid.RowDefinitions>
 
-                <TextBox          Grid.Row="0" Name="MapSearchBox"         Margin=" 4,3, 0,0" Height="23" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="350" Text="search: latitude longitude zoomlevel" KeyUp="MapSearchBox_ProcessInput" />
-                
+                <TextBox          Grid.Row="0" Name="MapSearchBox" Margin="4,3,0,0" Height="23" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="350" Text="search: latitude longitude zoomlevel" KeyUp="MapSearchBox_ProcessInput" />
+
                 <Aegir:MapControl Name                = "MapControl1"
-                                  Margin              = " 4,0, 4,0"
+                                  Margin              = "4,0,4,0"
                                   Grid.Row            = "1"
                                   Background          = "White"
                                   ClipToBounds        = "True"
                                   SnapsToDevicePixels = "True" />
 
-                <Canvas Grid.Row="1" Name="HeatMapCanvas" ClipToBounds="True" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
-
                 <TextBlock Grid.Row="2" Name="DisplayOffsetTextBlock" Margin="30,0, 0,0" Height="23" HorizontalAlignment="Left"  Text="Offset:"    TextAlignment="Left" VerticalAlignment="Top" />
                 <TextBlock Grid.Row="2" Name="GeoPositionTextBlock"   Margin=" 0,1,10,0" Height="23" HorizontalAlignment="Right" VerticalAlignment="Top" TextAlignment="Right" Text="Pos: X, Y" />
-                
-                
+
             </Grid>
-            
+
         </TabItem>
-        
+
         <TabItem Name="GraphTab" Header="Semantics">
             <Canvas xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
                 <Path Data="M106,13c-21,9-31,4-40-2l-10,35c9,6,20,11,40,2l10-35z"              Fill="#7B4"/>
@@ -44,7 +41,7 @@
                 <Path Data="M55,52c9,6,18,10,39,2l-10,35c-21,8-30,3-39-3l10-34z"               Fill="#FD5"/>
             </Canvas>
         </TabItem>
-        
+
     </TabControl>
-    
+
 </Window>
