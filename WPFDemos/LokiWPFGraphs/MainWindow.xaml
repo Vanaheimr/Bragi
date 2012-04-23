@@ -7,15 +7,67 @@
         Width      = "900">
 
     <Grid>
-
-        <Loki:GraphCanvas Name                = "GraphCanvas"
-                          ToolTip             = "Loki WPF Graph Visualization"
-                          Grid.Column         = "0"
-                          HorizontalAlignment = "Stretch"
-			   	          VerticalAlignment   = "Stretch"
-			   	          ClipToBounds        = "True"
-			   	          SnapsToDevicePixels = "True" />
         
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*" />
+            <ColumnDefinition Width="7" />
+            <ColumnDefinition Width="1*" />
+        </Grid.ColumnDefinitions>
+
+        <Grid Grid.Column="0">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="7"  />
+                <RowDefinition Height="40"  />
+            </Grid.RowDefinitions>
+
+            <Border Grid.Row="0" Background="#FCFCFC" Margin="5,5,0,0" Padding="2" BorderThickness="1" BorderBrush="#C0C0C0C0" CornerRadius="4">
+                <Loki:GraphCanvas Name                = "GraphCanvas"
+                              ToolTip             = "Loki WPF Graph Visualization"
+                              HorizontalAlignment = "Stretch"
+		    	   	          VerticalAlignment   = "Stretch"
+		    	   	          ClipToBounds        = "True"
+		    	   	          SnapsToDevicePixels = "True" />
+            </Border>
+
+            <GridSplitter Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="#00F0F0F0" IsTabStop="False" />
+
+            <Border Grid.Row="2" Background="#FCFCFC" Margin="5,0,0,5" Padding="2" BorderThickness="1" BorderBrush="#C0C0C0C0" CornerRadius="4">
+                <TextBox Text="query..." BorderThickness="0" />
+            </Border>
+            
+        </Grid>
+
+        <GridSplitter Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="#00F0F0F0" IsTabStop="False" />
+        
+        <Grid Grid.Column="2">
+            
+            <Grid.RowDefinitions>
+                <RowDefinition Height="3*" />
+                <RowDefinition Height="7"  />
+                <RowDefinition Height="4*" />
+            </Grid.RowDefinitions>
+
+            <Border Grid.Row="0" Background="#FCFCFC" Margin="0,5,5,0" Padding="2" BorderThickness="1" BorderBrush="#C0C0C0C0" CornerRadius="4">
+                <Loki:GraphCanvas Name                = "SchemaCanvas"
+                                  ToolTip             = "Loki WPF GraphSchema Visualization"
+                                  HorizontalAlignment = "Stretch"
+			   	                  VerticalAlignment   = "Stretch"
+			   	                  ClipToBounds        = "True"
+			   	                  SnapsToDevicePixels = "True" />
+            </Border>
+
+            <GridSplitter Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="#00F0F0F0" IsTabStop="False" />
+
+            <Border Grid.Row="2" Background="#FCFCFC" Margin="0,0,5,5" Padding="2" BorderThickness="1" BorderBrush="#C0C0C0C0" CornerRadius="4">
+                <DataGrid Name="PropertiesDataGrid" Background="Transparent" AlternatingRowBackground="LightBlue" BorderThickness="0" HorizontalAlignment="Stretch" Width="Auto">
+                    <!-- AutoGenerateColumns="False" -->
+                </DataGrid>
+            </Border>
+
+        </Grid>
+
     </Grid>
 
 </Window>
