@@ -22,9 +22,12 @@ using System.Linq;
 using System.Collections.Generic;
 
 using de.ahzf.Illias.Commons;
-using de.ahzf.Balder;
+
 using de.ahzf.Blueprints;
+using de.ahzf.Blueprints.Schema;
 using de.ahzf.Blueprints.PropertyGraphs;
+
+using de.ahzf.Balder;
 
 #endregion
 
@@ -102,50 +105,42 @@ namespace de.ahzf.Bragi
         #region Vertex labels
 
         /// <summary>
-        /// The vertex labels.
+        /// A vertex is a tag.
         /// </summary>
-        public enum VertexLabel
-        {
+        public const String isTag     = "Tag";
 
-            /// <summary>
-            /// The "tag" vertex label.
-            /// </summary>
-            Tag,
+        /// <summary>
+        /// A vertex is a user.
+        /// </summary>
+        public const String isUser    = "User";
 
-            /// <summary>
-            /// The "website" vertex label.
-            /// </summary>
-            Website
-
-        }
+        /// <summary>
+        /// A vertex is a website.
+        /// </summary>
+        public const String isWebsite = "Website";
 
         #endregion
 
         #region Vertex properties
 
         /// <summary>
-        /// The type property
-        /// </summary>
-        public const String _type = "type";
-
-        /// <summary>
-        /// The name property
-        /// </summary>
-        public const String _name = "name";
-
-        /// <summary>
         /// The url property
         /// </summary>
-        public const String _url  = "url";
+        public const String Url  = "Url";
 
         #endregion
 
         #region Edge labels
 
         /// <summary>
-        /// The "isTagged" edge label.
+        /// An edge to tag users and websites.
         /// </summary>
-        public const String _isTaggedWith = "isTaggedWith";
+        public const String isTaggedWith = "isTaggedWith";
+
+        /// <summary>
+        /// An edge to like users and websites.
+        /// </summary>
+        public const String likes        = "likes";
 
         #endregion
 
@@ -167,65 +162,70 @@ namespace de.ahzf.Bragi
         {
 
             // Create a new simple property graph
-            var _graph = GraphFactory.CreateGenericPropertyGraph(1);
+            var graph       = GraphFactory.CreateGenericPropertyGraph2("TagExample");
+            var graphSchema = graph.GetGraphSchema("TagExampleSchema", "The graph schema of the TagExample graph");
 
 
             // Add tags
-            var _good  = _graph.AddVertex(v => v.SetProperty(_type, VertexLabel.Tag).
-                                                 SetProperty(_name, "good"));
+            var _good  = graph.AddVertex("good",  isTag);
+            var _funny = graph.AddVertex("funny", isTag);
 
-            var _funny = _graph.AddVertex(v => v.SetProperty(_type, VertexLabel.Tag).
-                                                 SetProperty(_name, "funny"));
+            // Add Users
+            var _Alice = graph.AddVertex("Alice", "User");
+            var _Bob   = graph.AddVertex("Bob",   "User");
 
             // Add websites
-            var _cnn   = _graph.AddVertex(v => v.SetProperty(_type, VertexLabel.Website).
-                                                 SetProperty(_name, "CNN").
-                                                 SetProperty(_url,  "http://cnn.com"));
-
-            var _xkcd  = _graph.AddVertex(v => v.SetProperty(_type, VertexLabel.Website).
-                                                 SetProperty(_name, "xkcd").
-                                                 SetProperty(_url,  "http://xkcd.com"));
-
-            var _onion = _graph.AddVertex(v => v.SetProperty(_type, VertexLabel.Website).
-                                                 SetProperty(_name, "onion").
-                                                 SetProperty(_url,  "http://theonion.com"));
+            var _cnn   = graph.AddVertex("CNN",   isWebsite, v => v.SetProperty(Url, "http://cnn.com"));
+            var _xkcd  = graph.AddVertex("xkcd",  isWebsite, v => v.SetProperty(Url, "http://xkcd.com"));
+            var _onion = graph.AddVertex("onion", isWebsite, v => v.SetProperty(Url, "http://theonion.com"));
 
             // Add edges using the semantic web style (s, p, o)
-            var _edge1 = _graph.AddEdge(_cnn,   _isTaggedWith, _good);
-            var _edge2 = _graph.AddEdge(_xkcd,  _isTaggedWith, _good);
-            var _edge3 = _graph.AddEdge(_xkcd,  _isTaggedWith, _funny);
-            var _edge4 = _graph.AddEdge(_onion, _isTaggedWith, _funny);
+            var _edge1 = graph.AddEdge(_cnn,   isTaggedWith, _good);
+            var _edge2 = graph.AddEdge(_xkcd,  isTaggedWith, _good);
+            var _edge3 = graph.AddEdge(_xkcd,  isTaggedWith, _funny);
+            var _edge4 = graph.AddEdge(_onion, isTaggedWith, _funny);
 
+            var _edge5 = graph.AddEdge(_Alice, likes, _xkcd);
+            var _edge6 = graph.AddEdge(_Alice, likes, _Bob);
 
 
             // Find out which tags xkcd is tagged with
             _xkcd.                                      // The xkcd vertex
-               OutEdges(_isTaggedWith).                 // Get all outedges with label "isTaggedWith"
+               OutEdges(isTaggedWith).                  // Get all outedges with label "isTaggedWith"
                InV().                                   // Get the incoming vertices of the edges
-               Prop(_name).                             // Get all properties with key "name"
-               ForEach(Tag => Console.WriteLine(Tag));  // 
-
+               Ids().                                   // Get all vertex Ids
+               ForEach(Tag => Console.WriteLine(Tag));
 
 
             // List tagged sites
-            _graph.Vertices(v => v.Contains(_type, VertexLabel.Website)).
-                   ForEach (v => Console.WriteLine("{0}\t=> {1}",
-                                                   v.GetProperty(_name),
-                                                   v.OutDegree  (_isTaggedWith)));
+            graph.Vertices(v => v.Label == isWebsite).
+                  ForEach (v => Console.WriteLine("{0}\t=> {1}",
+                                                  v.Id,
+                                                  v.OutDegree(isTaggedWith)));
 
 
             // List tagged sites using LINQ
             var _WebList = from   Website
-                           in     _graph.Vertices(v => v.Contains(_type, VertexLabel.Website))
+                           in     graph.Vertices(v => v.Label == isWebsite)
                            select new
                            {
-                               Name  = Website.GetProperty(_name),
-                               Count = Website.OutDegree(_isTaggedWith)
+                               Name  = Website.Id,
+                               Count = Website.OutDegree(isTaggedWith)
                            };
 
             foreach (var _Site in _WebList)
                 Console.WriteLine("{0}\t=> {1}", _Site.Name, _Site.Count);
 
+
+            Console.WriteLine();
+            Console.WriteLine("Used vertex labels: ");
+            Console.WriteLine("  " + graphSchema.Vertices().Ids().Cast<String>().Aggregate((a, b) => a + ", " + b));
+            Console.WriteLine();
+
+            Console.WriteLine("Used edge labels: ");
+            graphSchema.Edges().ForEach(e => {
+                Console.WriteLine("  " + e.Id + ": " + e.SetGet(GraphSchemaHandling.AlternativeUsage).Cast<String>().Aggregate((a, b) => a + ", " + b));
+            });
 
         }
 

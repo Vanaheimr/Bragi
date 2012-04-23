@@ -111,10 +111,11 @@ namespace de.ahzf.Bragi
         /// <param name="Args">Arguments...</param>
         public static void Main(String[] Args)
         {
-            
-            PolyfileReader.Start();
 
-            StartMonoCSharpREPLShell();
+            TagExample.Start();
+            //PolyfileReader.Start();
+
+            //StartMonoCSharpREPLShell();
 
             // Try to type:
             // "using de.ahzf.Bragi;"
