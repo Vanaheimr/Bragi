@@ -19,11 +19,18 @@
 
 using System;
 using System.Windows;
+using System.Collections.Generic;
 
 #endregion
 
 namespace de.ahzf.Bragi.WPFDemos.LokiWPFGraphs
 {
+
+    public class GraphProperties
+    {
+        public String Key   { get; set; }       
+        public Object Value { get; set; }
+    }
 
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -81,6 +88,35 @@ namespace de.ahzf.Bragi.WPFDemos.LokiWPFGraphs
             GraphCanvas.EdgeToolTip = e => e.Label;
 
             #endregion
+
+            PropertiesDataGrid.ItemsSource = LoadCollectionData();
+
+        }
+
+        private List<GraphProperties> LoadCollectionData()
+        {
+            
+            var _Properties = new List<GraphProperties>();
+
+            _Properties.Add(new GraphProperties()
+            {
+                Key   = "Name",
+                Value = "Alice",
+            });
+
+            _Properties.Add(new GraphProperties()
+            {
+                Key   = "Alter",
+                Value = 23,
+            });
+
+            _Properties.Add(new GraphProperties()
+            {
+                Key   = "Lieblingsfarbe",
+                Value = "Blau",
+            });
+
+            return _Properties;
 
         }
 
