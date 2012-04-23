@@ -198,7 +198,7 @@ namespace de.ahzf.Bragi
 
 
             // List tagged sites
-            graph.Vertices(v => v.Label == isWebsite).
+            graph.VerticesByLabel(isWebsite).
                   ForEach (v => Console.WriteLine("{0}\t=> {1}",
                                                   v.Id,
                                                   v.OutDegree(isTaggedWith)));
@@ -206,7 +206,7 @@ namespace de.ahzf.Bragi
 
             // List tagged sites using LINQ
             var _WebList = from   Website
-                           in     graph.Vertices(v => v.Label == isWebsite)
+                           in     graph.VerticesByLabel(isWebsite)
                            select new
                            {
                                Name  = Website.Id,
