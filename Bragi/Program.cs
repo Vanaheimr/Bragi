@@ -112,7 +112,8 @@ namespace de.ahzf.Bragi
         public static void Main(String[] Args)
         {
 
-            TagExample.Start();
+            NetworkingDemo.Start();
+            //TagExample.Start();
             //PolyfileReader.Start();
 
             //StartMonoCSharpREPLShell();

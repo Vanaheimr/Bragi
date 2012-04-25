@@ -127,13 +127,13 @@ namespace de.ahzf.Bragi
             var g2 = g1.AsReadOnlyGraph();
 
 
-            using (var GraphServer = new GraphServer(new PropertyGraph(123UL) { Description = "the first graph" }, new IPPort(8080))
+            using (var GraphServer = new GraphServer(GraphFactory.CreateGenericPropertyGraph(123UL, "The first graph"), new IPPort(8080))
             {
                 ServerName = "GraphServer v0.1"
             } as IGraphServer)
             {
 
-                var graph = GraphServer.NewPropertyGraph(512UL, g => g.SetProperty(GraphDBOntology.Description().Suffix, "the second graph").SetProperty("hello", "world!"));
+                var graph = GraphServer.NewPropertyGraph(512UL, "demo graph", g => g.SetProperty(GraphDBOntology.Description().Suffix, "the second graph").SetProperty("hello", "world!"));
                 var a1 = graph.ContainsKey("hello");
                 var a2 = graph.ContainsKey("world!");
                 var a3 = graph.ContainsKey("graphs");
@@ -214,9 +214,9 @@ namespace de.ahzf.Bragi
 
                 }
 
-                var aaa = from V2
-                          in graph.Vertices()
-                          where JavaScriptEngine.CallGlobalFunction<Boolean>("VertexFilter", new JSPropertyVertex(V2, JavaScriptEngine))
+                var aaa = from   V2
+                          in     graph.Vertices()
+                          where  JavaScriptEngine.CallGlobalFunction<Boolean>("VertexFilter", new JSPropertyVertex(V2, JavaScriptEngine))
                           select V2;
 
                 var aaaa = aaa.ToList();
@@ -224,6 +224,9 @@ namespace de.ahzf.Bragi
 
                 var GraphClient = new RemotePropertyGraph(IPv4Address.Parse("127.0.0.1"), new IPPort(8080)) { Id = 512 };
                 Console.WriteLine(GraphClient.Description);
+
+                //foreach (var V3 in GraphClient.Vertices())
+                //    Console.WriteLine(V3.Id);
 
                 while (true)
                     Thread.Sleep(100);
