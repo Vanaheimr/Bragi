@@ -127,13 +127,15 @@ namespace de.ahzf.Bragi
             var g2 = g1.AsReadOnlyGraph();
 
 
-            using (var GraphServer = new GraphServer(GraphFactory.CreateGenericPropertyGraph2("123", "The first graph"), new IPPort(8080))
+            using (var GraphServer = new GraphServer(new IPPort(8080))
             {
                 ServerName = "GraphServer v0.1"
             } as IGraphServer)
             {
 
-                var graph = GraphServer.NewPropertyGraph("512", "demo graph", g => g.SetProperty(GraphDBOntology.Description().Suffix, "the second graph").SetProperty("hello", "world!").SetProperty("graphs", "are cool!"));
+                GraphServer.CreateNewGraph("123", "The first graph");
+
+                var graph = GraphServer.CreateNewGraph("512", "demo graph", g => g.SetProperty(GraphDBOntology.Description().Suffix, "the second graph").SetProperty("hello", "world!").SetProperty("graphs", "are cool!"));
                 var a1 = graph.ContainsKey("hello");
                 var a2 = graph.ContainsKey("world!");
                 var a3 = graph.ContainsKey("graphs");
