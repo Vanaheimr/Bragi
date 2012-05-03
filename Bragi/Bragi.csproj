@@ -195,12 +195,12 @@
       <Name>Jurassic</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\srclibs\MonoCompilerAsAService\MonoCompilerAsAService\MonoCompilerAsAService.csproj">
-      <Project>{903006A4-20EA-4825-BA0D-C28201B76D71}</Project>
-      <Name>MonoCompilerAsAService %28Dependencies\External\MonoCompilerAsAService%29</Name>
+      <Project>{A2ABC2B4-28D1-47B1-8EF9-6E8C60215515}</Project>
+      <Name>MonoCompilerAsAService</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\srclibs\MonoCompilerAsAService\MonoCSharp\MonoCSharp.csproj">
-      <Project>{5D0636A5-5DD0-4942-B3A5-0B83E5E6FEE7}</Project>
-      <Name>MonoCSharp %28Dependencies\External\MonoCSharp%29</Name>
+      <Project>{322FD822-7722-4176-A7D7-CD8D36488DB9}</Project>
+      <Name>MonoCSharp</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\Styx\Styx\Styx.csproj">
       <Project>{3949790D-8591-4101-9E4D-CE7A758E7409}</Project>
