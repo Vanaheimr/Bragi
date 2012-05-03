@@ -147,14 +147,6 @@
       <Project>{16C85DF8-5DE6-4A9F-9FC7-7CA5B0440DF3}</Project>
       <Name>Commons</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\libs\MonoCompilerAsAService\MonoCompilerAsAService\MonoCompilerAsAService.csproj">
-      <Project>{A2ABC2B4-28D1-47B1-8EF9-6E8C60215515}</Project>
-      <Name>MonoCompilerAsAService</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\..\libs\MonoCompilerAsAService\MonoCSharp\MonoCSharp.csproj">
-      <Project>{322FD822-7722-4176-A7D7-CD8D36488DB9}</Project>
-      <Name>MonoCSharp</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\..\Loki\GraphCanvas.WPF\GraphCanvas.WPF.csproj">
       <Project>{18EC0A3B-39EF-4BE2-A881-4F9008842F77}</Project>
       <Name>GraphCanvas.WPF</Name>
@@ -162,6 +154,14 @@
     <ProjectReference Include="..\..\..\Loki\WPFPipeControl\WPFPipeControl.csproj">
       <Project>{8FB4A584-A2B3-49A7-B82F-0D50F698BB2A}</Project>
       <Name>WPFPipeControl</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\srclibs\MonoCompilerAsAService\MonoCompilerAsAService\MonoCompilerAsAService.csproj">
+      <Project>{903006A4-20EA-4825-BA0D-C28201B76D71}</Project>
+      <Name>MonoCompilerAsAService</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\srclibs\MonoCompilerAsAService\MonoCSharp\MonoCSharp.csproj">
+      <Project>{5D0636A5-5DD0-4942-B3A5-0B83E5E6FEE7}</Project>
+      <Name>MonoCSharp</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\..\Styx\Styx\Styx.csproj">
       <Project>{3949790D-8591-4101-9E4D-CE7A758E7409}</Project>

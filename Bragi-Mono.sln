@@ -89,9 +89,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "External", "External", "{44
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Mono", "Mono", "{195AC877-790A-4179-9218-F1B43B67F8FB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MonoCompilerAsAService", "..\libs\MonoCompilerAsAService\MonoCompilerAsAService\MonoCompilerAsAService.csproj", "{A2ABC2B4-28D1-47B1-8EF9-6E8C60215515}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MonoCompilerAsAService", "..\srclibs\MonoCompilerAsAService\MonoCompilerAsAService\MonoCompilerAsAService.csproj", "{A2ABC2B4-28D1-47B1-8EF9-6E8C60215515}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MonoCSharp", "..\libs\MonoCompilerAsAService\MonoCSharp\MonoCSharp.csproj", "{322FD822-7722-4176-A7D7-CD8D36488DB9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MonoCSharp", "..\srclibs\MonoCompilerAsAService\MonoCSharp\MonoCSharp.csproj", "{322FD822-7722-4176-A7D7-CD8D36488DB9}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Walkyr", "..\Walkyr\Walkyr\Walkyr.csproj", "{A3507C2E-1A82-4342-BD42-F544275D6959}"
 EndProject
