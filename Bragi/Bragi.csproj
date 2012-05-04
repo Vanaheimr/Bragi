@@ -146,10 +146,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Aegir\Aegir\Aegir.csproj">
-      <Project>{4D8FFCCD-738D-41AA-A527-8CFDFE0A681D}</Project>
-      <Name>Aegir</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\Balder\Balder\Balder.csproj">
       <Project>{D2B4E7C7-0524-4DE5-9D62-2DE05682A74D}</Project>
       <Name>Balder</Name>
