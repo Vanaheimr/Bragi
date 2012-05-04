@@ -190,7 +190,9 @@ namespace de.ahzf.Bragi
                 //HTTPClient2.Execute(_request2, response => Console.WriteLine(response.Content.ToUTF8String()));
 
                 // ---------------------------------------------------------------
-
+				
+#if !__MonoCS__				
+				
                 var JavaScriptEngine = new Jurassic.ScriptEngine();
                 //Console.WriteLine(engine.Evaluate("5 * 10 + 2"));
                 //engine.SetGlobalValue("interop", 15);
@@ -229,7 +231,7 @@ namespace de.ahzf.Bragi
 
                 //foreach (var V3 in GraphClient.Vertices())
                 //    Console.WriteLine(V3.Id);
-
+#endif
                 while (true)
                     Thread.Sleep(100);
 
