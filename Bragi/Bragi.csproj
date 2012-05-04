@@ -80,7 +80,6 @@
     <Compile Include="Keywords.cs" />
     <Compile Include="ITutorial.cs" />
     <Compile Include="Networking\NetworkingDemo.cs" />
-    <Compile Include="PolyfileReader\PolyfileReader.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QuadStore\QuadStore.cs" />
@@ -92,58 +91,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
-    <None Include="PolyfileReader\baden-wurttemberg.poly">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="PolyfileReader\bayern.poly">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="PolyfileReader\berlin.poly">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="PolyfileReader\brandenburg.poly">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="PolyfileReader\bremen.poly">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="PolyfileReader\germany.poly">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="PolyfileReader\hamburg.poly">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="PolyfileReader\hessen.poly">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="PolyfileReader\mecklenburg-vorpommern.poly">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="PolyfileReader\niedersachsen.poly">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="PolyfileReader\nordrhein-westfalen.poly">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="PolyfileReader\rheinland-pfalz.poly">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="PolyfileReader\saarland.poly">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="PolyfileReader\sachsen-anhalt.poly">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="PolyfileReader\sachsen.poly">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="PolyfileReader\schleswig-holstein.poly">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="PolyfileReader\thueringen.poly">
-      <SubType>Code</SubType>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Balder\Balder\Balder.csproj">
