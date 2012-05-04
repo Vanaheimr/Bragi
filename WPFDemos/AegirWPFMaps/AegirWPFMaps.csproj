@@ -133,10 +133,6 @@
       <Project>{17FC3955-9E9E-4358-A666-A3CD53CCDCE5}</Project>
       <Name>AegirMapControl</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\Aegir\AegirTiles\AegirTiles.csproj">
-      <Project>{0F37A34C-E6B7-4047-A5CC-6FD9A128208A}</Project>
-      <Name>AegirTiles</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\..\Aegir\Aegir\Aegir.csproj">
       <Project>{4D8FFCCD-738D-41AA-A527-8CFDFE0A681D}</Project>
       <Name>Aegir</Name>
