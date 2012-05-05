@@ -88,6 +88,7 @@
     <Compile Include="SocialGraph\SocialGraphGenerator.cs" />
     <Compile Include="Styx\StyxDemo.cs" />
     <Compile Include="TagExample\TagExample.cs" />
+    <Compile Include="TotallyFallen\TotallyFallen.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
