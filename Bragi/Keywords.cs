@@ -130,6 +130,11 @@ namespace de.ahzf.Bragi
         /// </summary>
         public static readonly Keyword DistributedProcessing    = new Keyword("Distributed Processing");
 
+        /// <summary>
+        /// Partitions
+        /// </summary>
+        public static readonly Keyword Partitions               = new Keyword("Partitions");
+
         #endregion
 
     }

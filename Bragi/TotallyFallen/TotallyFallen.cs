@@ -35,129 +35,6 @@ using System.Diagnostics;
 namespace de.ahzf.Bragi
 {
 
-    public static class LoopHelper
-    {
-
-        public static void Loop(this Int32 Loops, Action Do)
-        {
-
-            if (Do == null)
-                throw new ArgumentNullException("Do", "The parameter 'Do' must not be null!");
-
-            for (var i = 0; i < Loops; i++)
-                Do();
-
-        }
-
-        public static void Loop(this Int32 Loops, Action<Int32, Int32> Do)
-        {
-
-            if (Do == null)
-                throw new ArgumentNullException("Do", "The parameter 'Do' must not be null!");
-
-            for (var i = 0; i < Loops; i++)
-                Do(i, Loops);
-
-        }
-
-
-
-        public static void Loop(this Int32 Loops, Action<Int32> Do)
-        {
-
-            if (Do == null)
-                throw new ArgumentNullException("Do", "The parameter 'Do' must not be null!");
-
-            for (var i = 0; i < Loops; i++)
-                Do(i);
-
-        }
-
-        public static void Loop(this UInt32 Loops, Action<UInt32> Do)
-        {
-
-            if (Do == null)
-                throw new ArgumentNullException("Do", "The parameter 'Do' must not be null!");
-
-            for (var i = 0U; i < Loops; i++)
-                Do(i);
-
-        }
-
-        public static void Loop(this Int64 Loops, Action<Int64> Do)
-        {
-
-            if (Do == null)
-                throw new ArgumentNullException("Do", "The parameter 'Do' must not be null!");
-
-            for (var i = 0L; i < Loops; i++)
-                Do(i);
-
-        }
-
-        public static void Loop(this UInt64 Loops, Action<UInt64> Do)
-        {
-
-            if (Do == null)
-                throw new ArgumentNullException("Do", "The parameter 'Do' must not be null!");
-
-            for (var i = 0UL; i < Loops; i++)
-                Do(i);
-
-        }
-
-    }
-
-    public static class Loop
-    {
-
-        public static void Do(Int32 Loops, Action<Int32> Do)
-        {
-
-            if (Do == null)
-                throw new ArgumentNullException("Do", "The parameter 'Do' must not be null!");
-
-            for (var i = 0; i < Loops; i++)
-                Do(i);
-
-        }
-
-        public static void Do(UInt32 Loops, Action<UInt32> Do)
-        {
-
-            if (Do == null)
-                throw new ArgumentNullException("Do", "The parameter 'Do' must not be null!");
-
-            for (var i = 0U; i < Loops; i++)
-                Do(i);
-
-        }
-
-        public static void Do(Int64 Loops, Action<Int64> Do)
-        {
-
-            if (Do == null)
-                throw new ArgumentNullException("Do", "The parameter 'Do' must not be null!");
-
-            for (var i = 0L; i < Loops; i++)
-                Do(i);
-
-        }
-
-        public static void Do(UInt64 Loops, Action<UInt64> Do)
-        {
-
-            if (Do == null)
-                throw new ArgumentNullException("Do", "The parameter 'Do' must not be null!");
-
-            for (var i = 0UL; i < Loops; i++)
-                Do(i);
-
-        }
-
-
-    }
-
     /// <summary>
     /// Another demo.
     /// </summary>
@@ -248,11 +125,7 @@ namespace de.ahzf.Bragi
             var _Random                  = new Random();
             var _NumberOfVertices        = 10000;
             var _NumberOfEdges           = 600000;
-            var _NumberOfVisits          = ((_NumberOfEdges / _NumberOfVertices) ^ 2) * _NumberOfVertices;
-            var _NumberOfConcurrentTasks = 8;
-
-            var j = Enumerable.Range(1, 10);
-            3.Loop(() => { j.Take(3).ForEach(c => Console.WriteLine(c)); Console.WriteLine(); });
+            var _NumberOfConcurrentTasks = 10;
 
 
             // Create a new simple property graph
@@ -271,15 +144,57 @@ namespace de.ahzf.Bragi
                                                      _graph.VertexById((UInt64) _Random.Next(_NumberOfVertices)+1)));
 
             Console.WriteLine(_Stopwatch.Elapsed.TotalSeconds + "s : " + _NumberOfEdges + " vertices added.");
-            
+
+            //var Workload = _graph.Vertices().
+            //               ToPartitions((UInt64) Math.Round((Double) _NumberOfVertices / (Double) _NumberOfConcurrentTasks));
+
+
+
+            #region Vertices.Out()
+
+            Console.WriteLine(Environment.NewLine + "Traversing all Vertices.Out()");
+
             var TimeStamp1 = _Stopwatch.Elapsed.TotalSeconds;
 
-            _graph.Vertices().ForEach(x => x.OutDegree());
+            _graph.Vertices().Out().ForEach(x => { });
 
             var TimeStamp2 = _Stopwatch.Elapsed.TotalSeconds;
 
-            Console.WriteLine(TimeStamp2 + "s : Traversed all vertices.knows.knows.");
-            Console.WriteLine(Math.Round(_NumberOfVisits / (TimeStamp2-TimeStamp1)) + " traversals per second per core");
+            Parallel.ForEach(_graph.Vertices(), x => x.Out().ForEach(y => { }));
+            //_graph.Vertices().AsParallel().Out().ForEach(x => { });
+
+            var TimeStamp3 = _Stopwatch.Elapsed.TotalSeconds;
+
+            Console.WriteLine(Math.Round(_NumberOfEdges / (TimeStamp2 - TimeStamp1)) + " traversals per second (single threaded)");
+            Console.WriteLine(Math.Round(_NumberOfEdges / (TimeStamp3 - TimeStamp2)) + " traversals per second (multi threaded)");
+
+            #endregion
+
+            #region Vertices.Out().Out()
+
+            Console.WriteLine(Environment.NewLine + "Traversing all Vertices.Out().Out()");
+
+            var TimeStamp4 = _Stopwatch.Elapsed.TotalSeconds;
+
+            _graph.Vertices().Out().Out().ForEach(x => { });
+
+            var TimeStamp5 = _Stopwatch.Elapsed.TotalSeconds;
+
+            Parallel.ForEach(_graph.Vertices(), x => x.Out().Out().ForEach(y => { }));
+
+            //_graph.Vertices().ForEach(x => x.OutDegree());
+
+            //var a = from v
+            //        in _graph.Vertices()//.AsParallel()
+            //        select v.OutDegree();
+
+
+            var TimeStamp6 = _Stopwatch.Elapsed.TotalSeconds;
+
+            Console.WriteLine(Math.Round((_NumberOfEdges^2) / (TimeStamp5 - TimeStamp4)) + " traversals per second (single threaded)");
+            Console.WriteLine(Math.Round((_NumberOfEdges^2) / (TimeStamp6 - TimeStamp5)) + " traversals per second (multi threaded)");
+
+            #endregion
 
             while (true)
             {
