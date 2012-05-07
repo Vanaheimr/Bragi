@@ -24,8 +24,8 @@ using System.Collections.Generic;
 
 using de.ahzf.Blueprints;
 using de.ahzf.Blueprints.UnitTests;
-using de.ahzf.Blueprints.HTTP.Client;
-using de.ahzf.Blueprints.HTTP.Server;
+using de.ahzf.Bifrost.HTTP.Client;
+using de.ahzf.Bifrost.HTTP.Server;
 using de.ahzf.Blueprints.PropertyGraphs;
 using de.ahzf.Blueprints.PropertyGraphs.InMemory.Mutable;
 using de.ahzf.Blueprints.JurassicGraph;
@@ -127,10 +127,10 @@ namespace de.ahzf.Bragi
             var g2 = g1.AsReadOnlyGraph();
 
 
-            using (var GraphServer = new GraphServer(new IPPort(8080))
+            using (var GraphServer = new BifrostHTTPServer(new IPPort(8080))
             {
-                ServerName = "GraphServer v0.1"
-            } as IGraphServer)
+                ServerName = "Vanaheimr Bifrost HTTP Server v0.1"
+            } as IBifrostHTTPServer)
             {
 
                 GraphServer.CreateNewGraph("123", "The first graph");

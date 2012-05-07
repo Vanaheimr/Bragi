@@ -125,11 +125,12 @@ namespace de.ahzf.Bragi
             var Graph4 = GraphFactory.CreateGenericPropertyGraph(4);
             var Graph5 = GraphFactory.CreateGenericPropertyGraph(5);
 
-            var PartitionGraph = GraphFactory.CreatePartitionGraph(Graph1, Graph2, Graph3, Graph4, Graph5);
+            var PartitionGraph1 = GraphFactory.CreatePartitionGraph(23UL, "Stack of graphs 1-5", Graph1, Graph2, Graph3, Graph4, Graph5);
+            var PartitionGraph2 = Graph1.CreatePartitionGraph(42UL, "Stack of graphs 1-3", Graph2, Graph3);
 
-            Graph2.OnVertexAdded          += (graph, vertex)       => Console.WriteLine("Vertex #" + vertex.Id + " had been added to graph #" + graph.Id);
-            PartitionGraph.OnVertexAdded  += (graph, vertex)       => Console.WriteLine("Vertex #" + vertex.Id + " had been added to the partition graph");
-            PartitionGraph.OnVertexAdding += (graph, vertex, vote) => { if (vertex.Id == 7) { Console.WriteLine("The vertex id '7' is not allowed!"); vote.Veto(); } };
+            Graph2.OnVertexAdded           += (graph, vertex)       => Console.WriteLine("Vertex #" + vertex.Id + " had been added to graph #" + graph.Id);
+            PartitionGraph1.OnVertexAdded  += (graph, vertex)       => Console.WriteLine("Vertex #" + vertex.Id + " had been added to the partition graph");
+            PartitionGraph1.OnVertexAdding += (graph, vertex, vote) => { if (vertex.Id == 7) { Console.WriteLine("The vertex id '7' is not allowed!"); vote.Veto(); } };
 
             Graph1.AddVertex(1, "vertex", v => v.SetProperty("GraphId", 1));
             Graph2.AddVertex(2, "vertex", v => v.SetProperty("GraphId", 2));
@@ -137,18 +138,25 @@ namespace de.ahzf.Bragi
             Graph4.AddVertex(4, "vertex", v => v.SetProperty("GraphId", 4));
             Graph5.AddVertex(5, "vertex", v => v.SetProperty("GraphId", 5));
 
-            PartitionGraph.AddVertex(6, "vertex", v => v.SetProperty("GraphId", 6));
-            PartitionGraph.AddVertex(7, "vertex", v => v.SetProperty("GraphId", 7));
+            PartitionGraph1.AddVertex(6, "vertex", v => v.SetProperty("GraphId", 6));
+            PartitionGraph1.AddVertex(7, "vertex", v => v.SetProperty("GraphId", 7));
 
-            Console.WriteLine(PartitionGraph.NumberOfVertices());
-            Console.WriteLine(PartitionGraph.NumberOfVertices(v => v.Id != 3));
+            Console.WriteLine(PartitionGraph1.NumberOfVertices());
+            Console.WriteLine(PartitionGraph1.NumberOfVertices(v => v.Id != 3));
 
-            var v1 = PartitionGraph.VertexById(1);
-            var v2 = PartitionGraph.VertexById(2);
-            var v3 = PartitionGraph.VertexById(3);
-            var v4 = PartitionGraph.VertexById(4);
-            var v5 = PartitionGraph.VertexById(5);
-            var v6 = PartitionGraph.VertexById(6);
+            var v1a = PartitionGraph1.VertexById(1);
+            var v2a = PartitionGraph1.VertexById(2);
+            var v3a = PartitionGraph1.VertexById(3);
+            var v4a = PartitionGraph1.VertexById(4);
+            var v5a = PartitionGraph1.VertexById(5);
+            var v6a = PartitionGraph1.VertexById(6);
+
+            var v1b = PartitionGraph2.VertexById(1);
+            var v2b = PartitionGraph2.VertexById(2);
+            var v3b = PartitionGraph2.VertexById(3);
+            var v4b = PartitionGraph2.VertexById(4);
+            var v5b = PartitionGraph2.VertexById(5);
+            var v6b = PartitionGraph2.VertexById(6);
 
         }
 

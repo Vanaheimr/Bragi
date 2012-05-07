@@ -109,7 +109,9 @@ namespace de.ahzf.Bragi
         public static void Main(String[] Args)
         {
 
-            PartitionGraphs.Start();
+            Vanaheimr.Start();
+            //MulticastDemo.Start();
+            //PartitionGraphs.Start();
             //TotallyFallen.Start();
             //NetworkingDemo.Start();
             //TagExample.Start();
