@@ -26,7 +26,7 @@ using System.Windows.Documents;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
-using RunCSharp;
+//using RunCSharp;
 
 #endregion
 
@@ -41,8 +41,8 @@ namespace TutorialsWPF
 
         #region Data
 
-        private          Runner                         _Compiler;
-        private          ObservableCollection<RunBlock> History;
+        //private          Runner                         _Compiler;
+        //private          ObservableCollection<RunBlock> History;
         private readonly LinkedList<String>             CommandHistory;
         private          LinkedListNode<String>         CurrentCommand;
         private readonly Int32                          MaxCommandsHistorySize;
@@ -65,9 +65,9 @@ namespace TutorialsWPF
             GraphCanvas.OnChangedNumberOfEdges    += (number) => NumberOfEdges.Text    = number + " edges";
             GraphCanvas.OnChangedMousePosition    += (X, Y)   => MousePosition.Text    = X + " / " + Y;
 
-            _Compiler = new Runner();
+            //_Compiler = new Runner();
 
-            History   = new ObservableCollection<RunBlock>();
+            //History   = new ObservableCollection<RunBlock>();
 
             #region Customize the vertex and edge shapes
 
@@ -219,79 +219,79 @@ namespace TutorialsWPF
 
             #endregion
 
-            #region Enter
+            //#region Enter
 
-            else if (KeyEventArgs.Key == Key.Enter)
-            {
+            //else if (KeyEventArgs.Key == Key.Enter)
+            //{
 
-                ResultTextBlock.AppendText("> " + CommandTextBox.Text.Trim() + Environment.NewLine);
+            //    ResultTextBlock.AppendText("> " + CommandTextBox.Text.Trim() + Environment.NewLine);
                 
-                var _RunBlock  = new RunBlock(CommandTextBox.Text);
-                var _TextRange = new TextRange(ResultTextBlock.Document.ContentEnd, ResultTextBlock.Document.ContentEnd);
+            //    var _RunBlock  = new RunBlock(CommandTextBox.Text);
+            //    var _TextRange = new TextRange(ResultTextBlock.Document.ContentEnd, ResultTextBlock.Document.ContentEnd);
 
-                if (_RunBlock.Run(_Compiler))
-                {
+            //    if (_RunBlock.Run(_Compiler))
+            //    {
 
-                    #region Errors...
+            //        #region Errors...
 
-                    if (_RunBlock.HasErrors)
-                    {
+            //        if (_RunBlock.HasErrors)
+            //        {
 
-                        foreach (var Error in _RunBlock.Errors)
-                            _TextRange.Text += Error.Text.Trim() + Environment.NewLine + Environment.NewLine;
+            //            foreach (var Error in _RunBlock.Errors)
+            //                _TextRange.Text += Error.Text.Trim() + Environment.NewLine + Environment.NewLine;
 
-                        _TextRange.ApplyPropertyValue(TextElement.ForegroundProperty, new SolidColorBrush(Colors.Red));
+            //            _TextRange.ApplyPropertyValue(TextElement.ForegroundProperty, new SolidColorBrush(Colors.Red));
 
-                        ResultTextBlockScrollBar.ScrollToEnd();
-                        ResultTextBlockScrollBar.LineUp();
+            //            ResultTextBlockScrollBar.ScrollToEnd();
+            //            ResultTextBlockScrollBar.LineUp();
 
-                        KeyEventArgs.Handled = true;
-                        return;
+            //            KeyEventArgs.Handled = true;
+            //            return;
 
-                    }
+            //        }
 
-                    #endregion
+            //        #endregion
 
-                    #region ...output...
+            //        #region ...output...
 
-                    if (_RunBlock.HasOutput)
-                    {
-                        _TextRange.Text = _RunBlock.OutputText.Trim() + Environment.NewLine + Environment.NewLine;
-                        _TextRange.ApplyPropertyValue(TextElement.ForegroundProperty, new SolidColorBrush(Colors.Blue));
-                    }
+            //        if (_RunBlock.HasOutput)
+            //        {
+            //            _TextRange.Text = _RunBlock.OutputText.Trim() + Environment.NewLine + Environment.NewLine;
+            //            _TextRange.ApplyPropertyValue(TextElement.ForegroundProperty, new SolidColorBrush(Colors.Blue));
+            //        }
 
-                    #endregion
+            //        #endregion
 
-                    // ...or something like: "var a = 23";
+            //        // ...or something like: "var a = 23";
 
-                    #region Add successful command to command history
+            //        #region Add successful command to command history
 
-                    CurrentCommand.Value = CommandTextBox.Text.Trim();
-                    CommandHistory.AddLast("");
-                    CurrentCommand = CommandHistory.Last;
+            //        CurrentCommand.Value = CommandTextBox.Text.Trim();
+            //        CommandHistory.AddLast("");
+            //        CurrentCommand = CommandHistory.Last;
 
-                    if (CommandHistory.Count > MaxCommandsHistorySize)
-                        CommandHistory.RemoveFirst();
+            //        if (CommandHistory.Count > MaxCommandsHistorySize)
+            //            CommandHistory.RemoveFirst();
 
-                    #endregion
+            //        #endregion
 
-                    CommandTextBox.Text = "";
+            //        CommandTextBox.Text = "";
 
-                }
-                else
-                {
-                    _TextRange.Text = "Syntax error!" + Environment.NewLine + Environment.NewLine;
-                    _TextRange.ApplyPropertyValue(TextElement.ForegroundProperty, new SolidColorBrush(Colors.Red));
-                }
+            //    }
+            //    else
+            //    {
+            //        _TextRange.Text = "Syntax error!" + Environment.NewLine + Environment.NewLine;
+            //        _TextRange.ApplyPropertyValue(TextElement.ForegroundProperty, new SolidColorBrush(Colors.Red));
+            //    }
 
-                ResultTextBlockScrollBar.ScrollToEnd();
-                ResultTextBlockScrollBar.LineUp();
+            //    ResultTextBlockScrollBar.ScrollToEnd();
+            //    ResultTextBlockScrollBar.LineUp();
 
-                KeyEventArgs.Handled = true;
+            //    KeyEventArgs.Handled = true;
 
-            }
+            //}
 
-            #endregion
+            //#endregion
 
             CurrentCommand.Value = CommandTextBox.Text.Trim();
 

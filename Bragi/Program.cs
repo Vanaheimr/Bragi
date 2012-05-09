@@ -22,9 +22,9 @@ using System;
 using de.ahzf.Blueprints;
 using de.ahzf.Blueprints.PropertyGraphs;
 
-using Mono;
-using Mono.CSharp;
-using RunCSharp;
+//using Mono;
+//using Mono.CSharp;
+//using RunCSharp;
 
 #endregion
 
@@ -39,67 +39,67 @@ namespace de.ahzf.Bragi
 
         #region Data
 
-        private static Runner _Compiler;
+        //private static Runner _Compiler;
 
         #endregion
 
-        #region (static) StartMonoCSharpREPLShell(Args)
+        //#region (static) StartMonoCSharpREPLShell(Args)
 
-        /// <summary>
-        /// The Mono C# REPL Shell
-        /// </summary>
-        public static void StartMonoCSharpREPLShell(params String[] Args)
-        {
+        ///// <summary>
+        ///// The Mono C# REPL Shell
+        ///// </summary>
+        //public static void StartMonoCSharpREPLShell(params String[] Args)
+        //{
 
-            #region Feel free to step through...
+        //    #region Feel free to step through...
 
-            _Compiler = new Runner();
+        //    _Compiler = new Runner();
 
-            var a = _Compiler.Execute("Math.Abs(-42);");
-            var b = _Compiler.Execute("Math.Sin(Math.PI / 6);");
-            var c = _Compiler.Execute("class Fact { public int Run(int n) { return n <= 0 ? 1 : n*Run(n-1); } }");
-            var d = _Compiler.Execute("new Fact().Run(5);");
-            var e = _Compiler.Execute("\"abcdefgh\".Substring(1, 2);");
-            var f = _Compiler.Execute("class Echo { public Object Print(Object o) { return o; } }");
-            var g = _Compiler.Execute("var test = 123;");
-            var h = _Compiler.Execute("new Echo().Print(test);");
+        //    var a = _Compiler.Execute("Math.Abs(-42);");
+        //    var b = _Compiler.Execute("Math.Sin(Math.PI / 6);");
+        //    var c = _Compiler.Execute("class Fact { public int Run(int n) { return n <= 0 ? 1 : n*Run(n-1); } }");
+        //    var d = _Compiler.Execute("new Fact().Run(5);");
+        //    var e = _Compiler.Execute("\"abcdefgh\".Substring(1, 2);");
+        //    var f = _Compiler.Execute("class Echo { public Object Print(Object o) { return o; } }");
+        //    var g = _Compiler.Execute("var test = 123;");
+        //    var h = _Compiler.Execute("new Echo().Print(test);");
 
-            #endregion
+        //    #endregion
 
-            #region Start the interactive (read-eval-print loop) shell...
+        //    #region Start the interactive (read-eval-print loop) shell...
 
-            var _Report = new Report(new ConsoleReportPrinter());
-            var _CLP    = new CommandLineParser(_Report);
-            _CLP.UnknownOptionHandler += Mono.Driver.HandleExtraArguments;
+        //    var _Report = new Report(new ConsoleReportPrinter());
+        //    var _CLP    = new CommandLineParser(_Report);
+        //    _CLP.UnknownOptionHandler += Mono.Driver.HandleExtraArguments;
 
-            var _Settings = _CLP.ParseArguments(Args);
-            if (_Settings == null || _Report.Errors > 0)
-                Environment.Exit(1);
+        //    var _Settings = _CLP.ParseArguments(Args);
+        //    if (_Settings == null || _Report.Errors > 0)
+        //        Environment.Exit(1);
 
-            var _Evaluator = new Evaluator(_Settings, _Report)
-            {
-                InteractiveBaseClass    = typeof(InteractiveBaseShell),
-                DescribeTypeExpressions = true
-            };
+        //    var _Evaluator = new Evaluator(_Settings, _Report)
+        //    {
+        //        InteractiveBaseClass    = typeof(InteractiveBaseShell),
+        //        DescribeTypeExpressions = true
+        //    };
 
-            //// Adding a assembly twice will lead to delayed errors...
-            //_Evaluator.ReferenceAssembly(typeof(YourAssembly).Assembly);
-            _Evaluator.ReferenceAssembly(typeof(Bragi).Assembly);
-            _Evaluator.ReferenceAssembly(typeof(IPropertyGraph).Assembly);
-            _Evaluator.ReferenceAssembly(typeof(GraphFactory).Assembly);
+        //    //// Adding a assembly twice will lead to delayed errors...
+        //    //_Evaluator.ReferenceAssembly(typeof(YourAssembly).Assembly);
+        //    _Evaluator.ReferenceAssembly(typeof(Bragi).Assembly);
+        //    _Evaluator.ReferenceAssembly(typeof(IPropertyGraph).Assembly);
+        //    _Evaluator.ReferenceAssembly(typeof(GraphFactory).Assembly);
 
-            var u1 = _Compiler.Execute("using de.ahzf.Bragi;");
-            var u2 = _Compiler.Execute("using de.ahzf.Blueprints;");
-            var u3 = _Compiler.Execute("using de.ahzf.Blueprints.PropertyGraphs;");
-            var u4 = _Compiler.Execute("using de.ahzf.Blueprints.PropertyGraphs.InMemory.Mutable");
+        //    var u1 = _Compiler.Execute("using de.ahzf.Bragi;");
+        //    var u2 = _Compiler.Execute("using de.ahzf.Blueprints;");
+        //    var u3 = _Compiler.Execute("using de.ahzf.Blueprints.PropertyGraphs;");
+        //    var u4 = _Compiler.Execute("using de.ahzf.Blueprints.PropertyGraphs.InMemory.Mutable");
 
-            var _CSharpShell = new CSharpShell(_Evaluator, "BragiShell").Run();
+        //    var _CSharpShell = new CSharpShell(_Evaluator, "BragiShell").Run();
 
-            #endregion
+        //    #endregion
 
-        }
+        //}
 
-        #endregion
+        //#endregion
 
 
         /// <summary>
@@ -109,8 +109,8 @@ namespace de.ahzf.Bragi
         public static void Main(String[] Args)
         {
 
-            Vanaheimr.Start();
-            //MulticastDemo.Start();
+            //Vanaheimr.Start();
+            MulticastDemo.Start();
             //PartitionGraphs.Start();
             //TotallyFallen.Start();
             //NetworkingDemo.Start();

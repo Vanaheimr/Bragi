@@ -31,6 +31,7 @@ using de.ahzf.Blueprints.JurassicGraph;
 
 using de.ahzf.Hermod.Datastructures;
 using de.ahzf.Styx;
+using de.ahzf.Vanaheimr.Hermod.Multicast;
 
 #endregion
 
@@ -125,13 +126,13 @@ namespace de.ahzf.Bragi
             var graph1 = GraphFactory.CreateGenericPropertyGraph(1);
             var graph2 = GraphFactory.CreateGenericPropertyGraph(2);
 
-            var UDPMulticastSenderArrow   = new UDPMulticastSenderArrow<String>  ("224.100.0.1", 9001);
-            var UDPMulticastReceiverArrow = new UDPMulticastReceiverArrow<String>("224.100.0.1", 9001);
+            var UDPMulticastSenderArrow   = new UDPMulticastSenderArrow<String>  ("224.100.0.1", IPPort.Parse(9001));
+            var UDPMulticastReceiverArrow = new UDPMulticastReceiverArrow<String>("224.100.0.1", IPPort.Parse(9001));
 
             graph1.OnVertexAdded += (graph, vertex) =>
                 UDPMulticastSenderArrow.ReceiveMessage("Vertex '" + vertex.Id.ToString() + "' was added!");
 
-            UDPMulticastReceiverArrow.OnMessageAvailable += (sender, message) => { Console.WriteLine((sender as dynamic).Address + ": " + message); return true; };
+            UDPMulticastReceiverArrow.OnMessageAvailable += (sender, message) => { Console.WriteLine((sender as dynamic).Address + ":" + (sender as dynamic).Port + " => " + message); return true; };
 
             var v1 = graph1.AddVertex(v => v.SetProperty("graph", 1));
             var v2 = graph1.AddVertex(v => v.SetProperty("graph", 1));

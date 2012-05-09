@@ -155,14 +155,6 @@
       <Project>{8FB4A584-A2B3-49A7-B82F-0D50F698BB2A}</Project>
       <Name>WPFPipeControl</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\srclibs\MonoCompilerAsAService\MonoCompilerAsAService\MonoCompilerAsAService.csproj">
-      <Project>{903006A4-20EA-4825-BA0D-C28201B76D71}</Project>
-      <Name>MonoCompilerAsAService</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\..\srclibs\MonoCompilerAsAService\MonoCSharp\MonoCSharp.csproj">
-      <Project>{5D0636A5-5DD0-4942-B3A5-0B83E5E6FEE7}</Project>
-      <Name>MonoCSharp</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\..\Styx\Styx\Styx.csproj">
       <Project>{3949790D-8591-4101-9E4D-CE7A758E7409}</Project>
       <Name>Styx</Name>
