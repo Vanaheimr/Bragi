@@ -109,6 +109,10 @@
       <Project>{DC46B5EF-ECC5-465E-B1C4-85596343A03F}</Project>
       <Name>BifrostHTTPServer</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\Bifrost\BifrostMulticast\BifrostMulticast.csproj">
+      <Project>{9D9BA69A-115D-49EC-A1B2-11DDB0410FDD}</Project>
+      <Name>BifrostMulticast</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\Bifrost\Bifrost\Bifrost.csproj">
       <Project>{F6FA73F9-14B4-4033-AAFE-9BFA66BD98F5}</Project>
       <Name>Bifrost</Name>

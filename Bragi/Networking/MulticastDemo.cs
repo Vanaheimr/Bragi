@@ -22,16 +22,20 @@ using System.Linq;
 using System.Threading;
 using System.Collections.Generic;
 
+using de.ahzf.Styx;
+
 using de.ahzf.Blueprints;
 using de.ahzf.Blueprints.UnitTests;
-using de.ahzf.Bifrost.HTTP.Client;
 using de.ahzf.Blueprints.PropertyGraphs;
 using de.ahzf.Blueprints.PropertyGraphs.InMemory.Mutable;
 using de.ahzf.Blueprints.JurassicGraph;
 
 using de.ahzf.Hermod.Datastructures;
-using de.ahzf.Styx;
+using de.ahzf.Bifrost.HTTP.Client;
+
 using de.ahzf.Vanaheimr.Hermod.Multicast;
+using de.ahzf.Vanaheimr.Bifrost.Multicast;
+using de.ahzf.Vanaheimr.Balder;
 
 #endregion
 
@@ -127,15 +131,35 @@ namespace de.ahzf.Bragi
             var graph2 = GraphFactory.CreateGenericPropertyGraph(2);
 
             var UDPMulticastSenderArrow   = new UDPMulticastSenderArrow<String>  ("224.100.0.1", IPPort.Parse(9001));
+
+            var VertexSerializerArrow     = new VertexSerializerArrow<UInt64, Int64, String, String, Object,
+                                                                      UInt64, Int64, String, String, Object,
+                                                                      UInt64, Int64, String, String, Object,
+                                                                      UInt64, Int64, String, String, Object>(UDPMulticastSenderArrow);
+
+            var EdgeSerializerArrow       = new EdgeSerializerArrow  <UInt64, Int64, String, String, Object,
+                                                                      UInt64, Int64, String, String, Object,
+                                                                      UInt64, Int64, String, String, Object,
+                                                                      UInt64, Int64, String, String, Object>(UDPMulticastSenderArrow);
+
             var UDPMulticastReceiverArrow = new UDPMulticastReceiverArrow<String>("224.100.0.1", IPPort.Parse(9001));
 
+
             graph1.OnVertexAdded += (graph, vertex) =>
-                UDPMulticastSenderArrow.ReceiveMessage("Vertex '" + vertex.Id.ToString() + "' was added!");
+                VertexSerializerArrow.ReceiveMessage(graph, vertex);
+
+            graph1.OnEdgeAdded   += (graph, edge) =>
+                EdgeSerializerArrow.  ReceiveMessage(graph, edge);
 
             UDPMulticastReceiverArrow.OnMessageAvailable += (sender, message) => { Console.WriteLine((sender as dynamic).Address + ":" + (sender as dynamic).Port + " => " + message); return true; };
 
             var v1 = graph1.AddVertex(v => v.SetProperty("graph", 1));
             var v2 = graph1.AddVertex(v => v.SetProperty("graph", 1));
+            var v3 = graph1.AddVertex(v => v.SetProperty("graph", 1));
+            var v4 = graph1.AddVertex(v => v.SetProperty("graph", 1));
+
+            var e1 = graph1.AddEdge  (v1, "links", v2);
+            var e2 = graph1.AddEdge  (v2, "links", v3);
 
             while (true)
             {
