@@ -133,6 +133,10 @@
       <Project>{562AC94F-60EA-4911-8C62-684F02867783}</Project>
       <Name>PropertyGraphs</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\Blueprints.NET\TraversalGraphs\TraversalGraphs.csproj">
+      <Project>{F5CE7102-FE69-4D39-88B9-7FA3E8EE1C5B}</Project>
+      <Name>TraversalGraphs</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\Hermod\HermodMulticast\HermodMulticast.csproj">
       <Project>{18360D99-87C2-479C-AB52-55D0BCA9B000}</Project>
       <Name>HermodMulticast</Name>

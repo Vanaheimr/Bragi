@@ -110,9 +110,9 @@ namespace de.ahzf.Bragi
         {
 
             //Vanaheimr.Start();
-            MulticastDemo.Start();
+            //MulticastDemo.Start();
             //PartitionGraphs.Start();
-            //TotallyFallen.Start();
+            TotallyFallen.Start();
             //NetworkingDemo.Start();
             //TagExample.Start();
             //PolyfileReader.Start();

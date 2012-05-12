@@ -29,6 +29,7 @@ using de.ahzf.Blueprints;
 using de.ahzf.Illias.Commons;
 using de.ahzf.Blueprints.PropertyGraphs;
 using System.Diagnostics;
+using de.ahzf.Vanaheimr.Blueprints.TraversalGraphs;
 
 #endregion
 
@@ -148,51 +149,69 @@ namespace de.ahzf.Bragi
             //var Workload = _graph.Vertices().
             //               ToPartitions((UInt64) Math.Round((Double) _NumberOfVertices / (Double) _NumberOfConcurrentTasks));
 
+            Double TimeStamp1, TimeStamp2;
 
+            TimeStamp1 = _Stopwatch.Elapsed.TotalSeconds;
+            var TraversalGraph = new TraversalGraph(_graph, TraversalGraphType.Adjacencylist);
+            TimeStamp2 = _Stopwatch.Elapsed.TotalSeconds;
+
+            Console.WriteLine(Math.Round(TimeStamp2 - TimeStamp1, 6) + " secs to create the TraversalGraph.");
 
             #region Vertices.Out()
 
-            Console.WriteLine(Environment.NewLine + "Traversing all Vertices.Out()");
+            //Console.WriteLine(Environment.NewLine + "Traversing all Vertices.Out()");
 
-            var TimeStamp1 = _Stopwatch.Elapsed.TotalSeconds;
+            TimeStamp1 = _Stopwatch.Elapsed.TotalSeconds;
 
             _graph.Vertices().Out().ForEach(x => { });
 
-            var TimeStamp2 = _Stopwatch.Elapsed.TotalSeconds;
+            TimeStamp2 = _Stopwatch.Elapsed.TotalSeconds;
 
-            Parallel.ForEach(_graph.Vertices(), x => x.Out().ForEach(y => { }));
-            //_graph.Vertices().AsParallel().Out().ForEach(x => { });
+            //Parallel.ForEach(_graph.Vertices(), x => x.Out().ForEach(y => { }));
+            ////_graph.Vertices().AsParallel().Out().ForEach(x => { });
 
-            var TimeStamp3 = _Stopwatch.Elapsed.TotalSeconds;
+            //var TimeStamp3 = _Stopwatch.Elapsed.TotalSeconds;
 
+            Console.WriteLine(Math.Round(TimeStamp2 - TimeStamp1, 6) + " secs (single threaded)");
             Console.WriteLine(Math.Round(_NumberOfEdges / (TimeStamp2 - TimeStamp1)) + " traversals per second (single threaded)");
-            Console.WriteLine(Math.Round(_NumberOfEdges / (TimeStamp3 - TimeStamp2)) + " traversals per second (multi threaded)");
+            //Console.WriteLine(Math.Round(_NumberOfEdges / (TimeStamp3 - TimeStamp2)) + " traversals per second (multi threaded)");
 
+
+            TimeStamp1 = _Stopwatch.Elapsed.TotalSeconds;
+
+            _graph.Vertices().Out().ForEach(x => { });
+
+            TimeStamp2 = _Stopwatch.Elapsed.TotalSeconds;
+
+            Console.WriteLine(Math.Round(TimeStamp2 - TimeStamp1, 6) + " secs (single threaded)");
+            Console.WriteLine(Math.Round(_NumberOfEdges / (TimeStamp2 - TimeStamp1)) + " traversals per second (single threaded)");
+
+            
             #endregion
 
             #region Vertices.Out().Out()
 
-            Console.WriteLine(Environment.NewLine + "Traversing all Vertices.Out().Out()");
+            //Console.WriteLine(Environment.NewLine + "Traversing all Vertices.Out().Out()");
 
-            var TimeStamp4 = _Stopwatch.Elapsed.TotalSeconds;
+            //var TimeStamp4 = _Stopwatch.Elapsed.TotalSeconds;
 
-            _graph.Vertices().Out().Out().ForEach(x => { });
+            //_graph.Vertices().Out().Out().ForEach(x => { });
 
-            var TimeStamp5 = _Stopwatch.Elapsed.TotalSeconds;
+            //var TimeStamp5 = _Stopwatch.Elapsed.TotalSeconds;
 
-            Parallel.ForEach(_graph.Vertices(), x => x.Out().Out().ForEach(y => { }));
+            //Parallel.ForEach(_graph.Vertices(), x => x.Out().Out().ForEach(y => { }));
 
-            //_graph.Vertices().ForEach(x => x.OutDegree());
+            ////_graph.Vertices().ForEach(x => x.OutDegree());
 
-            //var a = from v
-            //        in _graph.Vertices()//.AsParallel()
-            //        select v.OutDegree();
+            ////var a = from v
+            ////        in _graph.Vertices()//.AsParallel()
+            ////        select v.OutDegree();
 
 
-            var TimeStamp6 = _Stopwatch.Elapsed.TotalSeconds;
+            //var TimeStamp6 = _Stopwatch.Elapsed.TotalSeconds;
 
-            Console.WriteLine(Math.Round((_NumberOfEdges^2) / (TimeStamp5 - TimeStamp4)) + " traversals per second (single threaded)");
-            Console.WriteLine(Math.Round((_NumberOfEdges^2) / (TimeStamp6 - TimeStamp5)) + " traversals per second (multi threaded)");
+            //Console.WriteLine(Math.Round((_NumberOfEdges^2) / (TimeStamp5 - TimeStamp4)) + " traversals per second (single threaded)");
+            //Console.WriteLine(Math.Round((_NumberOfEdges^2) / (TimeStamp6 - TimeStamp5)) + " traversals per second (multi threaded)");
 
             #endregion
 
