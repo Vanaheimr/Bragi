@@ -7,7 +7,7 @@
 *.krn.ctl
 *.psess
 */TestResult.xml
-*/obj
-*/bin
-*/*/obj
-*/*/bin
+*/[oO]bj
+*/[bB]in
+*/*/[oO]bj
+*/*/[bB]in

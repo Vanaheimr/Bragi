@@ -112,7 +112,7 @@ namespace de.ahzf.Bragi
             //Vanaheimr.Start();
             //MulticastDemo.Start();
             //PartitionGraphs.Start();
-            TotallyFallen.Start();
+            TraversalGraphs.Start();
             //NetworkingDemo.Start();
             //TagExample.Start();
             //PolyfileReader.Start();

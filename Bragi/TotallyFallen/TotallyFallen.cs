@@ -152,7 +152,7 @@ namespace de.ahzf.Bragi
             Double TimeStamp1, TimeStamp2;
 
             TimeStamp1 = _Stopwatch.Elapsed.TotalSeconds;
-            var TraversalGraph = new TraversalGraph(_graph, TraversalGraphType.Adjacencylist);
+            var TraversalGraph = new VertexVertex_MatrixListGraph(_graph);
             TimeStamp2 = _Stopwatch.Elapsed.TotalSeconds;
 
             Console.WriteLine(Math.Round(TimeStamp2 - TimeStamp1, 6) + " secs to create the TraversalGraph.");
