@@ -124,6 +124,11 @@ namespace de.ahzf.Bragi
         /// Networking
         /// </summary>
         public static readonly Keyword Networking               = new Keyword("Networking");
+        
+        /// <summary>
+        /// Multicast
+        /// </summary>
+        public static readonly Keyword Multicast                = new Keyword("Multicast");
 
         /// <summary>
         /// DistributedProcessing

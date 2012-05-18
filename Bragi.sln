@@ -105,7 +105,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AegirTilesClient", "..\Aegi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GEXFSharp", "..\Walkyr\GEXFSharp\GEXFSharp.csproj", "{2EA36174-FB21-474F-A8EB-33C7039B65DA}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "GraphIO", "GraphIO", "{5F974683-4EAD-4F3E-84E9-49BA33693729}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Walkyrs", "Walkyrs", "{5F974683-4EAD-4F3E-84E9-49BA33693729}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AegirTilesServer", "..\Aegir\AegirTilesServer\AegirTilesServer.csproj", "{0F37A34C-E6B7-4047-A5CC-6FD9A128208A}"
 EndProject
@@ -128,6 +128,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BifrostMulticast", "..\Bifrost\BifrostMulticast\BifrostMulticast.csproj", "{9D9BA69A-115D-49EC-A1B2-11DDB0410FDD}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TraversalGraphs", "..\Blueprints.NET\TraversalGraphs\TraversalGraphs.csproj", "{F5CE7102-FE69-4D39-88B9-7FA3E8EE1C5B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GraphML", "..\Walkyr\GraphML\GraphML.csproj", "{0E75BD4B-22A3-444D-8DA0-39FD33012C61}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -627,6 +629,16 @@ Global
 		{F5CE7102-FE69-4D39-88B9-7FA3E8EE1C5B}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{F5CE7102-FE69-4D39-88B9-7FA3E8EE1C5B}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{F5CE7102-FE69-4D39-88B9-7FA3E8EE1C5B}.Release|x86.ActiveCfg = Release|Any CPU
+		{0E75BD4B-22A3-444D-8DA0-39FD33012C61}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0E75BD4B-22A3-444D-8DA0-39FD33012C61}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0E75BD4B-22A3-444D-8DA0-39FD33012C61}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{0E75BD4B-22A3-444D-8DA0-39FD33012C61}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{0E75BD4B-22A3-444D-8DA0-39FD33012C61}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{0E75BD4B-22A3-444D-8DA0-39FD33012C61}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0E75BD4B-22A3-444D-8DA0-39FD33012C61}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0E75BD4B-22A3-444D-8DA0-39FD33012C61}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{0E75BD4B-22A3-444D-8DA0-39FD33012C61}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{0E75BD4B-22A3-444D-8DA0-39FD33012C61}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -691,5 +703,6 @@ Global
 		{9B109B9C-4B72-4BDB-B531-627D7E93011E} = {44E70614-A8EA-4FC9-9AD4-D58F17E9756B}
 		{2EA36174-FB21-474F-A8EB-33C7039B65DA} = {5F974683-4EAD-4F3E-84E9-49BA33693729}
 		{A3507C2E-1A82-4342-BD42-F544275D6959} = {5F974683-4EAD-4F3E-84E9-49BA33693729}
+		{0E75BD4B-22A3-444D-8DA0-39FD33012C61} = {5F974683-4EAD-4F3E-84E9-49BA33693729}
 	EndGlobalSection
 EndGlobal

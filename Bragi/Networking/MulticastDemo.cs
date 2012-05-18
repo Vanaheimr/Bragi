@@ -36,6 +36,7 @@ using de.ahzf.Bifrost.HTTP.Client;
 using de.ahzf.Vanaheimr.Hermod.Multicast;
 using de.ahzf.Vanaheimr.Bifrost.Multicast;
 using de.ahzf.Vanaheimr.Balder;
+using de.ahzf.Vanaheimr.Walkyr.GraphML;
 
 #endregion
 
@@ -43,7 +44,7 @@ namespace de.ahzf.Bragi
 {
 
     /// <summary>
-    /// A small demo for distributed graph processing.
+    /// A small demo for distributed graph processing using IP multicast.
     /// </summary>
     public class MulticastDemo : ITutorial
     {
@@ -74,6 +75,7 @@ namespace de.ahzf.Bragi
             {
                 return new List<Keyword>() {
                     Keyword.Networking,
+                    Keyword.Multicast,
                     Keyword.DistributedProcessing
                 };
             }
@@ -90,7 +92,7 @@ namespace de.ahzf.Bragi
         {
             get
             {
-                return "A small demo for distributed graph processing.";
+                return "A small demo for distributed graph processing using IP multicast.";
             }
         }
 
@@ -127,32 +129,38 @@ namespace de.ahzf.Bragi
         public void Run()
         {
 
+            // Create two independend graphs
             var graph1 = GraphFactory.CreateGenericPropertyGraph(1);
             var graph2 = GraphFactory.CreateGenericPropertyGraph(2);
 
-            var UDPMulticastSenderArrow   = new UDPMulticastSenderArrow<String>  ("224.100.0.1", IPPort.Parse(9001));
+
+            // Create an arrow sending all messages to UDP multicast
+            var UDPMulticastSenderArrow   = new UDPMulticastSenderArrow<String>("224.100.0.1", IPPort.Parse(9001));
+
+
 
             var VertexSerializerArrow     = new VertexSerializerArrow<UInt64, Int64, String, String, Object,
                                                                       UInt64, Int64, String, String, Object,
                                                                       UInt64, Int64, String, String, Object,
-                                                                      UInt64, Int64, String, String, Object>(UDPMulticastSenderArrow);
+                                                                      UInt64, Int64, String, String, Object>(graph1.GetGraphMLSerializer(), UDPMulticastSenderArrow);
 
             var EdgeSerializerArrow       = new EdgeSerializerArrow  <UInt64, Int64, String, String, Object,
                                                                       UInt64, Int64, String, String, Object,
                                                                       UInt64, Int64, String, String, Object,
-                                                                      UInt64, Int64, String, String, Object>(UDPMulticastSenderArrow);
+                                                                      UInt64, Int64, String, String, Object>(graph1.GetGraphMLSerializer(), UDPMulticastSenderArrow);
 
+
+            // Connect the vertex/edge added events to the serializers
+            graph1.OnVertexAdded += VertexSerializerArrow.ReceiveMessage;
+            graph1.OnEdgeAdded   +=   EdgeSerializerArrow.ReceiveMessage;
+
+
+            // Create an arrow receiving messages from UDP multicast
             var UDPMulticastReceiverArrow = new UDPMulticastReceiverArrow<String>("224.100.0.1", IPPort.Parse(9001));
-
-
-            graph1.OnVertexAdded += (graph, vertex) =>
-                VertexSerializerArrow.ReceiveMessage(graph, vertex);
-
-            graph1.OnEdgeAdded   += (graph, edge) =>
-                EdgeSerializerArrow.  ReceiveMessage(graph, edge);
-
             UDPMulticastReceiverArrow.OnMessageAvailable += (sender, message) => { Console.WriteLine((sender as dynamic).Address + ":" + (sender as dynamic).Port + " => " + message); return true; };
 
+
+            // Populate the graph
             var v1 = graph1.AddVertex(v => v.SetProperty("graph", 1));
             var v2 = graph1.AddVertex(v => v.SetProperty("graph", 1));
             var v3 = graph1.AddVertex(v => v.SetProperty("graph", 1));
