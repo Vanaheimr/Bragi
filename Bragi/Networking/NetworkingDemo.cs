@@ -27,7 +27,7 @@ using de.ahzf.Blueprints.UnitTests;
 using de.ahzf.Bifrost.HTTP.Client;
 using de.ahzf.Bifrost.HTTP.Server;
 using de.ahzf.Blueprints.PropertyGraphs;
-using de.ahzf.Blueprints.PropertyGraphs.InMemory.Mutable;
+using de.ahzf.Blueprints.PropertyGraphs.InMemory;
 using de.ahzf.Blueprints.JurassicGraph;
 
 using de.ahzf.Hermod.Datastructures;

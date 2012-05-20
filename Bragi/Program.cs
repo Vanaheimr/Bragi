@@ -91,7 +91,7 @@ namespace de.ahzf.Bragi
         //    var u1 = _Compiler.Execute("using de.ahzf.Bragi;");
         //    var u2 = _Compiler.Execute("using de.ahzf.Blueprints;");
         //    var u3 = _Compiler.Execute("using de.ahzf.Blueprints.PropertyGraphs;");
-        //    var u4 = _Compiler.Execute("using de.ahzf.Blueprints.PropertyGraphs.InMemory.Mutable");
+        //    var u4 = _Compiler.Execute("using de.ahzf.Blueprints.PropertyGraphs.InMemory");
 
         //    var _CSharpShell = new CSharpShell(_Evaluator, "BragiShell").Run();
 

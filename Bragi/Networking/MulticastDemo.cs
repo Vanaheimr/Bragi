@@ -27,7 +27,7 @@ using de.ahzf.Styx;
 using de.ahzf.Blueprints;
 using de.ahzf.Blueprints.UnitTests;
 using de.ahzf.Blueprints.PropertyGraphs;
-using de.ahzf.Blueprints.PropertyGraphs.InMemory.Mutable;
+using de.ahzf.Blueprints.PropertyGraphs.InMemory;
 using de.ahzf.Blueprints.JurassicGraph;
 
 using de.ahzf.Hermod.Datastructures;
@@ -37,6 +37,7 @@ using de.ahzf.Vanaheimr.Hermod.Multicast;
 using de.ahzf.Vanaheimr.Bifrost.Multicast;
 using de.ahzf.Vanaheimr.Balder;
 using de.ahzf.Vanaheimr.Walkyr.GraphML;
+using de.ahzf.Vanaheimr.Walkyr.GephiStreaming;
 
 #endregion
 
@@ -129,6 +130,8 @@ namespace de.ahzf.Bragi
         public void Run()
         {
 
+            // graph1 -> *SerializerArrow -> UDPMulticastSenderArrow ==[IP MULTICAST]=> UDPMulticastReceiverArrow -> -> graph2
+
             // Create two independend graphs
             var graph1 = GraphFactory.CreateGenericPropertyGraph(1);
             var graph2 = GraphFactory.CreateGenericPropertyGraph(2);
@@ -137,22 +140,15 @@ namespace de.ahzf.Bragi
             // Create an arrow sending all messages to UDP multicast
             var UDPMulticastSenderArrow   = new UDPMulticastSenderArrow<String>("224.100.0.1", IPPort.Parse(9001));
 
+            var GraphSerializer           = graph1.NewGraphMLSerializer(IncludePropertyTypes: true);
+            var VertexSerializerArrow     = GraphSerializer.NewVertexSerializerArrow(UDPMulticastSenderArrow);
+            var EdgeSerializerArrow       = GraphSerializer.NewEdgeSerializerArrow  (UDPMulticastSenderArrow);
+            var GraphSerializerArrow      = GraphSerializer.NewGraphSerializerArrow (UDPMulticastSenderArrow);
 
 
-            var VertexSerializerArrow     = new VertexSerializerArrow<UInt64, Int64, String, String, Object,
-                                                                      UInt64, Int64, String, String, Object,
-                                                                      UInt64, Int64, String, String, Object,
-                                                                      UInt64, Int64, String, String, Object>(graph1.GetGraphMLSerializer(), UDPMulticastSenderArrow);
-
-            var EdgeSerializerArrow       = new EdgeSerializerArrow  <UInt64, Int64, String, String, Object,
-                                                                      UInt64, Int64, String, String, Object,
-                                                                      UInt64, Int64, String, String, Object,
-                                                                      UInt64, Int64, String, String, Object>(graph1.GetGraphMLSerializer(), UDPMulticastSenderArrow);
-
-
-            // Connect the vertex/edge added events to the serializers
-            graph1.OnVertexAdded += VertexSerializerArrow.ReceiveMessage;
-            graph1.OnEdgeAdded   +=   EdgeSerializerArrow.ReceiveMessage;
+            // Connect the graph1 vertex/edge added events to the serializers
+            //graph1.OnVertexAdded += VertexSerializerArrow.ReceiveMessage;
+            //graph1.OnEdgeAdded   +=   EdgeSerializerArrow.ReceiveMessage;
 
 
             // Create an arrow receiving messages from UDP multicast
@@ -163,11 +159,13 @@ namespace de.ahzf.Bragi
             // Populate the graph
             var v1 = graph1.AddVertex(v => v.SetProperty("graph", 1));
             var v2 = graph1.AddVertex(v => v.SetProperty("graph", 1));
-            var v3 = graph1.AddVertex(v => v.SetProperty("graph", 1));
-            var v4 = graph1.AddVertex(v => v.SetProperty("graph", 1));
+            var v3 = graph1.AddVertex(v => v.SetProperty("graph", "1"));
+            var v4 = graph1.AddVertex(v => v.SetProperty("graph", "2"));
 
-            var e1 = graph1.AddEdge  (v1, "links", v2);
+            var e1 = graph1.AddEdge  (v1, "links", v2, e => e.SetProperty("weight", 0.34));
             var e2 = graph1.AddEdge  (v2, "links", v3);
+
+            GraphSerializerArrow.ReceiveMessage(graph1);
 
             while (true)
             {

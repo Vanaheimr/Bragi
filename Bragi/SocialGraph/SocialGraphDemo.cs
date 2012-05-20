@@ -25,7 +25,7 @@ using System.Collections.Generic;
 
 using de.ahzf.Blueprints;
 using de.ahzf.Blueprints.PropertyGraphs;
-using de.ahzf.Blueprints.PropertyGraphs.InMemory.Mutable;
+using de.ahzf.Blueprints.PropertyGraphs.InMemory;
 
 #endregion
 

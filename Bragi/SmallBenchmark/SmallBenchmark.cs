@@ -23,7 +23,7 @@ using System.Diagnostics;
 using System.Collections.Generic;
 
 using de.ahzf.Blueprints;
-using de.ahzf.Blueprints.PropertyGraphs.InMemory.Mutable;
+using de.ahzf.Blueprints.PropertyGraphs.InMemory;
 using de.ahzf.Blueprints.PropertyGraphs;
 
 #endregion
