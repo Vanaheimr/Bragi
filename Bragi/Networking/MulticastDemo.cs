@@ -153,7 +153,7 @@ namespace de.ahzf.Bragi
 
             // Create an arrow receiving messages from UDP multicast
             var UDPMulticastReceiverArrow = new UDPMulticastReceiverArrow<String>("224.100.0.1", IPPort.Parse(9001));
-            UDPMulticastReceiverArrow.OnMessageAvailable += (sender, message) => { Console.WriteLine((sender as dynamic).Address + ":" + (sender as dynamic).Port + " => " + message); return true; };
+            UDPMulticastReceiverArrow.OnMessageAvailable += (Sender, Message) => Console.WriteLine(Sender.Address + ":" + Sender.Port + " => " + Message);
 
 
             // Populate the graph

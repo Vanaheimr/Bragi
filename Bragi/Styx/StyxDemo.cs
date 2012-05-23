@@ -33,16 +33,14 @@ namespace de.ahzf.Bragi
     public class StyxDemo
     {
 
-        public static Boolean PrintMe_A(Object Sender, String MessageIn)
+        public static void PrintMe_A(Object Sender, String MessageIn)
         {
             Console.WriteLine("a" + MessageIn);
-            return true;
         }
 
-        public static Boolean PrintMe_B(Object Sender, String MessageIn)
+        public static void PrintMe_B(Object Sender, String MessageIn)
         {
             Console.WriteLine("b" + MessageIn);
-            return true;
         }
 
 
@@ -107,7 +105,7 @@ namespace de.ahzf.Bragi
             c.OnMessageAvailable += d.ReceiveMessage;
             d.OnMessageAvailable += e.ReceiveMessage;
             e.OnMessageAvailable += PrintMe_B;
-            e.OnMessageAvailable += (sender, message) => { Console.WriteLine("Incoming message: '" + message + "'!"); return true; };
+            e.OnMessageAvailable += (sender, message) => Console.WriteLine("Incoming message: '" + message + "'!");
 
             c.ReceiveMessage(new Object(), 1234);
 

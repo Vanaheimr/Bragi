@@ -130,7 +130,7 @@ namespace de.ahzf.Bragi
 
             Graph2.OnVertexAdded           += (graph, vertex)       => Console.WriteLine("Vertex #" + vertex.Id + " had been added to graph #" + graph.Id);
             PartitionGraph1.OnVertexAdded  += (graph, vertex)       => Console.WriteLine("Vertex #" + vertex.Id + " had been added to the partition graph");
-            PartitionGraph1.OnVertexAdding += (graph, vertex, vote) => { if (vertex.Id == 7) { Console.WriteLine("The vertex id '7' is not allowed!"); vote.Veto(); } };
+            PartitionGraph1.OnVertexAdding += (graph, vertex, vote) => { if (vertex.Id == 7) { Console.WriteLine("The vertex id '7' is not allowed!"); vote.Deny(); } };
 
             Graph1.AddVertex(1, "vertex", v => v.SetProperty("GraphId", 1));
             Graph2.AddVertex(2, "vertex", v => v.SetProperty("GraphId", 2));
