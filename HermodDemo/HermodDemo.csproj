@@ -5,18 +5,18 @@
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{5517F404-8C9F-488D-8E9D-2CBB2062ADFB}</ProjectGuid>
+    <ProjectGuid>{78895E9D-B229-476D-AAD0-6A5DB3182833}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>de.ahzf.Bragi</RootNamespace>
-    <AssemblyName>Bragi</AssemblyName>
+    <RootNamespace>HermodDemo</RootNamespace>
+    <AssemblyName>HermodDemo</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <TargetFrameworkProfile>
     </TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
+    <PlatformTarget>x86</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -24,7 +24,6 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>bin\Debug\Bragi.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
     <PlatformTarget>x86</PlatformTarget>
@@ -39,18 +38,18 @@
     <DebugSymbols>true</DebugSymbols>
     <OutputPath>bin\Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <DocumentationFile>bin\Debug\Bragi.xml</DocumentationFile>
     <DebugType>full</DebugType>
     <PlatformTarget>AnyCPU</PlatformTarget>
-    <CodeAnalysisLogFile>bin\Debug\Thor.exe.CodeAnalysisLog.xml</CodeAnalysisLogFile>
+    <CodeAnalysisLogFile>bin\Debug\HermodDemo.exe.CodeAnalysisLog.xml</CodeAnalysisLogFile>
     <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
     <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
     <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
     <CodeAnalysisRuleSetDirectories>;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\\Rule Sets</CodeAnalysisRuleSetDirectories>
-    <CodeAnalysisIgnoreBuiltInRuleSets>false</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisIgnoreBuiltInRuleSets>true</CodeAnalysisIgnoreBuiltInRuleSets>
     <CodeAnalysisRuleDirectories>;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\FxCop\\Rules</CodeAnalysisRuleDirectories>
-    <CodeAnalysisIgnoreBuiltInRules>false</CodeAnalysisIgnoreBuiltInRules>
+    <CodeAnalysisIgnoreBuiltInRules>true</CodeAnalysisIgnoreBuiltInRules>
+    <CodeAnalysisFailOnMissingRules>false</CodeAnalysisFailOnMissingRules>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
     <OutputPath>bin\Release\</OutputPath>
@@ -58,13 +57,16 @@
     <Optimize>true</Optimize>
     <DebugType>pdbonly</DebugType>
     <PlatformTarget>AnyCPU</PlatformTarget>
-    <CodeAnalysisLogFile>bin\Release\Bragi.exe.CodeAnalysisLog.xml</CodeAnalysisLogFile>
+    <CodeAnalysisLogFile>bin\Release\HermodDemo.exe.CodeAnalysisLog.xml</CodeAnalysisLogFile>
     <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
     <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
     <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
     <CodeAnalysisRuleSetDirectories>;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\\Rule Sets</CodeAnalysisRuleSetDirectories>
+    <CodeAnalysisIgnoreBuiltInRuleSets>true</CodeAnalysisIgnoreBuiltInRuleSets>
     <CodeAnalysisRuleDirectories>;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\FxCop\\Rules</CodeAnalysisRuleDirectories>
+    <CodeAnalysisIgnoreBuiltInRules>true</CodeAnalysisIgnoreBuiltInRules>
+    <CodeAnalysisFailOnMissingRules>false</CodeAnalysisFailOnMissingRules>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -76,72 +78,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ConcurrencyDemo\ConcurrencyDemo.cs" />
-    <Compile Include="TraversalGraphs\TraversalGraphs.cs" />
-    <Compile Include="Keywords.cs" />
-    <Compile Include="ITutorial.cs" />
-    <Compile Include="Networking\MulticastDemo.cs" />
-    <Compile Include="Networking\NetworkingDemo.cs" />
-    <Compile Include="PartitionGraphs\PartitionGraphs.cs" />
-    <Compile Include="Program.cs" />
+    <Compile Include="CustomTCPConnection.cs" />
+    <Compile Include="HermodDemo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="QuadStore\QuadStore.cs" />
-    <Compile Include="SmallBenchmark\SmallBenchmark.cs" />
-    <Compile Include="SocialGraph\SocialGraphDemo.cs" />
-    <Compile Include="SocialGraph\SocialGraphGenerator.cs" />
-    <Compile Include="Styx\StyxDemo.cs" />
-    <Compile Include="TagExample\TagExample.cs" />
-    <Compile Include="TotallyFallen\TotallyFallen.cs" />
-    <Compile Include="Vanaheimr\Vanaheimr.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="app.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\Aegir\Aegir\Aegir.csproj">
-      <Project>{4D8FFCCD-738D-41AA-A527-8CFDFE0A681D}</Project>
-      <Name>Aegir</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Balder\Balder\Balder.csproj">
-      <Project>{D2B4E7C7-0524-4DE5-9D62-2DE05682A74D}</Project>
-      <Name>Balder</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Bifrost\BifrostHTTPClient\BifrostHTTPClient.csproj">
-      <Project>{EB31E37B-FA75-44FD-9528-171C9E7C3C37}</Project>
-      <Name>BifrostHTTPClient</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Bifrost\BifrostHTTPServer\BifrostHTTPServer.csproj">
-      <Project>{DC46B5EF-ECC5-465E-B1C4-85596343A03F}</Project>
-      <Name>BifrostHTTPServer</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Bifrost\BifrostMulticast\BifrostMulticast.csproj">
-      <Project>{9D9BA69A-115D-49EC-A1B2-11DDB0410FDD}</Project>
-      <Name>BifrostMulticast</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Bifrost\Bifrost\Bifrost.csproj">
-      <Project>{F6FA73F9-14B4-4033-AAFE-9BFA66BD98F5}</Project>
-      <Name>Bifrost</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Blueprints.NET\BlueprintsTests\BlueprintsTests.csproj">
-      <Project>{7F4CE297-4A42-47A8-9A0A-74BA46B09891}</Project>
-      <Name>BlueprintsTests</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Blueprints.NET\Blueprints\Blueprints.csproj">
-      <Project>{47FA1E7C-8C47-493D-A371-91A15D53BC95}</Project>
-      <Name>Blueprints</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Blueprints.NET\JurassicGraphs\JurassicGraphs.csproj">
-      <Project>{B84C5392-CA7E-4F8A-A406-A55E31C1B04A}</Project>
-      <Name>JurassicGraphs</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Blueprints.NET\PropertyGraphs\PropertyGraphs.csproj">
-      <Project>{562AC94F-60EA-4911-8C62-684F02867783}</Project>
-      <Name>PropertyGraphs</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Blueprints.NET\TraversalGraphs\TraversalGraphs.csproj">
-      <Project>{F5CE7102-FE69-4D39-88B9-7FA3E8EE1C5B}</Project>
-      <Name>TraversalGraphs</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\Hermod\HermodHTTPClient\HermodHTTPClient.csproj">
       <Project>{0AB343E8-AA69-4685-9676-BFA27E418A20}</Project>
       <Name>HermodHTTPClient</Name>
@@ -158,6 +99,10 @@
       <Project>{18360D99-87C2-479C-AB52-55D0BCA9B000}</Project>
       <Name>HermodMulticast</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\Hermod\HermodTests\HermodTests.csproj">
+      <Project>{A39FCA19-7716-4A16-8449-D14B7251128A}</Project>
+      <Name>HermodTests</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\Hermod\Hermod\Hermod.csproj">
       <Project>{477EFD16-3627-4473-957D-44CA9A9DFB79}</Project>
       <Name>Hermod</Name>
@@ -166,30 +111,16 @@
       <Project>{16C85DF8-5DE6-4A9F-9FC7-7CA5B0440DF3}</Project>
       <Name>Commons</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\Illias\QuadStoreInterfaces\QuadStoreInterfaces.csproj">
-      <Project>{CFAB9833-4C11-40B9-B12F-0CBC511F90E9}</Project>
-      <Name>QuadStoreInterfaces</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Illias\QuadStore\QuadStore.csproj">
-      <Project>{5E78CBC4-181A-4479-A30C-DD4C1CEBE238}</Project>
-      <Name>QuadStore</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Styx\Styx\Styx.csproj">
-      <Project>{3949790D-8591-4101-9E4D-CE7A758E7409}</Project>
-      <Name>Styx</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Walkyr\GephiStreaming\GephiStreaming.csproj">
-      <Project>{F8316DF2-1C9E-4C5B-99D3-D1366CE8FAAC}</Project>
-      <Name>GephiStreaming</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Walkyr\GraphML\GraphML.csproj">
-      <Project>{0E75BD4B-22A3-444D-8DA0-39FD33012C61}</Project>
-      <Name>GraphML</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Walkyr\Walkyr\Walkyr.csproj">
-      <Project>{A3507C2E-1A82-4342-BD42-F544275D6959}</Project>
-      <Name>Walkyr</Name>
-    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="resources\robots.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="resources\humans.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
