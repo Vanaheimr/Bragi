@@ -8,7 +8,7 @@
     <ProjectGuid>{33785160-F99B-4BC4-8A58-BBFEFCA3F086}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>TutorialsWPF</RootNamespace>
+    <RootNamespace>de.ahzf.Vanaheimr.Bragi.TutorialsWPF</RootNamespace>
     <AssemblyName>TutorialsWPF</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <TargetFrameworkProfile>

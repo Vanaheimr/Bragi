@@ -22,14 +22,13 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Collections.Generic;
-
-using de.ahzf.Styx;
-using de.ahzf.Balder;
-using de.ahzf.Blueprints;
-using de.ahzf.Illias.Commons;
-using de.ahzf.Blueprints.PropertyGraphs;
 using System.Diagnostics;
+
+using de.ahzf.Illias.Commons;
+using de.ahzf.Vanaheimr.Styx;
+using de.ahzf.Vanaheimr.Balder;
 using de.ahzf.Vanaheimr.Blueprints.TraversalGraphs;
+using de.ahzf.Vanaheimr.Blueprints.InMemory;
 
 #endregion
 

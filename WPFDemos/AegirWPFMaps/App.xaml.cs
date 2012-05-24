@@ -21,7 +21,7 @@ using System.Windows;
 
 #endregion
 
-namespace MappingApplication
+namespace de.ahzf.Bragi.AegirWPFMaps
 {
 
     /// <summary>

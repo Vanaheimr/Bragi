@@ -8,7 +8,7 @@
     <ProjectGuid>{8025214F-573D-47E1-8B3C-59B3042A48F3}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>LokiWPFGraphs</RootNamespace>
+    <RootNamespace>de.ahzf.Vanaheimr.Bragi.LokiWPFGraphs</RootNamespace>
     <AssemblyName>LokiWPFGraphs</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <TargetFrameworkProfile>

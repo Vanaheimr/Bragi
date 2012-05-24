@@ -27,7 +27,7 @@ using de.ahzf.Vanaheimr.Aegir.Controls;
 
 #endregion
 
-namespace de.ahzf.Bragi.WPFDemos.AegirWPFMaps
+namespace de.ahzf.Bragi.AegirWPFMaps
 {
 
     /// <summary>

@@ -23,7 +23,7 @@ using System.Text;
 using System.Threading;
 using System.Collections.Generic;
 
-using de.ahzf.Styx;
+using de.ahzf.Vanaheimr.Styx;
 
 #endregion
 

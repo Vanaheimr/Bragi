@@ -19,9 +19,6 @@
 
 using System;
 
-using de.ahzf.Blueprints;
-using de.ahzf.Blueprints.PropertyGraphs;
-
 //using Mono;
 //using Mono.CSharp;
 //using RunCSharp;

@@ -23,7 +23,7 @@ using System.Collections.Generic;
 
 #endregion
 
-namespace de.ahzf.Bragi.WPFDemos.LokiWPFGraphs
+namespace de.ahzf.Vanaheimr.Bragi.LokiWPFGraphs
 {
 
     public class GraphProperties

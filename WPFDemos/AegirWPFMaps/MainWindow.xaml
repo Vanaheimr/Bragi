@@ -1,5 +1,5 @@
 ﻿<Window xmlns:Aegir = "clr-namespace:de.ahzf.Vanaheimr.Aegir.Controls;assembly=AegirMapControl"
-        x:Class     = "de.ahzf.Bragi.WPFDemos.AegirWPFMaps.MainWindow"
+        x:Class     = "de.ahzf.Bragi.AegirWPFMaps.MainWindow"
         xmlns       = "http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x     = "http://schemas.microsoft.com/winfx/2006/xaml"
         Title       = "Aegir WPF Maps"

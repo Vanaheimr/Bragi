@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace LokiWPFGraphs.Properties {
+namespace de.ahzf.Vanaheimr.Bragi.LokiWPFGraphs.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]

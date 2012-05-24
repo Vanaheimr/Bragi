@@ -5,7 +5,7 @@ using System.Data;
 using System.Linq;
 using System.Windows;
 
-namespace LokiWPFGraphs
+namespace de.ahzf.Vanaheimr.Bragi.LokiWPFGraphs
 {
     /// <summary>
     /// Interaction logic for App.xaml

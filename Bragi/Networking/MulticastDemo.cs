@@ -18,26 +18,17 @@
 #region Usings
 
 using System;
-using System.Linq;
 using System.Threading;
 using System.Collections.Generic;
 
-using de.ahzf.Styx;
-
-using de.ahzf.Blueprints;
-using de.ahzf.Blueprints.UnitTests;
-using de.ahzf.Blueprints.PropertyGraphs;
-using de.ahzf.Blueprints.PropertyGraphs.InMemory;
-using de.ahzf.Blueprints.JurassicGraph;
+using de.ahzf.Vanaheimr.Blueprints.InMemory;
 
 using de.ahzf.Hermod.Datastructures;
-using de.ahzf.Bifrost.HTTP.Client;
 
 using de.ahzf.Vanaheimr.Hermod.Multicast;
-using de.ahzf.Vanaheimr.Bifrost.Multicast;
 using de.ahzf.Vanaheimr.Balder;
 using de.ahzf.Vanaheimr.Walkyr.GraphML;
-using de.ahzf.Vanaheimr.Walkyr.GephiStreaming;
+
 
 #endregion
 

@@ -30,7 +30,7 @@ using System.Collections.ObjectModel;
 
 #endregion
 
-namespace TutorialsWPF
+namespace de.ahzf.Vanaheimr.Bragi.TutorialsWPF
 {
 
     /// <summary>

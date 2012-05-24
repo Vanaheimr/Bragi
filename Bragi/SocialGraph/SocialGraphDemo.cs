@@ -23,9 +23,8 @@ using System.Linq;
 using System.Diagnostics;
 using System.Collections.Generic;
 
-using de.ahzf.Blueprints;
-using de.ahzf.Blueprints.PropertyGraphs;
-using de.ahzf.Blueprints.PropertyGraphs.InMemory;
+using de.ahzf.Vanaheimr.Blueprints.InMemory;
+using de.ahzf.Vanaheimr.Blueprints;
 
 #endregion
 

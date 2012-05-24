@@ -5,7 +5,7 @@ using System.Data;
 using System.Linq;
 using System.Windows;
 
-namespace TutorialsWPF
+namespace de.ahzf.Vanaheimr.Bragi.TutorialsWPF
 {
     /// <summary>
     /// Interaction logic for App.xaml
