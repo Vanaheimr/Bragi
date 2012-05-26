@@ -23,8 +23,9 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Collections.Generic;
 
-using de.ahzf.Vanaheimr.Styx;
 using de.ahzf.Illias.Commons;
+using de.ahzf.Illias.Commons.Votes;
+using de.ahzf.Vanaheimr.Styx;
 using de.ahzf.Vanaheimr.Blueprints.InMemory;
 using de.ahzf.Vanaheimr.Blueprints;
 using System.Diagnostics;
@@ -127,9 +128,9 @@ namespace de.ahzf.Bragi
             var PartitionGraph1 = GraphFactory.CreatePartitionGraph(23UL, "Stack of graphs 1-5", Graph1, Graph2, Graph3, Graph4, Graph5);
             var PartitionGraph2 = Graph1.CreatePartitionGraph(42UL, "Stack of graphs 1-3", Graph2, Graph3);
 
-            Graph2.OnVertexAdded           += (graph, vertex)       => Console.WriteLine("Vertex #" + vertex.Id + " had been added to graph #" + graph.Id);
-            PartitionGraph1.OnVertexAdded  += (graph, vertex)       => Console.WriteLine("Vertex #" + vertex.Id + " had been added to the partition graph");
-            PartitionGraph1.OnVertexAdding += (graph, vertex, vote) => { if (vertex.Id == 7) { Console.WriteLine("The vertex id '7' is not allowed!"); vote.Deny(); } };
+            Graph2.OnVertexAddition.OnNotification          += (graph, vertex)       => Console.WriteLine("Vertex #" + vertex.Id + " had been added to graph #" + graph.Id);
+            PartitionGraph1.OnVertexAddition.OnNotification += (graph, vertex)       => Console.WriteLine("Vertex #" + vertex.Id + " had been added to the partition graph");
+            PartitionGraph1.OnVertexAddition.OnVoting       += (graph, vertex, vote) => { if (vertex.Id == 7) { Console.WriteLine("The vertex id '7' is not allowed!"); vote.Deny(); } };
 
             Graph1.AddVertex(1, "vertex", v => v.SetProperty("GraphId", 1));
             Graph2.AddVertex(2, "vertex", v => v.SetProperty("GraphId", 2));
@@ -143,19 +144,22 @@ namespace de.ahzf.Bragi
             Console.WriteLine(PartitionGraph1.NumberOfVertices());
             Console.WriteLine(PartitionGraph1.NumberOfVertices(v => v.Id != 3));
 
-            var v1a = PartitionGraph1.VertexById(1);
-            var v2a = PartitionGraph1.VertexById(2);
-            var v3a = PartitionGraph1.VertexById(3);
-            var v4a = PartitionGraph1.VertexById(4);
-            var v5a = PartitionGraph1.VertexById(5);
-            var v6a = PartitionGraph1.VertexById(6);
+            var v1a = PartitionGraph1.VertexById(1);    // valid
+            var v2a = PartitionGraph1.VertexById(2);    // valid
+            var v3a = PartitionGraph1.VertexById(3);    // valid
+            var v4a = PartitionGraph1.VertexById(4);    // valid
+            var v5a = PartitionGraph1.VertexById(5);    // valid
+            var v6a = PartitionGraph1.VertexById(6);    // valid
+            var v7x =          Graph1.VertexById(7);    // null
+            var v7a = PartitionGraph1.VertexById(7);    // null
 
-            var v1b = PartitionGraph2.VertexById(1);
-            var v2b = PartitionGraph2.VertexById(2);
-            var v3b = PartitionGraph2.VertexById(3);
-            var v4b = PartitionGraph2.VertexById(4);
-            var v5b = PartitionGraph2.VertexById(5);
-            var v6b = PartitionGraph2.VertexById(6);
+            var v1b = PartitionGraph2.VertexById(1);    // valid
+            var v2b = PartitionGraph2.VertexById(2);    // valid
+            var v3b = PartitionGraph2.VertexById(3);    // valid
+            var v4b = PartitionGraph2.VertexById(4);    // null
+            var v5b = PartitionGraph2.VertexById(5);    // null
+            var v6b = PartitionGraph2.VertexById(6);    // valid
+            var v7b = PartitionGraph2.VertexById(7);    // null
 
         }
 

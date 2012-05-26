@@ -106,9 +106,10 @@ namespace de.ahzf.Bragi
         public static void Main(String[] Args)
         {
 
+            //NotificationsDemo.Start();
             //Vanaheimr.Start();
-            MulticastDemo.Start();
-            //PartitionGraphs.Start();
+            //MulticastDemo.Start();
+            PartitionGraphs.Start();
             //TraversalGraphs.Start();
             //NetworkingDemo.Start();
             //TagExample.Start();
