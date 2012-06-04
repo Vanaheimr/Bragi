@@ -79,40 +79,40 @@ namespace de.ahzf.Bragi.AegirWPFMaps
 
             #region Add some features
 
-            var feature1a = _FeatureLayer.AddFeature("ahzf",     50.932253, 11.625075,   5,   5, Colors.Red);
-            var feature1b = _HeatmapLayer.AddFeature("ahzf",     50.932253, 11.625075, 150, 150, Colors.Red);
+            var feature1a = _FeatureLayer.AddFeature("ahzf",     new Latitude(50.932253), new Longitude(11.625075),   5,   5, Colors.Red);
+            var feature1b = _HeatmapLayer.AddFeature("ahzf",     new Latitude(50.932253), new Longitude(11.625075), 150, 150, Colors.Red);
 
-            var feature2a = _FeatureLayer.AddFeature("Hannover", 52.373922,  9.743500,   5,   5, Colors.Red);
-            var feature2b = _HeatmapLayer.AddFeature("Hannover", 52.373922,  9.743500, 100, 100, Colors.Blue);
+            var feature2a = _FeatureLayer.AddFeature("Hannover", new Latitude(52.373922), new Longitude( 9.743500),   5,   5, Colors.Red);
+            var feature2b = _HeatmapLayer.AddFeature("Hannover", new Latitude(52.373922), new Longitude( 9.743500), 100, 100, Colors.Blue);
 
-            var feature3a = _FeatureLayer.AddFeature("c-base",   52.513191, 13.420057,   5,   5, Colors.Red);
-            var feature3b = _HeatmapLayer.AddFeature("c-base",   52.513191, 13.420057, 150, 150, Colors.Yellow);
+            var feature3a = _FeatureLayer.AddFeature("c-base",   new Latitude(52.513191), new Longitude(13.420057),   5,   5, Colors.Red);
+            var feature3b = _HeatmapLayer.AddFeature("c-base",   new Latitude(52.513191), new Longitude(13.420057), 150, 150, Colors.Yellow);
 
-            var feature4a = _FeatureLayer.AddFeature("malmö",    55.618691, 12.999573,   5,   5, Colors.Red);
-            var feature4b = _HeatmapLayer.AddFeature("malmö",    55.618691, 12.999573,  50,  50, Colors.Brown);
+            var feature4a = _FeatureLayer.AddFeature("malmö",    new Latitude(55.618691), new Longitude(12.999573),   5,   5, Colors.Red);
+            var feature4b = _HeatmapLayer.AddFeature("malmö",    new Latitude(55.618691), new Longitude(12.999573),  50,  50, Colors.Brown);
 
             #endregion
 
-            var efeature1a = _EditFeatureLayer.AddFeature("dfh", 40.032253, 7.025075, 5, 5, Colors.Green);
+            var efeature1a = _EditFeatureLayer.AddFeature("dfh", new Latitude(40.032253), new Longitude(7.025075), 5, 5, Colors.Green);
 
             #region Add some shapes
 
-            var feature5a = _ShapeLayerEG.AddShape(new Thueringen            (Color.FromArgb(0xFF, 0xE0, 0xC0, 0x60), 1, Color.FromArgb(0x77, 0xE0, 0x60, 0x30)));
+            //var feature5a = _ShapeLayerEG.AddShape(new Thueringen            (Color.FromArgb(0xFF, 0xE0, 0xC0, 0x60), 1, Color.FromArgb(0x77, 0xE0, 0x60, 0x30)));
             var feature5b = _ShapeLayerWG.AddShape(new Bayern                (Color.FromArgb(0xFF, 0xE0, 0xC0, 0x60), 1, Color.FromArgb(0x77, 0xE0, 0x60, 0x30)));
-            var feature5c = _ShapeLayerWG.AddShape(new BadenWuerttemberg     (Color.FromArgb(0xFF, 0xE0, 0xC0, 0x60), 1, Color.FromArgb(0x77, 0xE0, 0x60, 0x30)));
-            var feature5d = _ShapeLayerWG.AddShape(new Hessen                (Color.FromArgb(0xFF, 0xE0, 0xC0, 0x60), 1, Color.FromArgb(0x77, 0xE0, 0x60, 0x30)));
-            var feature5e = _ShapeLayerWG.AddShape(new Saarland              (Color.FromArgb(0xFF, 0xE0, 0xC0, 0x60), 1, Color.FromArgb(0x77, 0xE0, 0x60, 0x30)));
-            var feature5f = _ShapeLayerEG.AddShape(new Sachsen               (Color.FromArgb(0xFF, 0xE0, 0xC0, 0x60), 1, Color.FromArgb(0x77, 0xE0, 0x60, 0x30)));
-            var feature5g = _ShapeLayerEG.AddShape(new SachsenAnhalt         (Color.FromArgb(0xFF, 0xE0, 0xC0, 0x60), 1, Color.FromArgb(0x77, 0xE0, 0x60, 0x30)));
-            var feature5h = _ShapeLayerEG.AddShape(new Berlin                (Color.FromArgb(0xFF, 0xE0, 0xC0, 0x60), 1, Color.FromArgb(0x77, 0xE0, 0x60, 0x30)));
-            var feature5i = _ShapeLayerWG.AddShape(new NordrheinWestfalen    (Color.FromArgb(0xFF, 0xE0, 0xC0, 0x60), 1, Color.FromArgb(0x77, 0xE0, 0x60, 0x30)));
-            var feature5j = _ShapeLayerWG.AddShape(new RheinlandPfalz        (Color.FromArgb(0xFF, 0xE0, 0xC0, 0x60), 1, Color.FromArgb(0x77, 0xE0, 0x60, 0x30)));
-            var feature5k = _ShapeLayerWG.AddShape(new Hamburg               (Color.FromArgb(0xFF, 0xE0, 0xC0, 0x60), 1, Color.FromArgb(0x77, 0xE0, 0x60, 0x30)));
-            var feature5l = _ShapeLayerWG.AddShape(new Bremen                (Color.FromArgb(0xFF, 0xE0, 0xC0, 0x60), 1, Color.FromArgb(0x77, 0xE0, 0x60, 0x30)));
-            var feature5m = _ShapeLayerEG.AddShape(new Brandenburg           (Color.FromArgb(0xFF, 0xE0, 0xC0, 0x60), 1, Color.FromArgb(0x77, 0xE0, 0x60, 0x30)));
-            var feature5n = _ShapeLayerWG.AddShape(new SchleswigHolstein     (Color.FromArgb(0xFF, 0xE0, 0xC0, 0x60), 1, Color.FromArgb(0x77, 0xE0, 0x60, 0x30)));
-            var feature5o = _ShapeLayerEG.AddShape(new MecklenburgVorpommern (Color.FromArgb(0xFF, 0xE0, 0xC0, 0x60), 1, Color.FromArgb(0x77, 0xE0, 0x60, 0x30)));
-            var feature5p = _ShapeLayerWG.AddShape(new Niedersachsen         (Color.FromArgb(0xFF, 0xE0, 0xC0, 0x60), 1, Color.FromArgb(0x77, 0xE0, 0x60, 0x30)));
+            //var feature5c = _ShapeLayerWG.AddShape(new BadenWuerttemberg     (Color.FromArgb(0xFF, 0xE0, 0xC0, 0x60), 1, Color.FromArgb(0x77, 0xE0, 0x60, 0x30)));
+            //var feature5d = _ShapeLayerWG.AddShape(new Hessen                (Color.FromArgb(0xFF, 0xE0, 0xC0, 0x60), 1, Color.FromArgb(0x77, 0xE0, 0x60, 0x30)));
+            //var feature5e = _ShapeLayerWG.AddShape(new Saarland              (Color.FromArgb(0xFF, 0xE0, 0xC0, 0x60), 1, Color.FromArgb(0x77, 0xE0, 0x60, 0x30)));
+            //var feature5f = _ShapeLayerEG.AddShape(new Sachsen               (Color.FromArgb(0xFF, 0xE0, 0xC0, 0x60), 1, Color.FromArgb(0x77, 0xE0, 0x60, 0x30)));
+            //var feature5g = _ShapeLayerEG.AddShape(new SachsenAnhalt         (Color.FromArgb(0xFF, 0xE0, 0xC0, 0x60), 1, Color.FromArgb(0x77, 0xE0, 0x60, 0x30)));
+            //var feature5h = _ShapeLayerEG.AddShape(new Berlin                (Color.FromArgb(0xFF, 0xE0, 0xC0, 0x60), 1, Color.FromArgb(0x77, 0xE0, 0x60, 0x30)));
+            //var feature5i = _ShapeLayerWG.AddShape(new NordrheinWestfalen    (Color.FromArgb(0xFF, 0xE0, 0xC0, 0x60), 1, Color.FromArgb(0x77, 0xE0, 0x60, 0x30)));
+            //var feature5j = _ShapeLayerWG.AddShape(new RheinlandPfalz        (Color.FromArgb(0xFF, 0xE0, 0xC0, 0x60), 1, Color.FromArgb(0x77, 0xE0, 0x60, 0x30)));
+            //var feature5k = _ShapeLayerWG.AddShape(new Hamburg               (Color.FromArgb(0xFF, 0xE0, 0xC0, 0x60), 1, Color.FromArgb(0x77, 0xE0, 0x60, 0x30)));
+            //var feature5l = _ShapeLayerWG.AddShape(new Bremen                (Color.FromArgb(0xFF, 0xE0, 0xC0, 0x60), 1, Color.FromArgb(0x77, 0xE0, 0x60, 0x30)));
+            //var feature5m = _ShapeLayerEG.AddShape(new Brandenburg           (Color.FromArgb(0xFF, 0xE0, 0xC0, 0x60), 1, Color.FromArgb(0x77, 0xE0, 0x60, 0x30)));
+            //var feature5n = _ShapeLayerWG.AddShape(new SchleswigHolstein     (Color.FromArgb(0xFF, 0xE0, 0xC0, 0x60), 1, Color.FromArgb(0x77, 0xE0, 0x60, 0x30)));
+            //var feature5o = _ShapeLayerEG.AddShape(new MecklenburgVorpommern (Color.FromArgb(0xFF, 0xE0, 0xC0, 0x60), 1, Color.FromArgb(0x77, 0xE0, 0x60, 0x30)));
+            //var feature5p = _ShapeLayerWG.AddShape(new Niedersachsen         (Color.FromArgb(0xFF, 0xE0, 0xC0, 0x60), 1, Color.FromArgb(0x77, 0xE0, 0x60, 0x30)));
 
             #endregion
 
@@ -169,7 +169,7 @@ namespace de.ahzf.Bragi.AegirWPFMaps
                                 if (Double.TryParse(TextArray[2] + "," + TextArray[3], out longitude))
                                     if (longitude >= -90 && longitude <= 90)
                                     {
-                                        MapControl.MoveTo(latitude, longitude);
+                                        MapControl.MoveTo(new Latitude(latitude), new Longitude(longitude));
                                         MapSearchBox_LostFocus(this, null);
                                         MapControl.Focus();
                                         return;
@@ -196,7 +196,7 @@ namespace de.ahzf.Bragi.AegirWPFMaps
                                             if (zoomlevel >= de.ahzf.Vanaheimr.Aegir.Controls.MapControl.MinZoomLevel &&
                                                 zoomlevel <= de.ahzf.Vanaheimr.Aegir.Controls.MapControl.MaxZoomLevel)
                                             {
-                                                MapControl.ZoomTo(latitude, longitude, zoomlevel);
+                                                MapControl.ZoomTo(new Latitude(latitude), new Longitude(longitude), zoomlevel);
                                                 MapSearchBox_LostFocus(this, null);
                                                 MapControl.Focus();
                                                 return;
