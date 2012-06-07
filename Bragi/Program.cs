@@ -106,10 +106,9 @@ namespace de.ahzf.Bragi
         public static void Main(String[] Args)
         {
 
-            GeoGraphs.Start();
             //NotificationsDemo.Start();
             //Vanaheimr.Start();
-            //MulticastDemo.Start();
+            MulticastDemo.Start();
             //PartitionGraphs.Start();
             //TraversalGraphs.Start();
             //NetworkingDemo.Start();

@@ -77,7 +77,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ConcurrencyDemo\ConcurrencyDemo.cs" />
-    <Compile Include="GeoGraphs\GeoGraphs.cs" />
     <Compile Include="Notifications\Notifications.cs" />
     <Compile Include="TraversalGraphs\TraversalGraphs.cs" />
     <Compile Include="Keywords.cs" />
