@@ -150,12 +150,12 @@ namespace de.ahzf.Bragi
             
             Console.WriteLine("TaskIds / NumberOfVertices: ");
             _graph.Vertices().
-                   Prop("Task").
+                   P("Task").
                    DuplicateFilter().
                    ForEach(TaskId => {
                        if (TaskId != null)
                        Console.WriteLine("Task '" + TaskId + "' added " +
-                                         _graph.NumberOfVertices(v => v.Contains("Task", TaskId)) +
+                                         //_graph.NumberOfVertices(v => v.Contains("Task", TaskId)) +
                                          " vertices."
                                         );
                                      }

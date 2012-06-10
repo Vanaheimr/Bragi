@@ -120,7 +120,7 @@ namespace de.ahzf.Bragi
 
             var g1 = GenericDemoGraphFactory.Create();
 
-            var g2 = g1.AsReadOnlyGraph();
+            var g2 = g1.AsReadOnly();
 
 
             using (var GraphServer = new BifrostHTTPServer(new IPPort(8080))

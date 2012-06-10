@@ -188,15 +188,15 @@ namespace de.ahzf.Bragi
             Console.WriteLine(Stopwatch.Elapsed.TotalMilliseconds + "ms");
 
 
-            IGenericPropertyVertex<UInt64, Int64, String, String, Object,
-                                   UInt64, Int64, String, String, Object,
-                                   UInt64, Int64, String, String, Object,
-                                   UInt64, Int64, String, String, Object> ActualVertex = null;
+            IReadOnlyGenericPropertyVertex<UInt64, Int64, String, String, Object,
+                                           UInt64, Int64, String, String, Object,
+                                           UInt64, Int64, String, String, Object,
+                                           UInt64, Int64, String, String, Object> ActualVertex = null;
 
-            var Vertices = new IGenericPropertyVertex<UInt64, Int64, String, String, Object,
-                                                      UInt64, Int64, String, String, Object,
-                                                      UInt64, Int64, String, String, Object,
-                                                      UInt64, Int64, String, String, Object>[NumberOfUsers + 1];
+            var Vertices = new IReadOnlyGenericPropertyVertex<UInt64, Int64, String, String, Object,
+                                                              UInt64, Int64, String, String, Object,
+                                                              UInt64, Int64, String, String, Object,
+                                                              UInt64, Int64, String, String, Object>[NumberOfUsers + 1];
 
             var Measurements = new Double[NumberOfIterations];
             

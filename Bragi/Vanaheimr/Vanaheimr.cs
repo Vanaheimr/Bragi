@@ -120,15 +120,15 @@ namespace de.ahzf.Bragi
         }
 
 
-        private IGenericPropertyVertex<String, Int64, String, String, Object,
-                                       String, Int64, String, String, Object,
-                                       String, Int64, String, String, Object,
-                                       String, Int64, String, String, Object>
+        private IReadOnlyGenericPropertyVertex<String, Int64, String, String, Object,
+                                               String, Int64, String, String, Object,
+                                               String, Int64, String, String, Object,
+                                               String, Int64, String, String, Object>
 
-            AddProject(String Name, params IGenericPropertyVertex<String, Int64, String, String, Object,
-                                                                  String, Int64, String, String, Object,
-                                                                  String, Int64, String, String, Object,
-                                                                  String, Int64, String, String, Object>[] Uses)
+            AddProject(String Name, params IReadOnlyGenericPropertyVertex<String, Int64, String, String, Object,
+                                                                          String, Int64, String, String, Object,
+                                                                          String, Int64, String, String, Object,
+                                                                          String, Int64, String, String, Object>[] Uses)
 
         {
 
