@@ -106,6 +106,7 @@ namespace de.ahzf.Bragi
         public static void Main(String[] Args)
         {
 
+            Transactions.Start();
             //NotificationsDemo.Start();
             //Vanaheimr.Start();
             MulticastDemo.Start();
