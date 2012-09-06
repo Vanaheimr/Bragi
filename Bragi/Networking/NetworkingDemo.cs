@@ -25,7 +25,7 @@ using System.Collections.Generic;
 using de.ahzf.Illias.Commons.Collections;
 using de.ahzf.Vanaheimr.Blueprints;
 using de.ahzf.Vanaheimr.Blueprints.UnitTests;
-using de.ahzf.Hermod.Datastructures;
+using de.ahzf.Vanaheimr.Hermod.Datastructures;
 using de.ahzf.Vanaheimr.Bifrost.HTTP.Server;
 
 #endregion

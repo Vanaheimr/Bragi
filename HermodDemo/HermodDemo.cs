@@ -22,15 +22,15 @@ using System.Linq;
 using System.Threading;
 
 using de.ahzf.Illias.Commons;
-using de.ahzf.Hermod.HTTP;
-using de.ahzf.Hermod.Sockets.TCP;
-using de.ahzf.Hermod.Datastructures;
-using de.ahzf.Hermod.Sockets.UDP;
-using de.ahzf.Hermod.UnitTests;
+using de.ahzf.Vanaheimr.Hermod.HTTP;
+using de.ahzf.Vanaheimr.Hermod.Sockets.TCP;
+using de.ahzf.Vanaheimr.Hermod.Datastructures;
+using de.ahzf.Vanaheimr.Hermod.Sockets.UDP;
+using de.ahzf.Vanaheimr.Hermod.UnitTests;
 
 #endregion
 
-namespace de.ahzf.Hermod.Demo
+namespace de.ahzf.Vanaheimr.Hermod.Demo
 {
 
     //                _Response = Environment.NewLine + "<<<<<<<<<<<<<<<<header>>>>>>>>>>>>>>>>" + Environment.NewLine + HeaderBytes.ToUTF8String() + Environment.NewLine + "<<<<<<<<<<<<<<<<body>>>>>>>>>>>>>>>>" + Environment.NewLine + ResponseBody.ToUTF8String() + Environment.NewLine + "<<<<<<<<<<<<<<<<end>>>>>>>>>>>>>>>>";

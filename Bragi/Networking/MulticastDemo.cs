@@ -23,7 +23,7 @@ using System.Collections.Generic;
 
 using de.ahzf.Vanaheimr.Blueprints.InMemory;
 
-using de.ahzf.Hermod.Datastructures;
+using de.ahzf.Vanaheimr.Hermod.Datastructures;
 
 using de.ahzf.Vanaheimr.Hermod.Multicast;
 using de.ahzf.Vanaheimr.Balder;

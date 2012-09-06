@@ -20,13 +20,13 @@
 using System;
 using System.Net.Sockets;
 
-using de.ahzf.Hermod.Sockets.TCP;
-using de.ahzf.Hermod.Datastructures;
-using de.ahzf.Hermod.HTTP;
+using de.ahzf.Vanaheimr.Hermod.Sockets.TCP;
+using de.ahzf.Vanaheimr.Hermod.Datastructures;
+using de.ahzf.Vanaheimr.Hermod.HTTP;
 
 #endregion
 
-namespace de.ahzf.Hermod.Demo
+namespace de.ahzf.Vanaheimr.Hermod.Demo
 {
 
     /// <summary>
