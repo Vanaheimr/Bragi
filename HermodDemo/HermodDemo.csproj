@@ -83,31 +83,31 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Hermod\HermodHTTPClient\HermodHTTPClient.csproj">
+    <ProjectReference Include="..\Vanaheimr\Hermod\HermodHTTPClient\HermodHTTPClient.csproj">
       <Project>{0AB343E8-AA69-4685-9676-BFA27E418A20}</Project>
       <Name>HermodHTTPClient</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\Hermod\HermodHTTPServer\HermodHTTPServer.csproj">
+    <ProjectReference Include="..\Vanaheimr\Hermod\HermodHTTPServer\HermodHTTPServer.csproj">
       <Project>{9CE48DAC-0512-4947-942B-EF4C42C52B47}</Project>
       <Name>HermodHTTPServer</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\Hermod\HermodHTTP\HermodHTTP.csproj">
+    <ProjectReference Include="..\Vanaheimr\Hermod\HermodHTTP\HermodHTTP.csproj">
       <Project>{9A00BD39-1385-4DB4-8F38-363BB947CCB4}</Project>
       <Name>HermodHTTP</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\Hermod\HermodMulticast\HermodMulticast.csproj">
+    <ProjectReference Include="..\Vanaheimr\Hermod\HermodMulticast\HermodMulticast.csproj">
       <Project>{18360D99-87C2-479C-AB52-55D0BCA9B000}</Project>
       <Name>HermodMulticast</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\Hermod\HermodTests\HermodTests.csproj">
-      <Project>{A39FCA19-7716-4A16-8449-D14B7251128A}</Project>
+    <ProjectReference Include="..\Vanaheimr\Hermod\HermodTests\HermodTests.csproj">
+      <Project>{8F1ABEE3-CFF0-47D6-A872-25112A74CCDA}</Project>
       <Name>HermodTests</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\Hermod\Hermod\Hermod.csproj">
+    <ProjectReference Include="..\Vanaheimr\Hermod\Hermod\Hermod.csproj">
       <Project>{477EFD16-3627-4473-957D-44CA9A9DFB79}</Project>
       <Name>Hermod</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\Illias\Commons\Commons.csproj">
+    <ProjectReference Include="..\Vanaheimr\Illias\Commons\Commons.csproj">
       <Project>{16C85DF8-5DE6-4A9F-9FC7-7CA5B0440DF3}</Project>
       <Name>Commons</Name>
     </ProjectReference>

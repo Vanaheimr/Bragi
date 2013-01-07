@@ -1,0 +1,43 @@
+[submodule "Vanaheimr/Blueprints.NET"]
+	path = Vanaheimr/Blueprints.NET
+	url = git://github.com/Vanaheimr/Blueprints.NET.git
+[submodule "Vanaheimr/Illias"]
+	path = Vanaheimr/Illias
+	url = git://github.com/Vanaheimr/Illias.git
+[submodule "Vanaheimr/Styx"]
+	path = Vanaheimr/Styx
+	url = git://github.com/Vanaheimr/Styx.git
+[submodule "Vanaheimr/Bifrost"]
+	path = Vanaheimr/Bifrost
+	url = git://github.com/Vanaheimr/Bifrost.git
+[submodule "Vanaheimr/Hermod"]
+	path = Vanaheimr/Hermod
+	url = git://github.com/Vanaheimr/Hermod.git
+[submodule "Vanaheimr/Eunomia"]
+	path = Vanaheimr/Eunomia
+	url = git://github.com/Vanaheimr/Eunomia.git
+[submodule "Vanaheimr/Walkyr"]
+	path = Vanaheimr/Walkyr
+	url = git://github.com/Vanaheimr/Walkyr.git
+[submodule "Vanaheimr/Aegir"]
+	path = Vanaheimr/Aegir
+	url = git://github.com/Vanaheimr/Aegir.git
+[submodule "Vanaheimr/Loki"]
+	path = Vanaheimr/Loki
+	url = git://github.com/Vanaheimr/Loki.git
+[submodule "Vanaheimr/Vanir"]
+	path = Vanaheimr/Vanir
+	url = git://github.com/Vanaheimr/Vanir.git
+[submodule "Vanaheimr/Glyphe"]
+	path = Vanaheimr/Glyphe
+	url = git://github.com/Vanaheimr/Glyphe.git
+[submodule "Vanaheimr/Jurassic"]
+	path = Vanaheimr/Jurassic
+	url = git://github.com/Vanaheimr/Jurassic.git
+	
+[submodule "Vanaheimr/Duron"]
+	path = Vanaheimr/Duron
+	url = git://github.com/Vanaheimr/Duron.git
+[submodule "Vanaheimr/Alviss"]
+	path = Vanaheimr/Alviss
+	url = git://github.com/Vanaheimr/Alviss.git

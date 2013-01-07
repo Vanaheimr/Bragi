@@ -129,19 +129,19 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\Aegir\AegirMapControl\AegirMapControl.csproj">
+    <ProjectReference Include="..\..\Vanaheimr\Aegir\AegirMapControl\AegirMapControl.csproj">
       <Project>{17FC3955-9E9E-4358-A666-A3CD53CCDCE5}</Project>
       <Name>AegirMapControl</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\Aegir\Aegir\Aegir.csproj">
+    <ProjectReference Include="..\..\Vanaheimr\Aegir\Aegir\Aegir.csproj">
       <Project>{4D8FFCCD-738D-41AA-A527-8CFDFE0A681D}</Project>
       <Name>Aegir</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\Hermod\Hermod\Hermod.csproj">
+    <ProjectReference Include="..\..\Vanaheimr\Hermod\Hermod\Hermod.csproj">
       <Project>{477EFD16-3627-4473-957D-44CA9A9DFB79}</Project>
       <Name>Hermod</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\Illias\Commons\Commons.csproj">
+    <ProjectReference Include="..\..\Vanaheimr\Illias\Commons\Commons.csproj">
       <Project>{16C85DF8-5DE6-4A9F-9FC7-7CA5B0440DF3}</Project>
       <Name>Commons</Name>
     </ProjectReference>

@@ -26,6 +26,7 @@ using de.ahzf.Vanaheimr.Hermod.HTTP;
 using de.ahzf.Vanaheimr.Hermod.Sockets.TCP;
 using de.ahzf.Vanaheimr.Hermod.Datastructures;
 using de.ahzf.Vanaheimr.Hermod.Sockets.UDP;
+using de.ahzf.Vanaheimr.Hermod;
 using de.ahzf.Vanaheimr.Hermod.UnitTests;
 
 #endregion
