@@ -161,8 +161,8 @@ namespace de.ahzf.Bragi
         {
 
             // Create a new simple property graph
-            var graph       = GraphFactory.CreateGenericPropertyGraph2("TagExample");
-            var graphSchema = graph.GetGraphSchema("TagExampleSchema", "The graph schema of the TagExample graph");
+            var graph       = GraphFactory.CreateGenericPropertyGraph_WithStringIds("TagExample");
+            var graphSchema = graph.StrictSchemaGraph("TagExampleSchema", "The graph schema of the TagExample graph");
 
 
             // Add tags

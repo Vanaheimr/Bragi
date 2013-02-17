@@ -146,7 +146,7 @@ namespace de.ahzf.Bragi
         public void Run()
         {
 
-            graph = GraphFactory.CreateGenericPropertyGraph2("Vanaheimr graph processing stack");
+            graph = GraphFactory.CreateGenericPropertyGraph_WithStringIds("Vanaheimr graph processing stack");
 
             var IlliasCommons  = AddProject("Illias Commons");
             var Eunomia        = AddProject("Eunomia");

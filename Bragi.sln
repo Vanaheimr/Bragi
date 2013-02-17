@@ -137,6 +137,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlvissTests", "Vanaheimr\Al
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GraphML", "Vanaheimr\Walkyr\GraphML\GraphML\GraphML.csproj", "{0E75BD4B-22A3-444D-8DA0-39FD33012C61}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "N3", "Vanaheimr\Walkyr\N3\N3.csproj", "{D807CAC3-EF54-4D6F-886E-04BDE4DA0D78}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -687,6 +689,16 @@ Global
 		{0E75BD4B-22A3-444D-8DA0-39FD33012C61}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{0E75BD4B-22A3-444D-8DA0-39FD33012C61}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{0E75BD4B-22A3-444D-8DA0-39FD33012C61}.Release|x86.ActiveCfg = Release|Any CPU
+		{D807CAC3-EF54-4D6F-886E-04BDE4DA0D78}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D807CAC3-EF54-4D6F-886E-04BDE4DA0D78}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D807CAC3-EF54-4D6F-886E-04BDE4DA0D78}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{D807CAC3-EF54-4D6F-886E-04BDE4DA0D78}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{D807CAC3-EF54-4D6F-886E-04BDE4DA0D78}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{D807CAC3-EF54-4D6F-886E-04BDE4DA0D78}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D807CAC3-EF54-4D6F-886E-04BDE4DA0D78}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D807CAC3-EF54-4D6F-886E-04BDE4DA0D78}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{D807CAC3-EF54-4D6F-886E-04BDE4DA0D78}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{D807CAC3-EF54-4D6F-886E-04BDE4DA0D78}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -754,5 +766,6 @@ Global
 		{33785160-F99B-4BC4-8A58-BBFEFCA3F086} = {E7CC0E31-79E8-4168-872B-89A80E5C1BA2}
 		{A3507C2E-1A82-4342-BD42-F544275D6959} = {5F974683-4EAD-4F3E-84E9-49BA33693729}
 		{0E75BD4B-22A3-444D-8DA0-39FD33012C61} = {5F974683-4EAD-4F3E-84E9-49BA33693729}
+		{D807CAC3-EF54-4D6F-886E-04BDE4DA0D78} = {5F974683-4EAD-4F3E-84E9-49BA33693729}
 	EndGlobalSection
 EndGlobal

@@ -21,6 +21,8 @@ using System;
 using System.Windows;
 using System.Collections.Generic;
 
+using de.ahzf.Vanaheimr.Blueprints;
+
 #endregion
 
 namespace de.ahzf.Vanaheimr.Bragi.LokiWPFGraphs

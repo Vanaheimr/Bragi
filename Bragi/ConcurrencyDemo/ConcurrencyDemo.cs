@@ -26,6 +26,7 @@ using System.Diagnostics;
 
 using de.ahzf.Illias.Commons;
 using de.ahzf.Vanaheimr.Styx;
+using de.ahzf.Vanaheimr.Blueprints;
 using de.ahzf.Vanaheimr.Blueprints.InMemory;
 using de.ahzf.Vanaheimr.Balder;
 

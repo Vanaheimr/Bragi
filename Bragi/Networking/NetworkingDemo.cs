@@ -118,7 +118,7 @@ namespace de.ahzf.Bragi
         public void Run()
         {
 
-            var g1 = GenericDemoGraphFactory.Create();
+            var g1 = DemoGraphFactory.Create();
 
             var g2 = g1.AsReadOnly();
 
@@ -131,12 +131,12 @@ namespace de.ahzf.Bragi
 
                 GraphServer.CreateNewGraph("123", "The first graph");
 
-                var graph = GraphServer.CreateNewGraph("512", "demo graph", g => g.SetProperty(GraphDBOntology.Description().Suffix, "the second graph").SetProperty("hello", "world!").SetProperty("graphs", "are cool!"));
+                var graph = GraphServer.CreateNewGraph("512", "demo graph", g => g.SetProperty(GraphDBOntology.Description.Suffix, "the second graph").SetProperty("hello", "world!").SetProperty("graphs", "are cool!"));
                 var a1 = graph.ContainsKey("hello");
                 var a2 = graph.ContainsKey("world!");
                 var a3 = graph.ContainsKey("graphs");
                 var a4 = graph.ContainsKey("are cool!");
-                var a5 = graph.ContainsKey(GraphDBOntology.Description().Suffix);
+                var a5 = graph.ContainsKey(GraphDBOntology.Description.Suffix);
 
                 var c1 = graph.ContainsValue(123UL);
 

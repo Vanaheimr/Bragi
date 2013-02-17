@@ -325,7 +325,7 @@ namespace de.ahzf.Bragi
             NGraph.Shoot("Hello edge!");
 
 
-            var graph       = GraphFactory.CreateGenericPropertyGraph2("graph01");
+            var graph       = GraphFactory.CreateGenericPropertyGraph_WithStringIds("graph01");
             var graphlogger = new GraphLogger<String, Int64, String, String, Object,
                                               String, Int64, String, String, Object,
                                               String, Int64, String, String, Object,
