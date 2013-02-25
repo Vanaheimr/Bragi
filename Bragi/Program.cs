@@ -106,10 +106,11 @@ namespace de.ahzf.Bragi
         public static void Main(String[] Args)
         {
 
-            Transactions.Start();
+            Sigma_js.Start();
+            //Transactions.Start();
             //NotificationsDemo.Start();
             //Vanaheimr.Start();
-            MulticastDemo.Start();
+            //MulticastDemo.Start();
             //PartitionGraphs.Start();
             //TraversalGraphs.Start();
             //NetworkingDemo.Start();

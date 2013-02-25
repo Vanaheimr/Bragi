@@ -95,6 +95,7 @@
     <Compile Include="TagExample\TagExample.cs" />
     <Compile Include="TotallyFallen\TotallyFallen.cs" />
     <Compile Include="Vanaheimr\Vanaheimr.cs" />
+    <Compile Include="Visualization\HTML5\Sigma.js.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
@@ -180,6 +181,10 @@
       <Project>{16C85DF8-5DE6-4A9F-9FC7-7CA5B0440DF3}</Project>
       <Name>Commons</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Vanaheimr\Loki\LokiHTML5\LokiHTML5.csproj">
+      <Project>{1555E073-7EE7-4A62-852C-8D498184D43D}</Project>
+      <Name>LokiHTML5</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Vanaheimr\Styx\Styx\Styx.csproj">
       <Project>{3949790D-8591-4101-9E4D-CE7A758E7409}</Project>
       <Name>Styx</Name>
@@ -193,6 +198,7 @@
       <Name>Walkyr</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

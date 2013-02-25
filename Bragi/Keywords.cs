@@ -116,6 +116,16 @@ namespace de.ahzf.Bragi
         public static readonly Keyword Parallel                 = new Keyword("Parallel");
 
         /// <summary>
+        /// Visualization
+        /// </summary>
+        public static readonly Keyword Visualization            = new Keyword("Visualization");
+
+        /// <summary>
+        /// HTML5
+        /// </summary>
+        public static readonly Keyword HTML5                    = new Keyword("HTML5");
+
+        /// <summary>
         /// MultiCores
         /// </summary>
         public static readonly Keyword MultiCores               = new Keyword("MultiCores");
