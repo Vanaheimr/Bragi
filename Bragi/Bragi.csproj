@@ -113,6 +113,10 @@
       <Project>{CFAB9833-4C11-40B9-B12F-0CBC511F90E9}</Project>
       <Name>Alviss</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Vanaheimr\Blueprints.NET\BalderTests\BalderTests.csproj">
+      <Project>{4BF95036-986A-47EE-B48E-CF8C2B0E7841}</Project>
+      <Name>BalderTests</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Vanaheimr\Blueprints.NET\Balder\Balder.csproj">
       <Project>{D2B4E7C7-0524-4DE5-9D62-2DE05682A74D}</Project>
       <Name>Balder</Name>
@@ -132,10 +136,6 @@
     <ProjectReference Include="..\Vanaheimr\Bifrost\Bifrost\Bifrost.csproj">
       <Project>{F6FA73F9-14B4-4033-AAFE-9BFA66BD98F5}</Project>
       <Name>Bifrost</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Vanaheimr\Blueprints.NET\BlueprintsTests\BlueprintsTests.csproj">
-      <Project>{7F4CE297-4A42-47A8-9A0A-74BA46B09891}</Project>
-      <Name>BlueprintsTests</Name>
     </ProjectReference>
     <ProjectReference Include="..\Vanaheimr\Blueprints.NET\Blueprints\Blueprints.csproj">
       <Project>{47FA1E7C-8C47-493D-A371-91A15D53BC95}</Project>

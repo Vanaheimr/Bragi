@@ -1,5 +1,5 @@
 ﻿/*
- * Copyright (c) 2010-2012, Achim 'ahzf' Friedland <achim@graph-database.org>
+ * Copyright (c) 2010-2013, Achim 'ahzf' Friedland <achim@graph-database.org>
  * This file is part of Bragi <http://www.github.com/Vanaheimr/Bragi>
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -24,9 +24,9 @@ using System.Collections.Generic;
 
 using de.ahzf.Illias.Commons.Collections;
 using de.ahzf.Vanaheimr.Blueprints;
-using de.ahzf.Vanaheimr.Blueprints.UnitTests;
 using de.ahzf.Vanaheimr.Hermod.Datastructures;
 using de.ahzf.Vanaheimr.Bifrost.HTTP.Server;
+using de.ahzf.Vanaheimr.Balder.UnitTests;
 
 #endregion
 

@@ -1,5 +1,5 @@
 ﻿/*
- * Copyright (c) 2010-2012, Achim 'ahzf' Friedland <achim@graph-database.org>
+ * Copyright (c) 2010-2013, Achim 'ahzf' Friedland <achim@graph-database.org>
  * This file is part of Bragi <http://www.github.com/Vanaheimr/Bragi>
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,6 +18,7 @@
 #region Usings
 
 using System;
+using de.ahzf.Vanaheimr.Balder.UnitTests;
 
 //using Mono;
 //using Mono.CSharp;
@@ -105,6 +106,8 @@ namespace de.ahzf.Bragi
         /// <param name="Args">Arguments...</param>
         public static void Main(String[] Args)
         {
+
+            //var aa = DemoGraphFactory.CreateSimpleGraph();
 
             Sigma_js.Start();
             //Transactions.Start();
