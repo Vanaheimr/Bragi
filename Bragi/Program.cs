@@ -110,7 +110,8 @@ namespace de.ahzf.Bragi
         public static void Main(String[] Args)
         {
 
-            //var aa = DemoGraphFactory.CreateSimpleGraph();
+            var _graph = DemoGraphFactory.CreateSimpleGraph();
+            var a = _graph.VerticesById("Alice", null, "Bob").Ids().AggString();
 
             Sigma_js.Start();
             //Transactions.Start();
