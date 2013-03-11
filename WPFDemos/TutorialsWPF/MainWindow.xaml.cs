@@ -26,13 +26,13 @@ using System.Windows.Documents;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
-using de.ahzf.Vanaheimr.Blueprints;
+using eu.Vanaheimr.Balder;
 
 //using RunCSharp;
 
 #endregion
 
-namespace de.ahzf.Vanaheimr.Bragi.TutorialsWPF
+namespace eu.Vanaheimr.Bragi.TutorialsWPF
 {
 
     /// <summary>

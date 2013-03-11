@@ -21,11 +21,11 @@ using System;
 using System.Windows;
 using System.Collections.Generic;
 
-using de.ahzf.Vanaheimr.Blueprints;
+using eu.Vanaheimr.Balder;
 
 #endregion
 
-namespace de.ahzf.Vanaheimr.Bragi.LokiWPFGraphs
+namespace eu.Vanaheimr.Bragi.LokiWPFGraphs
 {
 
     public class GraphProperties

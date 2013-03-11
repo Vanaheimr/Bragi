@@ -24,12 +24,12 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Collections.Generic;
 
-using de.ahzf.Illias.Commons;
-using de.ahzf.Vanaheimr.Styx;
-using de.ahzf.Vanaheimr.Blueprints;
-using de.ahzf.Vanaheimr.Blueprints.InMemory;
-using de.ahzf.Vanaheimr.Blueprints.TraversalGraphs;
-using de.ahzf.Vanaheimr.Balder;
+using eu.Vanaheimr.Illias.Commons;
+using eu.Vanaheimr.Styx;
+using eu.Vanaheimr.Balder;
+using eu.Vanaheimr.Balder.InMemory;
+using eu.Vanaheimr.Balder.DependentGraphs;
+using eu.Vanaheimr.Balder;
 
 #endregion
 
@@ -152,7 +152,7 @@ namespace de.ahzf.Bragi
             Double TimeStamp1, TimeStamp2;
 
             TimeStamp1 = _Stopwatch.Elapsed.TotalSeconds;
-            var TraversalGraph = new VertexVertex_MatrixListGraph(_graph);
+            var TraversalGraph = _graph.ToAdjacencyMatrixGraph<int>();
             TimeStamp2 = _Stopwatch.Elapsed.TotalSeconds;
 
             Console.WriteLine(Math.Round(TimeStamp2 - TimeStamp1, 6) + " secs to create the TraversalGraph.");

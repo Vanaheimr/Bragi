@@ -1,7 +1,7 @@
-﻿<Window x:Class="de.ahzf.Vanaheimr.Bragi.LokiWPFGraphs.MainWindow"
+﻿<Window x:Class="eu.Vanaheimr.Bragi.LokiWPFGraphs.MainWindow"
         xmlns      = "http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x    = "http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:Loki = "clr-namespace:de.ahzf.Vanaheimr.Loki;assembly=GraphCanvas"
+        xmlns:Loki = "clr-namespace:eu.Vanaheimr.Loki;assembly=GraphCanvas"
         Title      = "Loki WPF Graph Visualization"
         Height     = "550"
         Width      = "900">

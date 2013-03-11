@@ -23,11 +23,11 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Collections.Generic;
 
-using de.ahzf.Vanaheimr.Styx;
-using de.ahzf.Illias.Commons;
+using eu.Vanaheimr.Styx;
+using eu.Vanaheimr.Illias.Commons;
 using System.Diagnostics;
-using de.ahzf.Vanaheimr.Blueprints.InMemory;
-using de.ahzf.Vanaheimr.Blueprints;
+using eu.Vanaheimr.Balder.InMemory;
+using eu.Vanaheimr.Balder;
 
 #endregion
 

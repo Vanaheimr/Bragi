@@ -21,8 +21,8 @@
 using System;
 using System.Linq;
 
-using de.ahzf.Vanaheimr.Hermod.HTTP;
-using de.ahzf.Vanaheimr.Hermod.Datastructures;
+using eu.Vanaheimr.Hermod.HTTP;
+using eu.Vanaheimr.Hermod.Datastructures;
 using System.Threading.Tasks;
 using System.Threading;
 using de.ahzf.Bragi;

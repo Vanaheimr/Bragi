@@ -22,8 +22,8 @@ using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
 
-using de.ahzf.Vanaheimr.Aegir;
-using de.ahzf.Vanaheimr.Aegir.Controls;
+using eu.Vanaheimr.Aegir;
+using eu.Vanaheimr.Aegir.Controls;
 
 #endregion
 
@@ -193,8 +193,8 @@ namespace de.ahzf.Bragi.AegirWPFMaps
                                     if (longitude >= -90 && longitude <= 90)
 
                                         if (UInt32.TryParse(TextArray[4], out zoomlevel))
-                                            if (zoomlevel >= de.ahzf.Vanaheimr.Aegir.Controls.MapControl.MinZoomLevel &&
-                                                zoomlevel <= de.ahzf.Vanaheimr.Aegir.Controls.MapControl.MaxZoomLevel)
+                                            if (zoomlevel >= eu.Vanaheimr.Aegir.Controls.MapControl.MinZoomLevel &&
+                                                zoomlevel <= eu.Vanaheimr.Aegir.Controls.MapControl.MaxZoomLevel)
                                             {
                                                 MapControl.ZoomTo(new Latitude(latitude), new Longitude(longitude), zoomlevel);
                                                 MapSearchBox_LostFocus(this, null);

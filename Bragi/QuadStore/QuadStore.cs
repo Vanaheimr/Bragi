@@ -20,7 +20,7 @@
 using System;
 using System.Collections.Generic;
 
-using de.ahzf.Vanaheimr.Alviss;
+using eu.Vanaheimr.Alviss;
 
 #endregion
 

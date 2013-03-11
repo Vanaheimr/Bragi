@@ -21,12 +21,12 @@ using System;
 using System.Linq;
 using System.Collections.Generic;
 
-using de.ahzf.Vanaheimr.Blueprints;
-using de.ahzf.Vanaheimr.Blueprints.Schema;
-using de.ahzf.Vanaheimr.Balder;
-using de.ahzf.Vanaheimr.Balder.UnitTests;
-using de.ahzf.Vanaheimr.Balder.DependentGraphs;
-using de.ahzf.Vanaheimr.Blueprints.InMemory;
+using eu.Vanaheimr.Balder;
+using eu.Vanaheimr.Balder.Schema;
+using eu.Vanaheimr.Balder;
+using eu.Vanaheimr.Balder.UnitTests;
+using eu.Vanaheimr.Balder.DependentGraphs;
+using eu.Vanaheimr.Balder.InMemory;
 
 //using Mono;
 //using Mono.CSharp;
@@ -96,8 +96,8 @@ namespace de.ahzf.Bragi
 
         //    var u1 = _Compiler.Execute("using de.ahzf.Bragi;");
         //    var u2 = _Compiler.Execute("using de.ahzf.Blueprints;");
-        //    var u3 = _Compiler.Execute("using de.ahzf.Blueprints.PropertyGraphs;");
-        //    var u4 = _Compiler.Execute("using de.ahzf.Blueprints.PropertyGraphs.InMemory");
+        //    var u3 = _Compiler.Execute("using de.ahzf.Balder.PropertyGraphs;");
+        //    var u4 = _Compiler.Execute("using de.ahzf.Balder.PropertyGraphs.InMemory");
 
         //    var _CSharpShell = new CSharpShell(_Evaluator, "BragiShell").Run();
 

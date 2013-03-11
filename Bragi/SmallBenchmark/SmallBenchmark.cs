@@ -21,8 +21,8 @@ using System;
 using System.Linq;
 using System.Diagnostics;
 using System.Collections.Generic;
-using de.ahzf.Vanaheimr.Blueprints.InMemory;
-using de.ahzf.Vanaheimr.Blueprints;
+using eu.Vanaheimr.Balder.InMemory;
+using eu.Vanaheimr.Balder;
 
 #endregion
 

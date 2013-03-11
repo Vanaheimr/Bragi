@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace de.ahzf.Vanaheimr.Bragi.TutorialsWPF.Properties {
+namespace eu.Vanaheimr.Bragi.TutorialsWPF.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]

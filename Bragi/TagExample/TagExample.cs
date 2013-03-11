@@ -21,12 +21,12 @@ using System;
 using System.Linq;
 using System.Collections.Generic;
 
-using de.ahzf.Illias.Commons;
-using de.ahzf.Illias.Commons.Collections;
-using de.ahzf.Vanaheimr.Blueprints.InMemory;
-using de.ahzf.Vanaheimr.Blueprints;
-using de.ahzf.Vanaheimr.Balder;
-using de.ahzf.Vanaheimr.Blueprints.Schema;
+using eu.Vanaheimr.Illias.Commons;
+using eu.Vanaheimr.Illias.Commons.Collections;
+using eu.Vanaheimr.Balder.InMemory;
+using eu.Vanaheimr.Balder;
+using eu.Vanaheimr.Balder;
+using eu.Vanaheimr.Balder.Schema;
 
 #endregion
 

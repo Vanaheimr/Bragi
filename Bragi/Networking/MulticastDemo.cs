@@ -21,17 +21,17 @@ using System;
 using System.Threading;
 using System.Collections.Generic;
 
-using de.ahzf.Vanaheimr.Styx;
+using eu.Vanaheimr.Styx;
 
-using de.ahzf.Vanaheimr.Balder;
-using de.ahzf.Vanaheimr.Blueprints;
-using de.ahzf.Vanaheimr.Blueprints.InMemory;
+using eu.Vanaheimr.Balder;
+using eu.Vanaheimr.Balder;
+using eu.Vanaheimr.Balder.InMemory;
 
-using de.ahzf.Vanaheimr.Hermod.Datastructures;
-using de.ahzf.Vanaheimr.Hermod.Multicast;
+using eu.Vanaheimr.Hermod.Datastructures;
+using eu.Vanaheimr.Hermod.Multicast;
 
-using de.ahzf.Vanaheimr.Walkyr;
-using de.ahzf.Vanaheimr.Walkyr.GraphML;
+using eu.Vanaheimr.Walkyr;
+using eu.Vanaheimr.Walkyr.GraphML;
 
 #endregion
 

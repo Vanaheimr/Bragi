@@ -22,11 +22,13 @@ using System.Linq;
 using System.Threading;
 using System.Collections.Generic;
 
-using de.ahzf.Illias.Commons.Collections;
-using de.ahzf.Vanaheimr.Blueprints;
-using de.ahzf.Vanaheimr.Hermod.Datastructures;
-using de.ahzf.Vanaheimr.Bifrost.HTTP.Server;
-using de.ahzf.Vanaheimr.Balder.UnitTests;
+using eu.Vanaheimr.Illias.Commons.Collections;
+using eu.Vanaheimr.Balder;
+using eu.Vanaheimr.Hermod.Datastructures;
+using eu.Vanaheimr.Bifrost.HTTP.Server;
+using eu.Vanaheimr.Balder.UnitTests;
+using eu.Vanaheimr.Balder.InMemory;
+using eu.Vanaheimr.Illias.Commons.Votes;
 
 #endregion
 
@@ -123,7 +125,7 @@ namespace de.ahzf.Bragi
             var g2 = g1.AsReadOnly();
 
 
-            using (var GraphServer = new BifrostHTTPServer(new IPPort(8080))
+            using (var GraphServer = new BifrostHTTPServer(new IPPort(8080), (id, descr, init) => GraphFactory.CreateGenericPropertyGraph_WithStringIds(id, descr, () => new VetoVote(), init))
             {
                 ServerName = "Vanaheimr Bifrost HTTP Server v0.1"
             } as IBifrostHTTPServer)

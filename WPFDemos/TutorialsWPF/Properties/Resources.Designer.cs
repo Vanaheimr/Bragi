@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace de.ahzf.Vanaheimr.Bragi.TutorialsWPF.Properties {
+namespace eu.Vanaheimr.Bragi.TutorialsWPF.Properties {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace de.ahzf.Vanaheimr.Bragi.TutorialsWPF.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("de.ahzf.Vanaheimr.Bragi.TutorialsWPF.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("eu.Vanaheimr.Bragi.TutorialsWPF.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;

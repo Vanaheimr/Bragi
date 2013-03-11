@@ -21,17 +21,17 @@ using System;
 using System.Linq;
 using System.Threading;
 
-using de.ahzf.Illias.Commons;
-using de.ahzf.Vanaheimr.Hermod.HTTP;
-using de.ahzf.Vanaheimr.Hermod.Sockets.TCP;
-using de.ahzf.Vanaheimr.Hermod.Datastructures;
-using de.ahzf.Vanaheimr.Hermod.Sockets.UDP;
-using de.ahzf.Vanaheimr.Hermod;
-using de.ahzf.Vanaheimr.Hermod.UnitTests;
+using eu.Vanaheimr.Illias.Commons;
+using eu.Vanaheimr.Hermod.HTTP;
+using eu.Vanaheimr.Hermod.Sockets.TCP;
+using eu.Vanaheimr.Hermod.Datastructures;
+using eu.Vanaheimr.Hermod.Sockets.UDP;
+using eu.Vanaheimr.Hermod;
+using eu.Vanaheimr.Hermod.UnitTests;
 
 #endregion
 
-namespace de.ahzf.Vanaheimr.Hermod.Demo
+namespace eu.Vanaheimr.Hermod.Demo
 {
 
     //                _Response = Environment.NewLine + "<<<<<<<<<<<<<<<<header>>>>>>>>>>>>>>>>" + Environment.NewLine + HeaderBytes.ToUTF8String() + Environment.NewLine + "<<<<<<<<<<<<<<<<body>>>>>>>>>>>>>>>>" + Environment.NewLine + ResponseBody.ToUTF8String() + Environment.NewLine + "<<<<<<<<<<<<<<<<end>>>>>>>>>>>>>>>>";
