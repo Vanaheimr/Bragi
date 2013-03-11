@@ -22,8 +22,11 @@ using System.Linq;
 using System.Collections.Generic;
 
 using de.ahzf.Vanaheimr.Blueprints;
+using de.ahzf.Vanaheimr.Blueprints.Schema;
 using de.ahzf.Vanaheimr.Balder;
 using de.ahzf.Vanaheimr.Balder.UnitTests;
+using de.ahzf.Vanaheimr.Balder.DependentGraphs;
+using de.ahzf.Vanaheimr.Blueprints.InMemory;
 
 //using Mono;
 //using Mono.CSharp;
@@ -113,10 +116,8 @@ namespace de.ahzf.Bragi
         {
 
             var _graph = DemoGraphFactory.CreateSimpleGraph();
-            var a = _graph.VerticesById("Alice", null, "Bob").Ids().AggString();
-            var b = _graph.EdgesById().Any();
-            var c = _graph.VerticesById(null).Any();
-            var d = _graph.VerticesByLabel(null).Any();
+
+            var a = _graph.VertexById("Alice").OutE().Ids().ToArray();
 
             Sigma_js.Start();
             //Transactions.Start();
