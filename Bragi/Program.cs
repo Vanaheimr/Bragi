@@ -27,6 +27,8 @@ using eu.Vanaheimr.Balder;
 using eu.Vanaheimr.Balder.UnitTests;
 using eu.Vanaheimr.Balder.DependentGraphs;
 using eu.Vanaheimr.Balder.InMemory;
+using eu.Vanaheimr.Styx;
+using eu.Vanaheimr.Illias.Commons;
 
 //using Mono;
 //using Mono.CSharp;
@@ -117,7 +119,55 @@ namespace de.ahzf.Bragi
 
             var _graph = DemoGraphFactory.CreateSimpleGraph();
 
-            var a = _graph.VertexById("Alice").OutE().Ids().ToArray();
+            var Alice = _graph.VertexById("Alice").AsMutable();
+
+            var _Pipe1 = new OutEdgesPipe<String, Int64, String, String, Object,
+                                          String, Int64, String, String, Object,
+                                          String, Int64, String, String, Object,
+                                          String, Int64, String, String, Object>();
+
+            var _Pipe2 = new InVertexPipe<String, Int64, String, String, Object,
+                                          String, Int64, String, String, Object,
+                                          String, Int64, String, String, Object,
+                                          String, Int64, String, String, Object>();
+
+            var _Pipe3 = new PathPipe<IReadOnlyGenericPropertyVertex<String, Int64, String, String, Object,
+                                                                     String, Int64, String, String, Object,
+                                                                     String, Int64, String, String, Object,
+                                                                     String, Int64, String, String, Object>>();
+
+            var _Pipeline = new Pipeline<IReadOnlyGenericPropertyVertex<String, Int64, String, String, Object,
+                                                                        String, Int64, String, String, Object,
+                                                                        String, Int64, String, String, Object,
+                                                                        String, Int64, String, String, Object>,
+
+                                         IEnumerable<Object>>(_Pipe1, _Pipe2, _Pipe3);
+
+            _Pipeline.SetSource(new SingleEnumerator<IReadOnlyGenericPropertyVertex<String, Int64, String, String, Object,
+                                                                                    String, Int64, String, String, Object,
+                                                                                    String, Int64, String, String, Object,
+                                                                                    String, Int64, String, String, Object>>(Alice));
+
+            var x1 = _Pipeline.Select(path => path.Select(q => ((IIdentifier<String>)q).Id).Aggregate((a, b) => a + "|" + b));
+
+            var x2 = Alice.OutE().InV().Paths().ToArray();
+
+            foreach (var _Path in x1)
+            {
+
+                //var a0 = _Path.ElementAt(0);
+
+                //var b0 = _Path.ElementAt(1) is IReadOnlyGenericPropertyEdge  <String, Int64, String, String, Object,
+                //                                                              String, Int64, String, String, Object,
+                //                                                              String, Int64, String, String, Object,
+                //                                                              String, Int64, String, String, Object>;
+
+                //var c0 = _Path.ElementAt(2) is IReadOnlyGenericPropertyVertex<String, Int64, String, String, Object,
+                //                                                              String, Int64, String, String, Object,
+                //                                                              String, Int64, String, String, Object,
+                //                                                              String, Int64, String, String, Object>;
+
+            }
 
             Sigma_js.Start();
             //Transactions.Start();
